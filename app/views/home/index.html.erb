@@ -1,0 +1,162 @@
+<div class="mt-5 container">
+
+    <h1 class="text-center">입력 받을 폼</h1>
+
+    <%= form_tag(home_result_path, method: "get") do %>
+        <div class="m-3">
+            <%= label_tag("상품명:") %>
+            <%= text_field_tag(:prdNm) %>
+        </div>
+        <div class="m-3">
+            <%= label_tag("브랜드명:") %>
+            <%= text_field_tag(:brand) %>
+        </div>
+        <div class="m-3">
+            <%= label_tag( "상품 가격:") %>
+            <%= number_field(:product, :selPrc, step: 100, ) %>
+        </div>
+        <div class="m-3">
+            <%= label_tag("재고 수량 : ") %>
+            <%= number_field(:product, :prdSelQty, step: 1) %>
+        </div>
+        <div class="m-3">
+            <%= label_tag("상세설명") %>
+            <%= tinymce :language => "ko" %>
+            <%= text_area_tag(:htmlDetail, nil, class: "form-control tinymce", rows: "10") %>
+        </div>
+        <div class="d-flex">
+            <div class="m-3">
+                <%= label_tag("배송비 : ") %>
+                <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02', {id: "dlv"}], ['상품 조건부 무료', '03', {id: "dlv_3"}]]), id: 'dlv' %>
+            </div> 
+            <div class="m-3">
+                <%= label_tag( "배송비 :") %>
+                <%= number_field(:product, :dlvCstInfoCd, step: 100, value: '0' ) %>
+            </div>
+            <div class="m-3">
+                <%= label_tag( "무료 배송비 기준 : ") %>
+                <%= number_field(:product, :PrdFrDlvBasiAmt, step: 100, value: '0' ) %>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="m-3">
+                <%= label_tag("택배사 : ") %>
+                <%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %>
+            </div>
+            <div class="m-3">
+                <%= label_tag("묶음 배송 : ") %>
+                <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
+                <%= label_tag(:bndlDlvCnYn, "가능") %>
+                <%= radio_button_tag(:bndlDlvCnYn, "N") %>
+                <%= label_tag(:bndlDlvCnYn, "불가능") %>
+            </div>
+            <div class="m-3">
+                <%= label_tag("배송비 결제 : ") %>
+                <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="m-3">
+                    <%= label_tag( "제주 추가 배송비 : ") %>
+                    <%= number_field(:product, :jejuDlvCst, step: 100, value: "0") %>
+            </div>
+            <div class="m-3">
+                    <%= label_tag( "도서산간 추가 배송비:") %>
+                    <%= number_field(:product, :islandDlvCst, step: 100, value: "0") %>
+            </div>
+            <div class="m-3">
+                    <%= label_tag( "반품 배송비:") %>
+                    <%= number_field(:product, :rtngdDlvCst, step: 100, value: "0") %>
+            </div>
+            <div class="m-3">
+                    <%= label_tag( "교환 배송비:") %>
+                    <%= number_field(:product, :exchDlvCst, step: 100, value: "0") %>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="m-3">
+                <%= label_tag("A/S 안내 : ") %>
+                <%= text_area_tag(:asDetail) %>
+            </div>
+            <div class="m-3">
+                <%= label_tag("반품/교환 안내 : ") %>
+                <%= text_area_tag(:rtngExchDetail) %>
+            </div>
+        </div>
+        <div class="m-3">
+            
+            <div class="row">
+                <div class="m-3">
+                    <%= label_tag( "옵션 :") %>
+                    <%= text_field_tag(:colValue0_1, '', id:"opt_name_1") %>
+                </div>
+                <div class="m-3">
+                    <%= label_tag( "종류 :") %>
+                    <%= text_field_tag(:opt_1, '',id: "opt_1")  %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="m-3">
+                    <%= label_tag( "옵션2:") %>
+                    <%= text_field_tag(:colValue0_1, '', id:"opt_name_2") %>
+                </div>
+                <div class="m-3">
+                    <%= label_tag( "종류 :") %>
+                    <%= text_field_tag(:opt_2, '', id: "opt_2")  %>
+                </div>
+                <p id="opt_btn" class="btn border">빠밤</p>
+            </div>
+            <%= label_tag("옵션명 : ") %>
+            <%= text_field_tag(:colTitle,'', id: "opt_name_add") %>
+            <div id="opt_result">
+                
+            </div>
+        
+        </div>
+        <div class="m-3">
+            <%= submit_tag("등록") %>
+        </div>
+    <% end %>
+
+</div>
+
+
+<script>
+    $("#opt_btn").click(function() {
+        var opt_1 = $("#opt_1").val().split(',')
+        var opt_2 = $("#opt_2").val().split(',')
+        var opt_all = []
+        var opt_name_1 = $("#opt_name_1").val()
+        var opt_name_2 = $("#opt_name_2").val()
+        var opt_name_add = opt_name_1 + '/'+ opt_name_2
+        $("#opt_name_add").val(`${opt_name_add}`)
+        for(let i = 0; i < opt_1.length; i++){
+            for(let j=0; j<opt_2.length; j++){
+                var a = opt_1[i] + '/' + opt_2[j]
+                opt_all.push(a)
+            }
+        }
+        for(let i = 0;i <opt_all.length; i++){
+            $("#opt_result").append(
+            `<div class="m-3 border row">
+                    <div class="m-3">
+                        옵션 명 : 
+                        <input name="colValue0[${i}]" type="text" value="${opt_all[i]}" />
+                    </div>
+                    <div class="m-3">
+                        옵션 추가 비용 :
+                        <input name="colOptPrice[${i}]" type="number" value="0" step="100" />
+
+                    </div>
+                    <div class="m-3">
+                        재고 수량 :
+                        <input name="colCount[${i}]" type="number" step="1" />
+
+                    </div>
+                </div>`
+            )
+        }
+        
+        // alert(opt_all)
+    })
+</script>
