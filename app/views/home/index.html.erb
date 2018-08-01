@@ -13,11 +13,11 @@
         </div>
         <div class="m-3">
             <%= label_tag( "상품 가격:") %>
-            <%= number_field(:product, :selPrc, step: 100, ) %>
+            <%= number_field(:prd, :selPrc, step: 100, ) %>
         </div>
         <div class="m-3">
             <%= label_tag("재고 수량 : ") %>
-            <%= number_field(:product, :prdSelQty, step: 1) %>
+            <%= number_field(:prd, :prdSelQty, step: 1) %>
         </div>
         <div class="m-3">
             <%= label_tag("상세설명") %>
@@ -31,11 +31,11 @@
             </div> 
             <div class="m-3">
                 <%= label_tag( "배송비 :") %>
-                <%= number_field(:product, :dlvCstInfoCd, step: 100, value: '0' ) %>
+                <%= number_field(:prd, :dlvCstInfoCd, step: 100, value: '0' ) %>
             </div>
             <div class="m-3">
                 <%= label_tag( "무료 배송비 기준 : ") %>
-                <%= number_field(:product, :PrdFrDlvBasiAmt, step: 100, value: '0' ) %>
+                <%= number_field(:prd, :PrdFrDlvBasiAmt, step: 100, value: '0' ) %>
             </div>
         </div>
         <div class="d-flex">
@@ -58,19 +58,19 @@
         <div class="d-flex">
             <div class="m-3">
                     <%= label_tag( "제주 추가 배송비 : ") %>
-                    <%= number_field(:product, :jejuDlvCst, step: 100, value: "0") %>
+                    <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
             </div>
             <div class="m-3">
                     <%= label_tag( "도서산간 추가 배송비:") %>
-                    <%= number_field(:product, :islandDlvCst, step: 100, value: "0") %>
+                    <%= number_field(:prd, :islandDlvCst, step: 100, value: "0") %>
             </div>
             <div class="m-3">
                     <%= label_tag( "반품 배송비:") %>
-                    <%= number_field(:product, :rtngdDlvCst, step: 100, value: "0") %>
+                    <%= number_field(:prd, :rtngdDlvCst, step: 100, value: "0") %>
             </div>
             <div class="m-3">
                     <%= label_tag( "교환 배송비:") %>
-                    <%= number_field(:product, :exchDlvCst, step: 100, value: "0") %>
+                    <%= number_field(:prd, :exchDlvCst, step: 100, value: "0") %>
             </div>
         </div>
         <div class="d-flex">
@@ -88,26 +88,26 @@
             <div class="row">
                 <div class="m-3">
                     <%= label_tag( "옵션 :") %>
-                    <%= text_field_tag(:colValue0_1, '', id:"opt_name_1") %>
+                    <%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %>
                 </div>
                 <div class="m-3">
                     <%= label_tag( "종류 :") %>
-                    <%= text_field_tag(:opt_1, '',id: "opt_1")  %>
+                    <%= text_field_tag(:opt_1, nil,id: "opt_1")  %>
                 </div>
             </div>
             <div class="row">
                 <div class="m-3">
                     <%= label_tag( "옵션2:") %>
-                    <%= text_field_tag(:colValue0_1, '', id:"opt_name_2") %>
+                    <%= text_field_tag(:colValue0_1, nil, id:"opt_name_2") %>
                 </div>
                 <div class="m-3">
                     <%= label_tag( "종류 :") %>
-                    <%= text_field_tag(:opt_2, '', id: "opt_2")  %>
+                    <%= text_field_tag(:opt_2, nil, id: "opt_2")  %>
                 </div>
                 <p id="opt_btn" class="btn border">빠밤</p>
             </div>
             <%= label_tag("옵션명 : ") %>
-            <%= text_field_tag(:colTitle,'', id: "opt_name_add") %>
+            <%= text_field_tag(:colTitle, nil, id: "opt_name_add") %>
             <div id="opt_result">
                 
             </div>

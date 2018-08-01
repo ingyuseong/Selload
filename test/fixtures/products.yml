@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dispCtgrNo: 
+  prdNm: 
+  brand: 
+  htmlDetail: MyText
+
+two:
+  dispCtgrNo: 
+  prdNm: 
+  brand: 
+  htmlDetail: MyText

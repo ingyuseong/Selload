@@ -32,15 +32,27 @@ class HomeController < ApplicationController
     colOptPrice = params[:colOptPrice].collect { |key, value| value }
     colCount = params[:colCount].collect { |key, value| value }
     
-    option = ""
-    puts colValue
+    productOption = {}
+
     for i in 0...colValue.length
-      option += "<ProductOption>
+      productOption["#{colValue[i]}"] = {:price => colOptPrice[i], :count => colCount[i]}
+    end
+
+    
+    options = ""
+
+    for i in 0...colValue.length
+      options += "<ProductOption>
                   <useYn>Y</useYn>
                   <colOptPrice>" + colOptPrice[i] + "</colOptPrice><colValue0>" + colValue[i] + "</colValue0><colCount>" + colCount[i] + "</colCount></ProductOption>"
     end
 
-    puts option
+    # 형 이게더 ㅁ뭔가 깔끔깔끔 하지 않음? ㅎㅎ
+    # productOption.each do |val, info|
+    #   options += "<ProductOption>
+    #               <useYn>Y</useYn>
+    #               <colOptPrice>#{val}</colOptPrice><colValue0>#{info[:price]}</colValue0><colCount>#{info[:count]}</colCount></ProductOption>"
+    # end
 
     url = URI("http://api.11st.co.kr/rest/prodservices/product")
 
@@ -48,7 +60,7 @@ class HomeController < ApplicationController
 
     request = Net::HTTP::Post.new(url)
     request["content-type"] = 'text/xml; charset=euc-kr'
-    # request["openapikey"] = ENV["openapikey"]
+    request["openapikey"] = ENV["openapikey"]
     request["cache-control"] = 'no-cache'
     request.body = "
     <Product>
@@ -75,10 +87,10 @@ class HomeController < ApplicationController
 
     
       # 판매가격
-      <selPrc>#{params[:product][:selPrc]}</selPrc>
+      <selPrc>#{params[:prd][:selPrc]}</selPrc>
 
       # 재고수량
-      <prdSelQty>#{params[:product][:prdSelQty]}</prdSelQty>
+      <prdSelQty>#{params[:prd][:prdSelQty]}</prdSelQty>
 
       # 택배사
       <dlvEtprsCd>#{params[:dlvEtprsCd]}</dlvEtprsCd>
@@ -88,10 +100,10 @@ class HomeController < ApplicationController
       <dlvCstInstBasiCd>#{params[:dlvCstInstBasiCd]}</dlvCstInstBasiCd>
           
       # 배송비
-      <dlvCstInfoCd>#{params[:product][:dlvCstInfoCd]}</dlvCstInfoCd>
+      <dlvCstInfoCd>#{params[:prd][:dlvCstInfoCd]}</dlvCstInfoCd>
 
       # 무료 배송비 기준
-      <PrdFrDlvBasiAmt>#{params[:product][:PrdFrDlvBasiAmt]}</PrdFrDlvBasiAmt>
+      <PrdFrDlvBasiAmt>#{params[:prd][:PrdFrDlvBasiAmt]}</PrdFrDlvBasiAmt>
 
       # 묶음 배송 여부 N : 불가
       <bndlDlvCnYn>#{params[:bndlDlvCnYn]}</bndlDlvCnYn>
@@ -100,10 +112,10 @@ class HomeController < ApplicationController
       <dlvCstPayTypCd>#{params[:dlvCstPayTypCd]}</dlvCstPayTypCd>
 
       # 제주 추가 배송비
-      <jejuDlvCst>#{params[:product][:jejuDlvCst]}</jejuDlvCst>
+      <jejuDlvCst>#{params[:prd][:jejuDlvCst]}</jejuDlvCst>
 
       # 도서산간 추가 배송비
-      <islandDlvCst>#{params[:product][:islandDlvCst]}</islandDlvCst>
+      <islandDlvCst>#{params[:prd][:islandDlvCst]}</islandDlvCst>
 
       # 출고지 주소 코드
       ## 알아보아야 함
@@ -111,10 +123,10 @@ class HomeController < ApplicationController
       <addrSeqIn>SOIEF</addrSeqIn>
 
       # 반품 배송비
-      <rtngdDlvCst>#{params[:product][:rtngdDlvCst]}</rtngdDlvCst>
+      <rtngdDlvCst>#{params[:prd][:rtngdDlvCst]}</rtngdDlvCst>
 
       # 교환 배송비
-      <exchDlvCst>#{params[:product][:exchDlvCst]}</exchDlvCst>
+      <exchDlvCst>#{params[:prd][:exchDlvCst]}</exchDlvCst>
 
       # A/S 안내, 공백X
       <asDetail>#{params[:asDetail]}</asDetail>
@@ -138,7 +150,7 @@ class HomeController < ApplicationController
 
       
 
-      #{option}
+      #{options}
       # 디폴트 값
       ########
       # 고정가판매: 01
@@ -209,6 +221,15 @@ class HomeController < ApplicationController
       
     </Product>"
     @response = http.request(request).read_body.encode('UTF-8',replace: '?')
+
+    # 쇼핑몰 등록 성공 시 (resultCode가 200일시) db 저장
+    if @response.split('resultCode')[1] == '>200</'
+      product = Product.new(product_params)
+      product.option = productOption
+      product.prd = params[:prd]
+      product.save
+    end
+
   end
 
   def list
@@ -351,4 +372,7 @@ class HomeController < ApplicationController
     puts response.read_body
   end
 
+  def product_params
+    params.permit(:dispCtgrNo, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
+  end
 end
