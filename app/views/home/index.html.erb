@@ -26,20 +26,20 @@
                 <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02', {id: "dlv"}], ['상품 조건부 무료', '03', {id: "dlv_3"}]]), id: 'dlv' %>
             </div> 
             <div class="m-3">
-                    <%= label_tag( "반품 배송비:") %>
-                    <%= number_field(:prd, :rtngdDlvCst, step: 100, value: "0") %>
+                <%= label_tag( "반품 배송비:") %>
+                <%= number_field(:prd, :rtngdDlvCst, step: 100, value: "0") %>
             </div>
             <div class="m-3">
-                    <%= label_tag( "교환 배송비:") %>
-                    <%= number_field(:prd, :exchDlvCst, step: 100, value: "0") %>
+                <%= label_tag( "교환 배송비:") %>
+                <%= number_field(:prd, :exchDlvCst, step: 100, value: "0") %>
             </div>
             
         </div>
         
         <div class="d-flex">
             <div class="m-3">
-                    <%= label_tag( "제주 추가 배송비 : ") %>
-                    <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
+                <%= label_tag( "제주 추가 배송비 : ") %>
+                <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
             </div>
             <div class="m-3">
                     <%= label_tag( "도서산간 추가 배송비:") %>
@@ -47,11 +47,11 @@
             </div>
             <div class="m-3">
                 <%= label_tag( "배송비 :") %>
-                <%= number_field(:prd, :dlvCstInfoCd, step: 100, value: '0' ) %>
+                <%= number_field(:prd, :dlvCst1, step: 100, value: '0' ) %>
             </div>
             <div class="m-3">
                 <%= label_tag( "무료 배송비 기준 : ") %>
-                <%= number_field(:prd, :PrdFrDlvBasiAmt, step: 100, value: '0' ) %>
+                <%= number_field(:prd, :PrdFrDlvBasiAmt, step: 100 ) %>
             </div>
             
         </div>
@@ -63,9 +63,9 @@
             <div class="m-3">
                 <%= label_tag("묶음 배송 : ") %>
                 <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
-                <%= label_tag(:bndlDlvCnYn, "가능") %>
+                <%= label_tag( "가능") %>
                 <%= radio_button_tag(:bndlDlvCnYn, "N") %>
-                <%= label_tag(:bndlDlvCnYn, "불가능") %>
+                <%= label_tag( "불가능") %>
             </div>
             <div class="m-3">
                 <%= label_tag("배송비 결제 : ") %>

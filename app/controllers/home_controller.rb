@@ -63,7 +63,13 @@ class HomeController < ApplicationController
       end
     end
     
-   
+    #무료 배송비 기준
+    aa =""
+    if params[:dlvCstInstBasiCd] == "03"
+      aa += "<PrdFrDlvBasiAmt>" + params[:prd][:PrdFrDlvBasiAmt] + "</PrdFrDlvBasiAmt>"
+    elsif params[:dlvCstInstBasiCd] == "02"
+      aa += "<dlvCstInfoCd>01</dlvCstInfoCd>"
+    end
     
     
 
@@ -119,10 +125,10 @@ class HomeController < ApplicationController
       <dlvCstInstBasiCd>#{params[:dlvCstInstBasiCd]}</dlvCstInstBasiCd>
           
       # 배송비
-      <dlvCstInfoCd>#{params[:prd][:dlvCstInfoCd]}</dlvCstInfoCd>
+      <dlvCst1>#{params[:prd][:dlvCst1]}</dlvCst1>
 
       # 무료 배송비 기준
-      <PrdFrDlvBasiAmt>#{params[:prd][:PrdFrDlvBasiAmt]}</PrdFrDlvBasiAmt>
+      #{aa}
 
       # 묶음 배송 여부 N : 불가
       <bndlDlvCnYn>#{params[:bndlDlvCnYn]}</bndlDlvCnYn>
@@ -238,6 +244,7 @@ class HomeController < ApplicationController
       product.save
     end
 
+    puts request.body
   end
 
   def list
