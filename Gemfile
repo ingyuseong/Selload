@@ -17,6 +17,7 @@ gem 'fog', '~> 1.41.0'
 # Basic Gems
 gem 'bootstrap', '~> 4.1.1'
 gem 'figaro'
+gem "rails_db", "1.6"
 
 gem 'http', '~> 3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -28,24 +28,46 @@ class HomeController < ApplicationController
   end
 
   def result
-    colValue = params[:colValue0].collect { |key, value| value }
-    colOptPrice = params[:colOptPrice].collect { |key, value| value }
-    colCount = params[:colCount].collect { |key, value| value }
-    
     productOption = {}
+    options = ""
+    if params[:colValue] == true
 
-    for i in 0...colValue.length
-      productOption["#{colValue[i]}"] = {:price => colOptPrice[i], :count => colCount[i]}
+
+      for i in 0...colValue.length
+        productOption["#{colValue[i]}"] = {:price => colOptPrice[i], :count => colCount[i]}
+      end
+
+      
+      colValue = params[:colValue0].collect { |key, value| value }
+      colOptPrice = params[:colOptPrice].collect { |key, value| value }
+      colCount = params[:colCount].collect { |key, value| value }
+
+      options += "##옵션
+
+      # 선택형 옵션
+      <optSelectYn>Y</optSelectYn>
+
+      # 고정값
+      <txtColCnt>1</txtColCnt>
+
+      # 옵션명
+      <colTitle>#{params[:colTitle]}</colTitle>
+
+      # 옵션 노출 방식 00 : 등록순
+      <prdExposeClfCd>00</prdExposeClfCd>"
+
+      for i in 0...colValue.length
+        options += "<ProductOption>
+                    <useYn>Y</useYn>
+                    <colOptPrice>" + colOptPrice[i] + "</colOptPrice><colValue0>" + colValue[i] + "</colValue0><colCount>" + colCount[i] + "</colCount></ProductOption>"
+      end
     end
+    
+   
+    
+    
 
     
-    options = ""
-
-    for i in 0...colValue.length
-      options += "<ProductOption>
-                  <useYn>Y</useYn>
-                  <colOptPrice>" + colOptPrice[i] + "</colOptPrice><colValue0>" + colValue[i] + "</colValue0><colCount>" + colCount[i] + "</colCount></ProductOption>"
-    end
 
     # 형 이게더 ㅁ뭔가 깔끔깔끔 하지 않음? ㅎㅎ
     # productOption.each do |val, info|
@@ -78,10 +100,7 @@ class HomeController < ApplicationController
       <prdImage03>https://picsum.photos/400/399</prdImage03>
       <htmlDetail>
         <![CDATA[
-          <h1>탑텐 폴리리넨 스트라이프 반팔티 </h1>
-          <div style='text-align : center'>
-          <h2 style='color: blue'> 다양한 컬러의 스트라이프 무늬로 이루어져 있어 밝고 화사한 느낌을 줍니다 </h2>
-          </div>
+          #{params[:htmlDetail]}
         ]]>
       </htmlDetail>
 
@@ -134,19 +153,7 @@ class HomeController < ApplicationController
       # 반품/교환 안내, 공백X
       <rtngExchDetail>#{params[:rtngExchDetail]}</rtngExchDetail>
 
-      ##옵션
-
-      # 선택형 옵션
-      <optSelectYn>Y</optSelectYn>
-
-      # 고정값
-      <txtColCnt>1</txtColCnt>
-
-      # 옵션명
-      <colTitle>#{params[:colTitle]}</colTitle>
-
-      # 옵션 노출 방식 00 : 등록순
-      <prdExposeClfCd>00</prdExposeClfCd>
+      
 
       
 
@@ -222,6 +229,7 @@ class HomeController < ApplicationController
     </Product>"
     @response = http.request(request).read_body.encode('UTF-8',replace: '?')
 
+  
     # 쇼핑몰 등록 성공 시 (resultCode가 200일시) db 저장
     if @response.split('resultCode')[1] == '>200</'
       product = Product.new(product_params)
