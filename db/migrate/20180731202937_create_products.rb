@@ -14,6 +14,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.text :rtngExchDetail
       t.string :colTitle
       t.text :option
+      t.integer :prdNo
 
       t.timestamps
     end
