@@ -24,3 +24,12 @@ CSV.foreach(Rails.root.join("ctgrm.csv"), headers: true) do |row|
     middle.lgcategory_id = row[0]
   end
 end
+
+puts "Importing small categories..."
+CSV.foreach(Rails.root.join("ctgrs.csv"), headers: true) do |row|
+  Smcategory.create! do |sm|
+    sm.name = row[2]
+    sm.smcategory_id = row[1]
+    sm.midcategory_id = row[0]
+  end
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180801190147) do
+ActiveRecord::Schema.define(version: 20180801195635) do
 
   create_table "images", force: :cascade do |t|
     t.string   "alt"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20180801190147) do
     t.integer  "prdNo"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "smcategories", force: :cascade do |t|
+    t.string   "smcategory_id"
+    t.string   "name"
+    t.string   "midcategory_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
