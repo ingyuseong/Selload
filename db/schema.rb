@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180731202937) do
     t.text     "rtngExchDetail"
     t.string   "colTitle"
     t.text     "option"
+    t.integer  "prdNo"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
