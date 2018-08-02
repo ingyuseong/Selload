@@ -6,15 +6,16 @@ jQuery ->
     smctgr = $('#smcategory_name').html()
     $('#lgctgr_name').change ->
         lgctgr = $('#lgctgr_name :selected').text()
-        options = $(midctgr).filter("optgroup[label='#{lgctgr}']").html()
-        if options 
-            $('#midcategory_name').html(options)
+        filters = $(midctgr).filter("optgroup[label='#{lgctgr}']").html()
+        option = "<option></option>"+filters
+        if filters
+            $('#midcategory_name').html(option)
         else
             $('#midcategory_name').empty()
     $('#midcategory_name').change ->
         midselected = $('#midcategory_name :selected').text()
         options = $(smctgr).filter("optgroup[label='#{midselected}']").html()
-        if options 
+        if options
             $('#smcategory_name').html(options)
         else
             $('#smcategory_name').empty()
