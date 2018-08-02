@@ -1,0 +1,256 @@
+<p><%=@product.prdNo%></p>
+<p><%=eval(@product.prd)[:selPrc]%></p>
+<p><%= @product_prd %></p>
+<%# 인덱스복붙 %>
+
+<div class="mt-5 container">
+
+    <h1 class="text-center">입력 받을 폼</h1>
+
+    <%= form_tag(update_path(@product.prdNo), method: "post") do %>
+        <div class="m-3">
+            <%= label_tag("상품명:") %>
+            <%= text_field_tag(:prdNm, @product.prdNm) %>
+        </div>
+        <div class="m-3">
+            <%= label_tag("브랜드명:") %>
+            <%= text_field_tag(:brand, @product.brand) %>
+        </div>
+        <div class="m-3">
+            <%= label_tag( "상품 가격:") %>
+            <%= number_field_tag :selPrc, @product_prd[:selPrc].to_i ,step: 100 %>
+        </div>
+        <div class="m-3">
+            <%= label_tag("재고 수량 : ") %>
+            <%= number_field(:prdSelQty, step: 1) %>
+        </div>
+        
+        <div class="d-flex">
+            <div id="ctgrl" class="m-3">
+                <%= label_tag("카테고리 대분류 : ") %>
+                <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl") %>
+            </div>
+            <div id="ctgrm" class="m-3 ctgr">
+                <%= label_tag("카테고리 중분류 : ") %>
+                <%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true) %>
+            </div>
+            <div id="ctgrs" class="m-3 ctgr">
+                <%= label_tag("카테고리 소분류 : ") %>
+                <%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true) %>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="m-3">
+                <%= label_tag("배송비 : ") %>
+                <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %>
+            </div> 
+            <div class="m-3">
+                <%= label_tag( "반품 배송비:") %>
+                <%= number_field(:prd, :rtngdDlvCst, step: 100, value: "0") %>
+            </div>
+            <div class="m-3">
+                <%= label_tag( "교환 배송비:") %>
+                <%= number_field(:prd, :exchDlvCst, step: 100, value: "0") %>
+            </div>
+            
+        </div>
+        
+        <div id="dlv" class="d-flex ">
+            <div id="dlv_pri" class="m-3 dlv_box">
+                <%= label_tag( "배송비 :") %>
+                <%= number_field(:prd, :dlvCst1, step: 100, value: '0' ) %>
+            </div>
+            <div id="dlv_jeju" class="m-3 dlv_box">
+                <%= label_tag( "제주 추가 배송비 : ") %>
+                <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
+            </div>
+            <div id="dlv_isl" class="m-3 dlv_box">
+                    <%= label_tag( "도서산간 추가 배송비:") %>
+                    <%= number_field(:prd, :islandDlvCst, step: 100, value: "0") %>
+            </div>
+            <div id="dlv_free" class="m-3 dlv_box">
+                <%= label_tag( "무료 배송비 기준 : ") %>
+                <%= number_field(:prd, :PrdFrDlvBasiAmt, step: 100 ) %>
+            </div>
+            
+        </div>
+        <div class="d-flex">
+            <div class="m-3">
+                <%= label_tag("택배사 : ") %>
+                <%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %>
+            </div>
+            <div class="m-3">
+                <%= label_tag("배송비 결제 : ") %>
+                <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
+            </div>
+            <div id="bundle" class="bundle m-3">
+                <%= label_tag("묶음 배송 : ") %>
+                <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
+                <%= label_tag( "가능") %>
+                <%= radio_button_tag(:bndlDlvCnYn, "N") %>
+                <%= label_tag( "불가능") %>
+            </div>
+        </div>
+        <div class="m-3">
+            <%= label_tag("상세설명") %>
+            <%= tinymce :language => "en" %>
+            <%= text_area_tag(:htmlDetail, nil, class: "form-control tinymce", rows: "10") %>
+        </div>
+        <div class="d-flex">
+            <div class="m-3">
+                <%= label_tag("A/S 안내 : ") %>
+                <%= text_area_tag(:asDetail) %>
+            </div>
+            <div class="m-3">
+                <%= label_tag("반품/교환 안내 : ") %>
+                <%= text_area_tag(:rtngExchDetail) %>
+            </div>
+        </div>
+
+        <div class="m-3">
+             <div class="m-3">
+                <%= label_tag("옵션 갯수 : ") %>
+                <%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num" %>
+            </div> 
+            
+            <div id="option_1" class="options">
+                <div class="row">
+                    <div class="m-3">
+                        <%= label_tag( "옵션 :") %>
+                        <%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %>
+                    </div>
+                    <div class="m-3">
+                        <%= label_tag( "종류 :") %>
+                        <%= text_field_tag(:opt_1, nil,id: "opt_1")  %>
+                    </div>
+                </div>
+            </div>
+            <div id="option_2" class="options">
+                <div class="row">
+                    <div class="m-3">
+                        <%= label_tag( "옵션2:") %>
+                        <%= text_field_tag(:colValue0_1, nil, id:"opt_name_2") %>
+                    </div>
+                    <div class="m-3">
+                        <%= label_tag( "종류 :") %>
+                        <%= text_field_tag(:opt_2, nil, id: "opt_2")  %>
+                    </div>
+                </div>
+            </div>
+            <p id="opt_btn" class="btn border opt_btn">빠밤</p>
+            <div class="m-3">
+                <%= hidden_field_tag(:colTitle, nil, id: "opt_name_add") %>
+            </div>
+            <div id="opt_result">
+                
+            </div>
+        
+        </div>
+        <div class="m-3">
+            <%= submit_tag("등록") %>
+        </div>
+    <% end %>
+
+</div>
+
+
+<script>
+    $("#dlv_sel").change(function(){
+        var dlv_sel =$("#dlv_sel").val()
+        if(dlv_sel === "02"){
+            $("#dlv_jeju").fadeIn(200)
+            $("#dlv_isl").fadeIn(200)
+            $("#dlv_pri").fadeIn(200)
+            $("#dlv_free").fadeOut(200)
+            $("#bundle").fadeIn(200)
+
+        } else if(dlv_sel === "03"){
+            $("#dlv_jeju").fadeIn(200)
+            $("#dlv_isl").fadeIn(200)
+            $("#dlv_pri").fadeIn(200)
+            $("#dlv_free").fadeIn(200)
+            $("#bundle").fadeOut(200)
+        } else if(dlv_sel === "01"){
+            $("#dlv_jeju").fadeOut(200)
+            $("#dlv_isl").fadeOut(200)
+            $("#dlv_pri").fadeOut(200)
+            $("#dlv_free").fadeOut(200)
+            $("#bundle").fadeIn(200)
+        }
+    })
+
+
+    $("#ctgrl").change(function(){
+        $("#ctgrm").fadeIn(200)
+    })
+
+    $("#ctgrm").change(function() {
+        $("#ctgrs").fadeIn(200)
+    })
+
+    $("#opt_num").change(function(){
+        var value = $("#opt_num").val()
+        if(value === "1"){
+            $("#option_1").fadeIn(200)
+            $("#option_2").fadeOut(200)
+            $("#opt_btn").fadeIn(200)
+        } else if(value === "2"){
+            $("#option_1").fadeIn(200)
+            $("#option_2").fadeIn(200)
+            $("#opt_btn").fadeIn(200)
+        } else if(value === "0"){
+            $("#option_1").fadeOut(200)
+            $("#option_2").fadeOut(200)
+            $("#opt_btn").fadeOut(200)
+        }
+    })
+    $("#opt_btn").click(function() {
+        var opt_1 = $("#opt_1").val().split(',')
+        var opt_2 = $("#opt_2").val().split(',')
+        var opt_all = []
+        var opt_name_1 = $("#opt_name_1").val()
+        var opt_name_2 = $("#opt_name_2").val()
+        if(opt_name_2 !== ""){
+            var opt_name_add = opt_name_1 + '/'+ opt_name_2
+            for(let i = 0; i < opt_1.length; i++){
+                for(let j=0; j<opt_2.length; j++){
+                    var a = opt_1[i] + '/' + opt_2[j]
+                    opt_all.push(a)
+                }
+            }
+        } else {
+            var opt_name_add = opt_name_1
+            for(let i = 0; i < opt_1.length; i++){
+                opt_all.push(opt_1[i])
+            }
+        }
+
+        $("#opt_name_add").val(`${opt_name_add}`)
+        $("#opt_result").append(
+            `옵션 명 : ${opt_name_add} `
+        )
+        for(let i = 0;i <opt_all.length; i++){
+            $("#opt_result").append(
+            `<div class="m-3 border row">
+                    <div class="m-3">
+                        옵션 명 : 
+                        <input name="colValue0[${i}]" type="text" value="${opt_all[i]}" />
+                    </div>
+                    <div class="m-3">
+                        옵션 추가 비용 :
+                        <input name="colOptPrice[${i}]" type="number" value="0" step="100" />
+
+                    </div>
+                    <div class="m-3">
+                        재고 수량 :
+                        <input name="colCount[${i}]" type="number" step="1" />
+
+                    </div>
+                </div>`
+            )
+        }
+        
+        // alert(opt_all)
+    })
+</script>

@@ -250,11 +250,11 @@ class HomeController < ApplicationController
   
     # 쇼핑몰 등록 성공 시 (resultCode가 200일시) db 저장
     if @response.split('resultCode')[1] == '>200</'
-      prdNm = @response.split('message')[1].split(':')[1].split('<')[0].to_i
+      prdNo = @response.split('message')[1].split(':')[1].split('<')[0].to_i
       newProduct = Product.new(product_params)
       newProduct.option = productOption
       newProduct.prd = params[:prd]
-      newProduct.prdNm = prdNm
+      newProduct.prdNo = prdNo
       newProduct.save
     end
 
@@ -278,23 +278,66 @@ class HomeController < ApplicationController
     @list = response.read_body
 
     @list_result = @list.split('<selStatCd>').map{|x| x.slice(0,3)}
-    @prdNo_result = @list.split('<prdNo>').map{|x| x.slice(0,10)}
+    @prdNo_result = @list.split('<prdNo>').map{|x| (x.slice(0,10))}
     @selling = []
 
     for i in 1..@list_result.length
       if @list_result[i] == "103"
-        @selling.push(@prdNo_result[i])
+        @selling.push(@prdNo_result[i].to_i)
       end
     end
+
+    @product_array = Product.where(prdNo: @selling)
+
   end
 
   def edit
-    # list로 기본적인 상품정보를 얻어온 후 params로 넘겨줘야 기존 edit form 채워줄수 있음
-    # 상품코드 PrdCd 입력 후 상품등록과 똑같은 형식의 Body를 넣어 요청 시 기존의 상품에 덮어씌우는 방식으로 수정됨
-    require 'uri'
-    require 'net/http'
+    #index 복붙
+    @dlv_option = {
+      'CJ대한통운' => '00034', 
+      '한진택배' => '00011', 
+      '롯데(현대)택배' => '00012',
+      '드림택배(KG 로지스)' => '00001',
+      '우체국택배' => '00007',
+      '로젠택배' => '00002',
+      '우편등기' => '00008',
+      '대신택배' => '00021',
+      '일양로지스' => '00022',
+      'ACI' => '00023',
+      'WIZWA' => '00025',
+      '경동택배' => '00026',
+      '천일택배' => '00027',
+      'KGL(해외배송)' => '00028',
+      'OCS Korea' => '00031',
+      'GTX 택배' => '00033',
+      '합동택배' => '00035',
+      '건영택배' => '00037',
+      '기타' => '00099'
+    }
 
-    product_num = '2126439033'
+    @lgctgr = Lgcategory.all
+    @midctgr = Midcategory.all
+
+    # list로 기본적인 상품정보를 얻어온 후 params로 넘겨줘야 기존 edit form 채워줄수 있음
+    @product = Product.where(prdNo: params[:prdNo].to_i)[0]
+    @product_prd = eval(@product.prd)
+    @product_option = eval(@product.option)
+
+    # option 쓰는법
+
+    @product_option.each do |k,v|
+      puts k # colValue ex)"빨강/M"
+      puts v[:price] # colOptPrice ex) "300"
+      puts v [:count] # colCount ex) "30"
+    end
+    
+
+  end
+
+  def update
+    # 상품코드 PrdCd 입력 후 상품등록과 똑같은 형식의 Body를 넣어 요청 시 기존의 상품에 덮어씌우는 방식으로 수정됨
+    # 상품등록이랑 params 같이 쓰면 될듯
+    product_num = params[:prdNo]
 
     url = URI("http://api.11st.co.kr/rest/prodservices/product/#{product_num}")
 

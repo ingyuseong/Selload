@@ -1,5 +1,15 @@
+<h1>테스트 코드니까 그냥 출력만 했어용</h1>
 <%= @list_result %>
 <br>
 <%= @prdNo_result %>
 <br>
 <%= @selling%>
+
+<% @product_array.each do |p|%>
+    <p>상품번호: <%=p.prdNo%></p>
+    <p>상품명: <%=p.prdNm%></p>
+    <p>브랜드: <%=p.brand%></p>
+    <p>가격: <%=eval(p.prd)[:selPrc]%></p>
+    <p>크리에이티드엣: <%=p.created_at%></p>
+    <%= link_to 'Edit', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300; font-size: 15px' %>
+<% end %>
