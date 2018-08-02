@@ -63,12 +63,22 @@ class HomeController < ApplicationController
       end
     end
     
-    #무료 배송비 기준
+    #묶음상품
+    # bundle=""
+    # 배송비 종류별
     aa =""
+
+    # 배송비 종류에 따라 넣거나 안넣거나 할 내용 컨트롤
+    # 조건부 무료 일 경우 '무료배송 기준 가격'
     if params[:dlvCstInstBasiCd] == "03"
       aa += "<PrdFrDlvBasiAmt>" + params[:prd][:PrdFrDlvBasiAmt] + "</PrdFrDlvBasiAmt>"
+    # 고정 배송비 일 경우 '배송비 추가안내'와 '묶음상품 선택'
     elsif params[:dlvCstInstBasiCd] == "02"
       aa += "<dlvCstInfoCd>01</dlvCstInfoCd>"
+      aa += "<bndlDlvCnYn>" + params[:bndlDlvCnYn] + "</bndlDlvCnYn>"
+    # 무료 일 경우 '묶음상품 선택'
+    elsif params[:dlvCstInstBasiCd] == "01"
+      aa += "<bndlDlvCnYn>" + params[:bndlDlvCnYn] + "</bndlDlvCnYn>"
     end
     
     
@@ -127,11 +137,11 @@ class HomeController < ApplicationController
       # 배송비
       <dlvCst1>#{params[:prd][:dlvCst1]}</dlvCst1>
 
-      # 무료 배송비 기준
+      # 배송비 종류별
       #{aa}
 
       # 묶음 배송 여부 N : 불가
-      <bndlDlvCnYn>#{params[:bndlDlvCnYn]}</bndlDlvCnYn>
+      
 
       # (배송비?) 결제 방법 01 : 선결제 가능, 02 : 선결제 불가, 03: 선결제 필수
       <dlvCstPayTypCd>#{params[:dlvCstPayTypCd]}</dlvCstPayTypCd>

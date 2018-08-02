@@ -23,7 +23,7 @@
         <div class="d-flex">
             <div class="m-3">
                 <%= label_tag("배송비 : ") %>
-                <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02', {id: "dlv"}], ['상품 조건부 무료', '03', {id: "dlv_3"}]]), id: 'dlv' %>
+                <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %>
             </div> 
             <div class="m-3">
                 <%= label_tag( "반품 배송비:") %>
@@ -36,20 +36,20 @@
             
         </div>
         
-        <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag( "제주 추가 배송비 : ") %>
-                <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
-            </div>
-            <div class="m-3">
-                    <%= label_tag( "도서산간 추가 배송비:") %>
-                    <%= number_field(:prd, :islandDlvCst, step: 100, value: "0") %>
-            </div>
-            <div class="m-3">
+        <div id="dlv" class="d-flex ">
+            <div id="dlv_pri" class="m-3 dlv_box">
                 <%= label_tag( "배송비 :") %>
                 <%= number_field(:prd, :dlvCst1, step: 100, value: '0' ) %>
             </div>
-            <div class="m-3">
+            <div id="dlv_jeju" class="m-3 dlv_box">
+                <%= label_tag( "제주 추가 배송비 : ") %>
+                <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
+            </div>
+            <div id="dlv_isl" class="m-3 dlv_box">
+                    <%= label_tag( "도서산간 추가 배송비:") %>
+                    <%= number_field(:prd, :islandDlvCst, step: 100, value: "0") %>
+            </div>
+            <div id="dlv_free" class="m-3 dlv_box">
                 <%= label_tag( "무료 배송비 기준 : ") %>
                 <%= number_field(:prd, :PrdFrDlvBasiAmt, step: 100 ) %>
             </div>
@@ -61,15 +61,15 @@
                 <%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %>
             </div>
             <div class="m-3">
+                <%= label_tag("배송비 결제 : ") %>
+                <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
+            </div>
+            <div id="bundle" class="bundle m-3">
                 <%= label_tag("묶음 배송 : ") %>
                 <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
                 <%= label_tag( "가능") %>
                 <%= radio_button_tag(:bndlDlvCnYn, "N") %>
                 <%= label_tag( "불가능") %>
-            </div>
-            <div class="m-3">
-                <%= label_tag("배송비 결제 : ") %>
-                <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
             </div>
         </div>
         <div class="m-3">
@@ -135,6 +135,30 @@
 
 
 <script>
+    $("#dlv_sel").change(function(){
+        var dlv_sel =$("#dlv_sel").val()
+        if(dlv_sel === "02"){
+            $("#dlv_jeju").fadeIn(200)
+            $("#dlv_isl").fadeIn(200)
+            $("#dlv_pri").fadeIn(200)
+            $("#dlv_free").fadeOut(200)
+            $("#bundle").fadeIn(200)
+
+        } else if(dlv_sel === "03"){
+            $("#dlv_jeju").fadeIn(200)
+            $("#dlv_isl").fadeIn(200)
+            $("#dlv_pri").fadeIn(200)
+            $("#dlv_free").fadeIn(200)
+            $("#bundle").fadeOut(200)
+        } else if(dlv_sel === "01"){
+            $("#dlv_jeju").fadeOut(200)
+            $("#dlv_isl").fadeOut(200)
+            $("#dlv_pri").fadeOut(200)
+            $("#dlv_free").fadeOut(200)
+            $("#bundle").fadeIn(200)
+        }
+    })
+
 
     $("#opt_num").change(function(){
         var value = $("#opt_num").val()
