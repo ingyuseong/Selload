@@ -250,11 +250,11 @@ class HomeController < ApplicationController
   
     # 쇼핑몰 등록 성공 시 (resultCode가 200일시) db 저장
     if @response.split('resultCode')[1] == '>200</'
-      prdNo = @response.split('message')[1].split(':')[1].split('<')[0].to_i
+      prdNm = @response.split('message')[1].split(':')[1].split('<')[0].to_i
       newProduct = Product.new(product_params)
       newProduct.option = productOption
       newProduct.prd = params[:prd]
-      newProduct.prdNo = prdNo
+      newProduct.prdNm = prdNm
       newProduct.save
     end
 
