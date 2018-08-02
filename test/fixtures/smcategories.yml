@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  smcategory_id: MyString
+  name: MyString
+  midcategory_id: MyString
+
+two:
+  smcategory_id: MyString
+  name: MyString
+  midcategory_id: MyString

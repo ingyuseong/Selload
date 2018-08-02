@@ -25,6 +25,10 @@ class HomeController < ApplicationController
       '건영택배' => '00037',
       '기타' => '00099'
     }
+
+    @lgctgr = Lgcategory.all
+    @midctgr = Midcategory.all
+    
   end
 
   def result
@@ -80,9 +84,7 @@ class HomeController < ApplicationController
     elsif params[:dlvCstInstBasiCd] == "01"
       aa += "<bndlDlvCnYn>" + params[:bndlDlvCnYn] + "</bndlDlvCnYn>"
     end
-    
-    
-
+  
     
 
     # 형 이게더 ㅁ뭔가 깔끔깔끔 하지 않음? ㅎㅎ
@@ -102,7 +104,7 @@ class HomeController < ApplicationController
     request["cache-control"] = 'no-cache'
     request.body = "
     <Product>
-      <dispCtgrNo>1010478</dispCtgrNo>
+      <dispCtgrNo>#{params[:smcategory][:name]}</dispCtgrNo>
 
       # 상품명
       <prdNm>#{params[:prdNm]}</prdNm>
