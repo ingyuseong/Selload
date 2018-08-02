@@ -276,6 +276,16 @@ class HomeController < ApplicationController
 
     response = http.request(request)
     @list = response.read_body
+
+    @list_result = @list.split('<selStatCd>').map{|x| x.slice(0,3)}
+    @prdNo_result = @list.split('<prdNo>').map{|x| x.slice(0,10)}
+    @selling = []
+
+    for i in 1..@list_result.length
+      if @list_result[i] == "103"
+        @selling.push(@prdNo_result[i])
+      end
+    end
   end
 
   def edit
