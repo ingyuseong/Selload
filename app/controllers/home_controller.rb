@@ -67,12 +67,22 @@ class HomeController < ApplicationController
       end
     end
     
-    #무료 배송비 기준
+    #묶음상품
+    # bundle=""
+    # 배송비 종류별
     aa =""
+
+    # 배송비 종류에 따라 넣거나 안넣거나 할 내용 컨트롤
+    # 조건부 무료 일 경우 '무료배송 기준 가격'
     if params[:dlvCstInstBasiCd] == "03"
       aa += "<PrdFrDlvBasiAmt>" + params[:prd][:PrdFrDlvBasiAmt] + "</PrdFrDlvBasiAmt>"
+    # 고정 배송비 일 경우 '배송비 추가안내'와 '묶음상품 선택'
     elsif params[:dlvCstInstBasiCd] == "02"
       aa += "<dlvCstInfoCd>01</dlvCstInfoCd>"
+      aa += "<bndlDlvCnYn>" + params[:bndlDlvCnYn] + "</bndlDlvCnYn>"
+    # 무료 일 경우 '묶음상품 선택'
+    elsif params[:dlvCstInstBasiCd] == "01"
+      aa += "<bndlDlvCnYn>" + params[:bndlDlvCnYn] + "</bndlDlvCnYn>"
     end
   
     
@@ -129,11 +139,11 @@ class HomeController < ApplicationController
       # 배송비
       <dlvCst1>#{params[:prd][:dlvCst1]}</dlvCst1>
 
-      # 무료 배송비 기준
+      # 배송비 종류별
       #{aa}
 
       # 묶음 배송 여부 N : 불가
-      <bndlDlvCnYn>#{params[:bndlDlvCnYn]}</bndlDlvCnYn>
+      
 
       # (배송비?) 결제 방법 01 : 선결제 가능, 02 : 선결제 불가, 03: 선결제 필수
       <dlvCstPayTypCd>#{params[:dlvCstPayTypCd]}</dlvCstPayTypCd>
@@ -240,11 +250,11 @@ class HomeController < ApplicationController
   
     # 쇼핑몰 등록 성공 시 (resultCode가 200일시) db 저장
     if @response.split('resultCode')[1] == '>200</'
-      prdNo = @response.split('message')[1].split(':')[1].split('<')[0].to_i
+      prdNm = @response.split('message')[1].split(':')[1].split('<')[0].to_i
       newProduct = Product.new(product_params)
       newProduct.option = productOption
       newProduct.prd = params[:prd]
-      newProduct.prdNo = prdNo
+      newProduct.prdNm = prdNm
       newProduct.save
     end
 
