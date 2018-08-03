@@ -15,6 +15,14 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :colTitle
       t.text :option
       t.integer :prdNo
+      t.integer :selPrc
+      t.integer :prdSelQty
+      t.integer :rtngdDlvCst
+      t.integer :exchDlvCst
+      t.integer :dlvcst1
+      t.integer :jejuDlvCst
+      t.integer :islandDlvCst
+      t.integer :PrdFrDlvBasiAmt
 
       t.timestamps
     end

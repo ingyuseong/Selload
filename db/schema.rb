@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20180801195635) do
     t.string   "colTitle"
     t.text     "option"
     t.integer  "prdNo"
+    t.integer  "selPrc"
+    t.integer  "prdSelQty"
+    t.integer  "rtngdDlvCst"
+    t.integer  "exchDlvCst"
+    t.integer  "dlvcst1"
+    t.integer  "jejuDlvCst"
+    t.integer  "islandDlvCst"
+    t.integer  "PrdFrDlvBasiAmt"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

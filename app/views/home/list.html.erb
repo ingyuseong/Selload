@@ -9,7 +9,12 @@
     <p>상품번호: <%=p.prdNo%></p>
     <p>상품명: <%=p.prdNm%></p>
     <p>브랜드: <%=p.brand%></p>
-    <p>가격: <%=eval(p.prd)[:selPrc]%></p>
+    <p>가격: <%=p.selPrc%></p>
+    <p>재고수량 : <%=p.prdSelQty %></p>
+    <p>택배사 : <%=p.dlvEtprsCd %></p>
+    <p>배송비 종류 : <%=p.dlvCstInstBasiCd %></p>
+    <p>상세설명 : <%=p.htmlDetail %></p>
     <p>크리에이티드엣: <%=p.created_at%></p>
+    
     <%= link_to 'Edit', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300; font-size: 15px' %>
 <% end %>

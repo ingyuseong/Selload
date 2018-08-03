@@ -1,6 +1,4 @@
 <p><%=@product.prdNo%></p>
-<p><%=eval(@product.prd)[:selPrc]%></p>
-<p><%= @product_prd %></p>
 <%# 인덱스복붙 %>
 
 <div class="mt-5 container">
@@ -18,11 +16,11 @@
         </div>
         <div class="m-3">
             <%= label_tag( "상품 가격:") %>
-            <%= number_field_tag :selPrc, @product_prd[:selPrc].to_i ,step: 100 %>
+            <%= number_field_tag 'selPrc', @product.selPrc ,step: 100 %>
         </div>
         <div class="m-3">
             <%= label_tag("재고 수량 : ") %>
-            <%= number_field(:prdSelQty, step: 1) %>
+            <%= number_field_tag 'prdSelQty', @product.prdSelQty, step: 1 %>
         </div>
         
         <div class="d-flex">
@@ -47,11 +45,11 @@
             </div> 
             <div class="m-3">
                 <%= label_tag( "반품 배송비:") %>
-                <%= number_field(:prd, :rtngdDlvCst, step: 100, value: "0") %>
+                <%= number_field_tag 'rtngdDlvCst', @product.rtngdDlvCst, step: 100 %>
             </div>
             <div class="m-3">
                 <%= label_tag( "교환 배송비:") %>
-                <%= number_field(:prd, :exchDlvCst, step: 100, value: "0") %>
+                <%= number_field_tag 'exchDlvCst', @product.exchDlvCst, step: 100 %>
             </div>
             
         </div>
@@ -59,19 +57,19 @@
         <div id="dlv" class="d-flex ">
             <div id="dlv_pri" class="m-3 dlv_box">
                 <%= label_tag( "배송비 :") %>
-                <%= number_field(:prd, :dlvCst1, step: 100, value: '0' ) %>
+                <%= number_field_tag 'dlvCst1', '', step: 100 %>
             </div>
             <div id="dlv_jeju" class="m-3 dlv_box">
                 <%= label_tag( "제주 추가 배송비 : ") %>
-                <%= number_field(:prd, :jejuDlvCst, step: 100, value: "0") %>
+                <%= number_field_tag 'jejuDlvCst', @product.jejuDlvCst, step: 100 %>
             </div>
             <div id="dlv_isl" class="m-3 dlv_box">
                     <%= label_tag( "도서산간 추가 배송비:") %>
-                    <%= number_field(:prd, :islandDlvCst, step: 100, value: "0") %>
+                    <%= number_field_tag 'islandDlvCst', @product.islandDlvCst, step: 100 %>
             </div>
             <div id="dlv_free" class="m-3 dlv_box">
                 <%= label_tag( "무료 배송비 기준 : ") %>
-                <%= number_field(:prd, :PrdFrDlvBasiAmt, step: 100 ) %>
+                <%= number_field_tag 'PrdFrDlvBasiAmt', @product.PrdFrDlvBasiAmt, step: 100 %>
             </div>
             
         </div>
@@ -85,26 +83,34 @@
                 <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
             </div>
             <div id="bundle" class="bundle m-3">
-                <%= label_tag("묶음 배송 : ") %>
-                <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
-                <%= label_tag( "가능") %>
-                <%= radio_button_tag(:bndlDlvCnYn, "N") %>
-                <%= label_tag( "불가능") %>
+                <% if @product.bndlDlvCnYn == "Y"%>
+                    <%= label_tag("묶음 배송 : ") %>
+                    <%= radio_button_tag(:bndlDlvCnYn, "Y", true) %>
+                    <%= label_tag( "가능") %>
+                    <%= radio_button_tag(:bndlDlvCnYn, "N") %>
+                    <%= label_tag( "불가능") %>
+                <% else %>
+                    <%= label_tag("묶음 배송 : ") %>
+                    <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
+                    <%= label_tag( "가능") %>
+                    <%= radio_button_tag(:bndlDlvCnYn, "N", true) %>
+                    <%= label_tag( "불가능") %>
+                <%end%>
             </div>
         </div>
         <div class="m-3">
             <%= label_tag("상세설명") %>
             <%= tinymce :language => "en" %>
-            <%= text_area_tag(:htmlDetail, nil, class: "form-control tinymce", rows: "10") %>
+            <%= text_area_tag(:htmlDetail, @product.htmlDetail, class: "form-control tinymce", rows: "10") %>
         </div>
         <div class="d-flex">
             <div class="m-3">
                 <%= label_tag("A/S 안내 : ") %>
-                <%= text_area_tag(:asDetail) %>
+                <%= text_area_tag(:asDetail, @product.asDetail) %>
             </div>
             <div class="m-3">
                 <%= label_tag("반품/교환 안내 : ") %>
-                <%= text_area_tag(:rtngExchDetail) %>
+                <%= text_area_tag(:rtngExchDetail, @product.rtngExchDetail) %>
             </div>
         </div>
 
