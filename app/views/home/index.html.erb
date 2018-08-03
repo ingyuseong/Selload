@@ -174,7 +174,15 @@
             $("#bundle").fadeIn(200)
         }
     })
-
+    function count() {
+        let x = 0
+        let i = 0
+        while (Number($(`#opt_num_${i}`).val())) {
+            x += Number($(`#opt_num_${i}`).val())
+            i ++
+        }
+        $("#prdSelQty").val(`${x}`)
+    }
 
     $("#ctgrl").change(function(){
         $("#ctgrm").fadeIn(200)
@@ -230,7 +238,7 @@
             `<div class="m-3 border row">
                     <div class="m-3">
                         옵션 명 : 
-                        <input name="colValue0[${i}]" type="text" value="${opt_all[i]}" />
+                        <input name="colValue0[${i}]" type="text" value="${opt_all[i]}"/>
                     </div>
                     <div class="m-3">
                         옵션 추가 비용 :
@@ -239,7 +247,7 @@
                     </div>
                     <div class="m-3">
                         재고 수량 :
-                        <input name="colCount[${i}]" type="number" step="1" />
+                        <input id="opt_num_${i}" name="colCount[${i}]" type="number" step="1" onchange="count()" />
 
                     </div>
                 </div>`
@@ -248,4 +256,6 @@
         
         // alert(opt_all)
     })
+
+    
 </script>
