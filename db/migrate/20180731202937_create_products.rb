@@ -5,7 +5,6 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :prdNm
       t.string :brand
       t.text :htmlDetail
-      t.text :prd
       t.string :dlvCstInstBasiCd
       t.string :dlvEtprsCd
       t.string :bndlDlvCnYn

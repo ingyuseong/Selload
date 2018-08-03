@@ -2,7 +2,7 @@
 
     <h1 class="text-center">입력 받을 폼</h1>
 
-    <%= form_tag(home_result_path, method: "get") do %>
+    <%= form_tag(home_result_path, method: "post") do %>
         <div class="m-3">
             <%= label_tag("상품명:") %>
             <%= text_field_tag(:prdNm) %>

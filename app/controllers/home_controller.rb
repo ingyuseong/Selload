@@ -328,7 +328,7 @@ class HomeController < ApplicationController
     @product_option.each do |k,v|
       puts k # colValue ex)"빨강/M"
       puts v[:price] # colOptPrice ex) "300"
-      puts v [:count] # colCount ex) "30"
+      puts v[:count] # colCount ex) "30"
     end
     
 
