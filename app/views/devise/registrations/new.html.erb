@@ -1,19 +1,33 @@
-<h2>Sign up</h2>
+<style>
+  body {
+    background-image:url("/assets/devise_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="text-center">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    apikey : <%= f.password_field :apikey, type: "password"%>
-    <%= f.input :username%>
-  </div>
+  <%= image_tag("selload_logo.png", class: "login-title") %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+      <div class="signup-label text-left"><strong>이메일</strong></div>
+      <%= f.input :email, required: true, autofocus: true, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" } %>
+      <div class="signup-label text-left"><strong>아이디</strong></div>
+      <%= f.input :username, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" }%>
+      <div class="signup-label text-left"><strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요</div>
+      <%= f.password_field :apikey, type: "password", class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;"%>
+      <div class="signup-label text-left"><strong>비밀번호</strong> (6글자 이상)</div>
+      <%= f.input :password, required: true, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'login-field' } %>
+      <div class="signup-label text-left"><strong>비밀번호 확인</strong></div>
+      <%= f.input :password_confirmation, required: true, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" } %>
 
-<%= render "devise/shared/links" %>
+
+    <div class="form-actions">
+      <%= f.button :submit, "회원가입", class:"login-button", style: "border-radius: 0%" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

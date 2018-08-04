@@ -107,7 +107,7 @@
 
 .list {
     margin-top: 3em;
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
 }
 
 a.prdlink {
@@ -122,4 +122,50 @@ table tr {
 
 .navbar {
     display:block;
+}
+
+.thead {
+    background-color: #b0b0b0;
+    color:white;
+    border: none;
+}
+
+tbody {
+    color: #767676
+}
+
+.form {
+    width: 50em;
+    height: 20em;
+    background-color: #fff;
+    color: grey
+}
+
+.login-field {
+    width: 400px; height: 50px; margin-bottom:20px
+}
+
+.login-button {
+    width: 400px; 
+    height: 50px; 
+    color:#fff; 
+    background-color:#445b84;
+    margin-bottom:1em;
+}
+
+.login-title {
+    font-size: 80px;
+    margin-top: 1em;
+    margin-bottom: 0.6em;
+    color: #445b84;
+}
+
+.info {
+    color: grey; text-decoration: none; margin-right: 12px;
+    margin-left: 12px;
+}
+
+.signup-label {
+    width: 400px;
+    margin: auto;
 }
