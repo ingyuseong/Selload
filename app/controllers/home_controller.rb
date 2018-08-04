@@ -329,7 +329,7 @@ class HomeController < ApplicationController
       end
     end
 
-    @product_array = Product.where(prdNo: @selling)
+    @product_array = Product.where(prdNo: @selling);
 
   end
 

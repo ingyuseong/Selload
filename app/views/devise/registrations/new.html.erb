@@ -14,7 +14,7 @@
 
       <div class="signup-label text-left"><strong>이메일</strong></div>
       <%= f.input :email, required: true, autofocus: true, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" } %>
-      <div class="signup-label text-left"><strong>아이디</strong></div>
+      <div class="signup-label text-left"><strong>이름</strong></div>
       <%= f.input :username, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" }%>
       <div class="signup-label text-left"><strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요</div>
       <%= f.password_field :apikey, type: "password", class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;"%>
