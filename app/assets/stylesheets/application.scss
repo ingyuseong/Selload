@@ -219,20 +219,29 @@ html {
     font-size: 100px;
 }
 
+.labelfont4 {
+    font-size: 40px !important;
+    font-family: 'Gothic A1', sans-serif;
+    color: white;
+}
+
+.labelfont4:hover {
+    color: white;
+    text-decoration: none;
+}
+
 .btn1 {
     border: 2px solid white !important;
     background: rgba(0,0,0,0.5) !important;
     width: 300px;
     height: 90px;
-    font-size: 40px !important;
-    font-family: 'Gothic A1', sans-serif;
+    transition: 0s;
 }
 
 .btn1:hover {
-    background-color: #ffc305 !important;
-    opacity: 0.8;
-    text-decoration: none !important;
-    color: white;
+    background-color: #313131 !important;
+    background: rgba(49,49,49,0.5) !important;
+    border: 2px solid white !important;
 }
 
 .centered2 {
