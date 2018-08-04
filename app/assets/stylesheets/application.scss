@@ -135,6 +135,12 @@ table tr {
     height: 3rem;
 }
 
+.divcenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 #hehe {
     width: 100%;
 }
