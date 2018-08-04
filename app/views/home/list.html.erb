@@ -37,9 +37,12 @@
     <tr style="display:none" class="text-left">
         <td></td>
         <td>
-            <strong>택배사<br>배송비종류</strong>
+            <strong>카테고리<br>택배사<br>배송비종류</strong>
         </td>
         <td colspan="1">
+                <% ctgrno = Smcategory.where(smcategory_id: p.dispCtgrNo.split("@")[2])[0].name %>
+                <%= ctgrno %>
+        <br>
                 <% case p.dlvEtprsCd %>
                 <% when '00034' %>
                     <% dlvEtp = 'CJ대한통운' %>
