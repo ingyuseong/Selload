@@ -1,19 +1,19 @@
 <div class="container page">
 
-    <h1 class="text-center titlefont">상품 등록</h1>
+
 
     <%= form_tag(home_result_path, method: "post") do %>
 
     <div class="container cat1">
 
-    <table class="table table-hover">
+    <table class="table">
     <thead>
     <tr>
       <th scope="col">기본 정보</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr class="tr1">
       <th scope="row" class="labelfont">상품명</th>
       <td colspan="2"><%= text_field_tag(:prdNm) %></td>
       <th scope="row" class="labelfont">브랜드명</th>
@@ -22,7 +22,7 @@
       <td colspan="2"><%= number_field_tag 'selPrc', nil, step: 100 %></td>
     </tr>
 
-    <tr>
+    <tr class="tr1">
       <th scope="row" class="labelfont">카테고리 대분류</th>
       <td colspan="2" id="ctgrl"> <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl") %></td>
       <th scope="row" class="labelfont">카테고리 중분류</th>
@@ -36,14 +36,14 @@
 
     <div class="container cat1">
 
-    <table class="table table-hover">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">배송 정보</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="tr1">
                 <th scope="row" class="labelfont">배송 조건</th>
                 <td colspan="1"><%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %></td>
                 <th scope="row" class="labelfont">택배사</th>
@@ -54,7 +54,7 @@
 
             </tr>
             
-            <tr>
+            <tr  class="tr1">
                 <th scope="row" class="labelfont">반품 배송비</th>
                 <td colspan="1"><%= number_field_tag 'rtngdDlvCst', "0", step: 100 %></td>
                 <th scope="row" class="labelfont">교환 배송비</th>
@@ -70,44 +70,45 @@
         </tbody>
     </table>
 
-    <div id="dlv">
-        <div id="dlv_pri" class="m-3 dlv_box box1">
-            <%= label_tag( "배송비", nil, class: "labelfont2") %>
-            <%= number_field_tag 'dlvCst1', '0', step: 100 %>
+    <div id="dlv" class="d-flex flex-row justify-content-around">
+        <div id="dlv_pri" class="dlv_box box1">
+            <%= label_tag( "배송비", nil, class: "labelfont2", id: "dlv_pri") %>
+            <%= number_field_tag 'dlvCst1', '0', id: "dlv_pri",step: 100 %>
         </div>
-        <div id="dlv_jeju" class="m-3 dlv_box box2">
+        <div id="dlv_jeju" class="dlv_box box2">
             <%= label_tag( "제주 추가 배송비", nil, class: "labelfont2") %>
             <%= number_field_tag 'jejuDlvCst', '0', step: 100 %>
         </div>
-        <div id="dlv_isl" class="m-3 dlv_box box3">
+        <div id="dlv_isl" class="dlv_box box3">
             <%= label_tag( "도서산간 추가 배송비", nil, class: "labelfont2") %>
             <%= number_field_tag 'islandDlvCst', '0', step: 100 %>
         </div>
-        <div id="dlv_free" class="m-3 dlv_box box4">
-            <%= label_tag( "무료 배송비 기준", nil, class: "labelfont2") %>
+        <div id="dlv_free" class="dlv_box box4">
+            <%= label_tag( "무료 배송 최소 구매액", nil, class: "labelfont2") %>
             <%= number_field_tag 'PrdFrDlvBasiAmt', nil, step: 100 %>
         </div>
     </div>
+
     </div>
 
     <div class="container cat1">
 
     
-        <table class="table table-hover">
+        <table class="table">
             <thead>
                 <tr>
                 <th scope="col">상세 정보</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="tr1">
                     <th scope="row" class="labelfont optionsize">대표이미지</th>
                     <td colspan="2"><%= file_field_tag "image[1]", accept: 'image/png,image/gif,image/jpeg' %></td>
 
               </tr>
             
-                <tr>
-                   <th scope="row" class="labelfont">상세셜명</th>
+                <tr class="tr1">
+                   <th scope="row" class="labelfont">상세설명</th>
                 </tr>
             
             </tbody>
@@ -117,14 +118,14 @@
         <%= text_area_tag(:htmlDetail, nil, class: "form-control tinymce", rows: "20") %>
         </div>
 
-    <table class="table table-hover">
+    <table class="table">
     <tbody>
-    <tr>
+    <tr class="tr1">
       <th scope="row" class="labelfont optionsize">옵션 설정</th>
       <td class="optionsize opttd" colspan="2"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
-      <th scope="row" class="labelfont optionn">재고 수량</th>
+      <th scope="row" class="labelfont optionsize optionn">재고 수량</th>
       <td><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
-      <th scope="row" id="opt_btn" class="btn border opt_btn btn-outline-info">적용</th>
+      <th scope="row" id="opt_btn" class="btn border opt_btn btn-secondary">적용</th>
 
 
             </tr>  
@@ -132,13 +133,13 @@
     </table>
 
     <div id="option_1" class="options">
-    <table class="table table-hover">
+    <table class="table">
     <tbody>
-    <tr>
-      <th scope="row" class="labelfont">옵션</th>
-      <td><%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %></td>
-      <th scope="row" class="labelfont">종류</th>
-      <td><%= text_field_tag(:opt_1, nil,id: "opt_1")%></td>
+    <tr class="tr1">
+      <th scope="row" class="labelfont optionsize">옵션</th>
+      <td class="optionsize1"><%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %></td>
+      <th scope="row" class="labelfont optionsize">종류</th>
+      <td class="opttd"><%= text_field_tag(:opt_1, nil,id: "opt_1")%></td>
 
       
     </tr>  
@@ -147,12 +148,12 @@
     </div>
 
     <div id="option_2" class="options">
-    <table class="table table-hover">
+    <table class="table">
     <tbody>
-    <tr>
-      <th scope="row" class="labelfont">옵션</th>
-      <td><%= text_field_tag(:colValue0_2, nil, id:"opt_name_2") %></td>
-      <th scope="row" class="labelfont">종류</th>
+    <tr class="tr1">
+      <th scope="row" class="labelfont optionsize">옵션</th>
+      <td class="optionsize1"><%= text_field_tag(:colValue0_2, nil, id:"opt_name_2") %></td>
+      <th scope="row" class="labelfont optionsize">종류</th>
       <td><%= text_field_tag(:opt_2, nil,id: "opt_2")%></td>
     </tr>  
     </tbody>
@@ -170,13 +171,13 @@
  
 
     <div class="container cat1">
-        <table class="table table-hover">
+        <table class="table">
             <tbody>
             <tr>
                 <th scope="row" class="labelfont">A/S 안내</th>
             </tr>
             
-            <tr>
+            <tr class="tr1">
                 <td colspan="2"><%= text_area_tag(:asDetail, nil, rows: 4, id: "hehe") %></td>
             </tr>
 
@@ -184,7 +185,7 @@
                 <th scope="row" class="labelfont">반품/교환 안내</th>
             </tr>
 
-            <tr>
+            <tr class="tr1">
                 <td colspan="2" rowspan="2"><%= text_area_tag(:rtngExchDetail, nil, rows: 4, id: "hehe") %></td>
             </tr>
             
@@ -193,7 +194,7 @@
     </div>
     
     <div class="m-3 optioncenter">
-        <%= submit_tag("등록", class: "btn btn-outline-info btn-lg") %>
+        <%= submit_tag("등록", class: "btn btn-secondary btn-lg") %>
     </div>
     <% end %>
 
@@ -202,11 +203,11 @@
 <br>
 
 <style>
-
     body {
-        background-color: white;
+        background-image: url("/assets/newimage.png");
+        background-size: cover;
+        background-repeat: no-repeat;
     }
-
 </style>
 
 <script>
