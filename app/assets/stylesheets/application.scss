@@ -33,4 +33,54 @@
 .titlefont {
     font-size: 5rem;
     font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+}
+
+.detailinfo {
+    margin-bottom: 1rem;
+}
+
+.labelfont2 {
+    font-size: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+}
+
+.optioncenter {
+    display: flex;
+    justify-content: center;
+}
+
+.box1 {
+    width: 150px;
+}
+
+.box2 {
+    width: 150px;
+}
+
+.box3 {
+    width: 150px;
+    padding-bottom: 1rem;
+}
+
+.box4 {
+    width: 150px;
+    padding-top: -0.8rem;
+    padding-bottom: 1rem;
+}
+
+.optionsize {
+    width: 120px;
+}
+
+.optionsize3 {
+    width: 400px;
+}
+.opt_btn {
+    margin-left: 3rem;
+}
+
+.optionsize2 {
+    width: 100px;
 }
