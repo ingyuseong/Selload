@@ -10,6 +10,7 @@
     border: 2px solid;
     width:70px;
     height: 40px;
+    margin-top: 10px;
 }
 
 .dlv_box {
@@ -21,9 +22,12 @@
 }
 
 .cat1 {
-    background-color: papayawhip;
-    margin-bottom: 3rem !important;
+    background-color: white;
+    width: 1195px !important;
+    margin-bottom: 1rem;
 }
+
+
 
 .labelfont {
     font-size: 1rem;
@@ -79,7 +83,11 @@
 }
 
 .optionn {
-    margin-left: 5rem;
+    margin-left: 3rem;
+}
+
+.optionsize1 {
+    width: 272px;
 }
 
 .optionsize2 {
@@ -123,7 +131,8 @@ a.prdlink {
     background-color: rgba(255, 255,255, 90%);
     box-shadow: 1px 1px #888888;
     font-family: 'Gothic A1', sans-serif;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 
@@ -196,6 +205,8 @@ html {
     width: 100%;
     overflow: hidden;
     position: absolute;
+    background: rgba(0,0,0, 60%);
+    color: white;
 }
 
 .mainmain {
@@ -261,16 +272,47 @@ html {
     text-align: center;
     margin-top: 30px;
 }
-.container {
-  margin-right: 0px;
-  margin-left: 0px;
+
+.centered4 {
+    position: absolute;
+    top: 80%;
+    left: 63%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
 }
 
-.swiper-container {
-    position: relative;
-    height: 58em;
-    width: 100%;
+.centered5 {
+    position: absolute;
+    top: 80%;
+    left: 36.5%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
 }
+
+.viewer {
+    background-color: #666;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-wrapper {
+    max-height: 100vh;
+  }
+  .swiper-slide {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+  }
 
 .index1 {
     background-image: url("index1.png");
@@ -278,6 +320,47 @@ html {
     background-repeat: no-repeat;
 }
 
+.index2 {
+    background-image: url("index2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index3 {
+    background-image: url("index3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index4 {
+    background-image: url("index4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index5 {
+    background-image: url("index5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index6 {
+    background-image: url("index6.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .container.page {
     margin-top: 10vh;
 }
+
+.tr1:hover {
+    background-color: transparent;
+    background-color: #F1F7FF;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    border-radius: 0px !important;
+}
+
