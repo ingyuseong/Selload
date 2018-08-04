@@ -624,6 +624,28 @@ class HomeController < ApplicationController
     puts response.read_body
   end
 
+  def stop
+    prdNo = params[:prdNo]
+    url = URI("http://api.11st.co.kr/rest/prodstatservice/stat/stopdisplay/#{prdNo}")
+
+    http = Net::HTTP.new(url.host, url.port)
+
+    request = Net::HTTP::Put.new(url)
+    request["openapikey"] = ENV['openapikey']
+    request["Content-Type"] = 'text/xml'
+    request["Cache-Control"] = 'no-cache'
+    request["Postman-Token"] = 'f6b8f8b9-cf41-4a9e-a3c4-520e8c7e40f3'
+
+    response = http.request(request)
+    response.read_body
+    if @response.split('resultCode')[1] == '>200</'
+      respond_to do |format|
+        format.js
+      end
+    end
+    redirect_to :back
+  end
+
 
   def confirm
 
