@@ -40,7 +40,58 @@
         <td>
             <strong>택배사<br>배송비종류<br><br>상품 등록일</strong>
         </td>
-        <td colspan="2"><%=p.dlvEtprsCd %><br><%=p.dlvCstInstBasiCd %><br><br><%=p.created_at.strftime("%F")%></td>
+        <td colspan="2">
+                <% case p.dlvEtprsCd %>
+                <% when '00034' %>
+                    <% dlvEtp = 'CJ대한통운' %>
+                <% when '00011' %>
+                    <% dlvEtp = '한진택배' %>
+                <% when '00012' %>
+                    <% dlvEtp = '롯데(현대)택배' %>
+                <% when '00001' %>
+                    <% dlvEtp = '드림택배(KG 로지스)' %>
+                <% when '00007' %>
+                    <% dlvEtp = '우체국택배' %>
+                <% when '00002' %>
+                    <% dlvEtp = '로젠택배' %>
+                <% when '00008' %>
+                    <% dlvEtp = '우편등기' %>
+                <% when '00021' %>
+                    <% dlvEtp = '대신택배' %>
+                <% when '00022' %>
+                    <% dlvEtp = '일양로지스' %>
+                <% when '00023' %>
+                    <% dlvEtp = 'ACI' %>
+                <% when '00025' %>
+                    <% dlvEtp = 'WIZWA' %>
+                <% when '00026' %>
+                    <% dlvEtp = '경동택배' %>
+                <% when '00027' %>
+                    <% dlvEtp = '천일택배' %>
+                <% when '00028' %>
+                    <% dlvEtp = 'KGL(해외배송)' %>
+                <% when '00031' %>
+                    <% dlvEtp = 'OCS Korea' %>
+                <% when '00033' %>
+                    <% dlvEtp = 'GTX 택배' %>
+                <% when '00035' %>
+                    <% dlvEtp = '합동택배' %>
+                <% when '00037' %>
+                    <% dlvEtp = '건영택배' %>
+                <% when '00099' %>
+                    <% dlvEtp = '기타' %>
+                <% end %>
+            <%=p.dlvEtprsCd %><br>
+                <% if p.dlvCstInstBasiCd == '01' %>
+                    <% dlvCst = '무료'%>
+                <% elsif p.dlvCstInstBasiCd == '02'%>
+                    <% dlvCst = '고정 배송비'%>
+                <% elsif p.dlvCstInstBasiCd =='03'%>
+                    <% dlvCst = '조건부 무료'%>
+                <% end%>
+            <%=p.dlvCstInstBasiCd %><br><br>
+            <%=p.created_at.strftime("%F")%>
+        </td>
     </tr>
     <tr style="display:none">
         <td colspan="6"></td>

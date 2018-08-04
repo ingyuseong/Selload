@@ -144,10 +144,8 @@ class HomeController < ApplicationController
       <brand>#{params[:brand]}</brand>
 
       # 대표 이미지 - 300x300 이상, jpg, jpeg, png만
-
-      <prdImage01>https://picsum.photos/500/500</prdImage01>
-
-
+      <prdImage01>https://picsum.photos/300/300</prdImage01>
+      
       <htmlDetail>
         <![CDATA[
           #{params[:htmlDetail]}
@@ -355,10 +353,10 @@ class HomeController < ApplicationController
 
     # list로 기본적인 상품정보를 얻어온 후 params로 넘겨줘야 기존 edit form 채워줄수 있음
     @product = Product.where(prdNo: params[:prdNo].to_i)[0]
-    @prdImages = @product.photos
-    for i in @prdImages.length...5
-      @prdImages.push[nil]
-    end
+    # @prdImages = @product.photos
+    # for i in @prdImages.length...5
+    #   @prdImages.push[nil]
+    # end
     # @product_prd = eval(@product.prd)
     @product_option = eval(@product.option)
 
@@ -380,6 +378,8 @@ class HomeController < ApplicationController
 
     productOption = {}
     options = ""
+
+  
     if params[:colValue] == true
 
 
@@ -573,7 +573,7 @@ class HomeController < ApplicationController
     </ProductNotification>
 
     #판매자 상품코드
-    <sellerPrdCd>selload1212</sellerPrdCd>          
+    <sellerPrdCd>#{current_user.email.split("@")[0] + '_selload'}</sellerPrdCd>          
         
 
     
@@ -581,6 +581,12 @@ class HomeController < ApplicationController
 
     
   </Product>"
+
+    updateProduct = Product.where(prdNo: params[:prdNo].to_i)[0]
+    updateProduct.update(product_params)
+    updateProduct.save
+
+    redirect_to home_list_path
 
     response = http.request(request)
     puts request.body
