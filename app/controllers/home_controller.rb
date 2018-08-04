@@ -288,6 +288,7 @@ class HomeController < ApplicationController
       end
       redirect_to '/home/confirm'
     end
+    puts request.body
   end
 
 

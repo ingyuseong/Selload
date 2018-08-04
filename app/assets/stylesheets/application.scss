@@ -137,3 +137,17 @@ table tr {
 #hehe {
     width: 100%;
 }
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
