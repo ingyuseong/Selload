@@ -1,9 +1,12 @@
 class HomeController < ApplicationController
   require 'uri'
   require 'net/http'
- 
-
+  
   def index
+
+  end
+
+  def new
     @dlv_option = {
       'CJ대한통운' => '00034', 
       '한진택배' => '00011', 
@@ -261,6 +264,8 @@ class HomeController < ApplicationController
     puts request.body
   end
 
+
+  
   def list
     # 상품조회코드 (sellerPrdCd) 로 등록된 상품 일괄조회 
 
@@ -568,6 +573,15 @@ class HomeController < ApplicationController
     puts response.read_body
   end
 
+
+  def confirm
+
+  end
+
+  def tip
+
+  end
+  
   def product_params
     params.permit(:dispCtgrNo, :selPrc, :prdSelQty, :rtngdDlvCst, :exchDlvCst, :dlvcst1, :jejuDlvCst, :islandDlvCst, :PrdFrDlvBasiAmt, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
   end

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   get 'home/index'
 
+  get 'home/new'
+
+  get 'home/confirm'
+
+  get 'home/tip'
+
   post 'home/result' => 'home#result'
   
   post '/tinymce_assets' => 'tinymce_assets#create'
