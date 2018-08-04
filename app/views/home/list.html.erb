@@ -23,7 +23,7 @@
   <tbody class="overflow-y-scroll w-full" style="height: 50vh;">
   <% @product_array.each do |p|%>
     <tr class="main">
-        <td><%= image_tag("11st_logo.png", height: "20em") %></td>
+        <td><%= link_to image_tag("11st_logo.png", height: "20em"), "http://soffice.11st.co.kr/Index.tmall" %> </td> 
         <td><%= link_to p.prdNo, "http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getSellerProductDetail&prdNo=#{p.prdNo}", class: "prdlink" %></td>
         <th scope="row"><%=p.prdNm%></th>
         <td><%=p.brand%></td>
