@@ -126,17 +126,18 @@ table tr {
 }
 
 .navbar {
-    display:block !important; 
+    display:block !important;
+    height:5.2rem;
+    background-color: rgba(255, 255,255, 90%);
+    box-shadow: 1px 1px #888888;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
 }
 
 .swiper-container {
-    width: 1024px;
-    height: 628px;
-}
-
-.logo {
-    width: 3rem;
-    height: 3rem;
+    position: relative;
+    height: 52rem;
+    width: 100%;
 }
 
 .divcenter {
@@ -203,13 +204,77 @@ html {
 .footer {
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 3rem;
     width: 100%;
     overflow: hidden;
     position: absolute;
 }
 
+.mainmain {
+    background-image: url("mainimage.png");
+    width: 100%;
+}
+
+.centered1 {
+    position: absolute;
+    top: 77%;
+    left: 29.5%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.labelfont3 {
+    font-size: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 100px;
+}
+
+.btn1 {
+    border: 2px solid white !important;
+    background: rgba(0,0,0,0.5) !important;
+    width: 300px;
+    height: 90px;
+    font-size: 40px !important;
+    font-family: 'Gothic A1', sans-serif;
+}
+
+.btn1:hover {
+    background-color: #ffc305 !important;
+    opacity: 0.8;
+    text-decoration: none !important;
+    color: white;
+}
+
+.centered2 {
+    position: absolute;
+    top: 77%;
+    left: 49.7%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.centered3 {
+    position: absolute;
+    top: 77%;
+    left: 71%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
+}
+.container {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.index1 {
+    background-image: url("index1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .container.page {
     margin-top: 10vh;
 }
-
