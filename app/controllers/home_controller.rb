@@ -240,7 +240,7 @@ class HomeController < ApplicationController
       </ProductNotification>
 
       #판매자 상품코드
-      <sellerPrdCd>selload1212</sellerPrdCd>          
+      <sellerPrdCd>#{current_user.email.split("@")[0] + '_selload'}</sellerPrdCd>          
           
 
       
@@ -269,7 +269,9 @@ class HomeController < ApplicationController
   def list
     # 상품조회코드 (sellerPrdCd) 로 등록된 상품 일괄조회 
 
-    search_query = "selload1212"
+    search_query = current_user.email.split("@")[0] + '_selload'
+
+    puts search_query
 
     url = URI("http://api.11st.co.kr/rest/prodmarketservice/sellerprodcode/#{search_query}")
 
@@ -581,7 +583,7 @@ class HomeController < ApplicationController
   def tip
 
   end
-  
+
   def product_params
     params.permit(:dispCtgrNo, :selPrc, :prdSelQty, :rtngdDlvCst, :exchDlvCst, :dlvcst1, :jejuDlvCst, :islandDlvCst, :PrdFrDlvBasiAmt, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
   end
