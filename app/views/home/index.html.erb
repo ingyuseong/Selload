@@ -1,24 +1,38 @@
-<!-- Slider main container -->
-<div class="swiper-container">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide index1">
+<div class="viewer">
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide index1">
+                <div>
+                    <button type="button" class="btn btn-primary centered5 labelfont4 btn1">
+                        <%= link_to "회원가입", new_user_registration_path, class: "labelfont4" %>
+                    </button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary centered4 btn1"><%= link_to "로그인", new_user_session_path, class: "labelfont4" %></button>
+                </div>
+            </div>
+            <div class="swiper-slide index2">
+            </div>
+            <div class="swiper-slide index3">
+            </div>
+            <div class="swiper-slide index4">
+            </div>
+            <div class="swiper-slide index5">
+            </div>
+            <div class="swiper-slide index6">
+            </div>
         </div>
-        <div class="swiper-slide index1">
-        </div>
-        <div class="swiper-slide index3">
-            Slide 3
-        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <%# <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> %>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
     </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-
-    <!-- If we need navigation buttons -->
-    <%# <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div> %>
-
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
 </div>
-
