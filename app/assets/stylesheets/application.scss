@@ -215,7 +215,6 @@ html {
 
 .footer {
     left: 0;
-    bottom: 0;
     height: 3rem;
     width: 100%;
     overflow: hidden;
@@ -330,37 +329,49 @@ html {
   }
 
 .index1 {
-    background-image: url("index1.png");
+    background-image: url("index1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .index2 {
-    background-image: url("index2.png");
+    background-image: url("index2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .index3 {
-    background-image: url("index3.png");
+    background-image: url("index3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .index4 {
-    background-image: url("index4.png");
+    background-image: url("index4.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .index5 {
-    background-image: url("index5.png");
+    background-image: url("index5.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .index6 {
-    background-image: url("index6.png");
+    background-image: url("index6.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index7 {
+    background-image: url("index7.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index8 {
+    background-image: url("index8.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -377,4 +388,9 @@ html {
 
 .btn-secondary {
     border-radius: 0px !important;
+}
+
+.tip {
+    width: 100rem;
+    height: 50rem;
 }

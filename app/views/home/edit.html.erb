@@ -4,7 +4,7 @@
 
     <%= form_tag(update_path(@product.prdNo), method: "post") do %>
 
-    <div class="container cat1">
+    <div class="container cat1 pb-1">
 
     <table class="table">
     <thead>
@@ -98,7 +98,7 @@
 
     </div>
 
-    <div class="container cat1">
+    <div class="container cat1 pb-3">
 
     
         <table class="table">
@@ -139,7 +139,7 @@
         </tbody>
     </table>
 
-    <div id="option_1" class="options">
+    <div id="option_1">
     <table class="table">
     <tbody>
     <tr class="tr1">
@@ -154,7 +154,7 @@
     </table>
     </div>
 
-    <div id="option_2" class="options">
+    <div id="option_2">
     <table class="table">
     <tbody>
     <tr class="tr1">
@@ -226,14 +226,17 @@
 </div>
 <br>
 <br>
-
 <style>
     body {
-        background-image: url("/assets/newimage.png");
+        background-image: url("/assets/editimage.png");
         background-size: cover;
         background-repeat: no-repeat;
     }
+    form {
+        margin-top: 37%;
+    }
 </style>
+
 
 <script>
     $("#dlv_sel").change(function(){

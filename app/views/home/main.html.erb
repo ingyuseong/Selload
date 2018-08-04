@@ -1,13 +1,15 @@
 <body>
-    <div>
-        <button type="button" class="btn btn-primary centered1 btn1"><%= link_to "상품등록", home_new_path, class: "labelfont4" %></button>
-    </div>
-    <div>
-        <button type="button" class="btn btn-primary centered2 btn1"><%= link_to "조회/수정", home_list_path, class: "labelfont4" %></button>
-    </div>
-    <div>
-        <button type="button" class="btn btn-primary centered3 btn1"><%= link_to "가이드라인", home_tip_path, class: "labelfont4" %></button>
-    </div>
+    <div style="display: flex; min-height: 100vh; justify-content: space-around;">
+        <div>
+            <button type="button" class="btn btn-primary centered1 btn1"><%= link_to "상품등록", home_new_path, class: "labelfont4" %></button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary centered2 btn1"><%= link_to "조회/수정", home_list_path, class: "labelfont4" %></button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary centered3 btn1"><%= link_to "가이드라인", home_tip_path, class: "labelfont4" %></button>
+        </div>
+    </div>    
 </body>
 
 <style>
