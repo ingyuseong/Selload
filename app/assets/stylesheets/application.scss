@@ -270,7 +270,7 @@ html {
 
 .centered4 {
     position: absolute;
-    top: 73%;
+    top: 80%;
     left: 63%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -279,7 +279,7 @@ html {
 
 .centered5 {
     position: absolute;
-    top: 73%;
+    top: 80%;
     left: 36.5%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -308,14 +308,39 @@ html {
     width: 100%;
     height: 100%;
   }
-// .swiper-container {
-//     position: relative;
-//     height: 52rem;
-//     width: 100%;
-// }
 
 .index1 {
     background-image: url("index1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index2 {
+    background-image: url("index2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index3 {
+    background-image: url("index3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index4 {
+    background-image: url("index4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index5 {
+    background-image: url("index5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index6 {
+    background-image: url("index6.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
