@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180804045852) do
     t.integer  "jejuDlvCst"
     t.integer  "islandDlvCst"
     t.integer  "PrdFrDlvBasiAmt"
+    t.string   "prd"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

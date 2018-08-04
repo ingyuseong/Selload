@@ -1,15 +1,28 @@
-<h2>Log in</h2>
+<style>
+  body {
+    background-image:url("/assets/devise_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+<div class="container page text-center">
+  <%= image_tag("selload_logo.png", class: "login-title") %>
 
-<%= render "devise/shared/links" %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <div class="form-inputs">
+      <div><%= f.email_field :email, autofocus: true, placeholder: "아이디", autocomplete:"email", class: 'login-field', style: "margin-bottom: -1px; padding-left: 10px;" %></div>
+      <div><%= f.password_field :password, placeholder: "비밀번호", class:"login-field", style: "padding-left: 10px" %></div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "로그인", class:"login-button", style: "border-radius: 0%" %>
+    </div>
+    <div class="text-left" style="margin-left:auto; margin-right: auto; margin-bottom: 40px; width:400px;">
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>
