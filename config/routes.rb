@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'home/list'
 
+  get 'home/stop/:prdNo' => 'home#stop', as: 'stop'
+
   get 'home/mypage'
   
   root 'home#index'
