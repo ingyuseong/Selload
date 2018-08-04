@@ -19,13 +19,13 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
-      <div class="edit-label text-left"><strong>E-mail : </strong><%= current_user.email%></div>
-      <div class="edit-label text-left"><strong>이름 : </strong><%= current_user.username %></div>
-      <div class="edit-label text-left"><strong>비밀번호 변경</strong> (6글자 이상)</div>
+      <div class="edit-label text-left"><strong>E-mail : </strong><%= current_user.email%></div><br>
+      <div class="edit-label text-left"><strong>이름 : </strong><%= current_user.username %></div><br>
+      <div class="edit-label text-left"><strong>비밀번호 변경</strong></div>
       <%= f.input :password, autocomplete: "off", required: false,label_html:{style: 'display: none'}, input_html: { class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' } %>
-      <div class="edit-label text-left"><strong>비밀번호 확인</strong> (6글자 이상)</div>
+      <div class="edit-label text-left"><strong>비밀번호 확인</strong></div>
       <%= f.input :password_confirmation, required: false ,label_html:{style: 'display: none'}, input_html: { class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' }%>
-      <div class="edit-label text-left"><strong>현재 비밀번호</strong> (6글자 이상)</div>
+      <div class="edit-label text-left"><strong>현재 비밀번호</strong></div>
       <%= f.input :current_password, required: true,label_html:{style: 'display: none'}, input_html: { class: 'editt-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' } %>
       <div class="edit-label text-left"><strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요</div>
       <%= f.password_field :apikey, type: "password", class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;"%>

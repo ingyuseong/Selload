@@ -23,7 +23,7 @@
   <tbody class="overflow-y-scroll w-full" style="height: 50vh;">
   <% @product_array.each do |p|%>
     <tr class="main">
-        <td><%= image_tag("11st_logo.png", height: "20em") %></td>
+        <td><%= link_to image_tag("11st_logo.png", height: "20em"), "http://soffice.11st.co.kr/Index.tmall" %> </td> 
         <td><%= link_to p.prdNo, "http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getSellerProductDetail&prdNo=#{p.prdNo}", class: "prdlink" %></td>
         <th scope="row"><%=p.prdNm%></th>
         <td><%=p.brand%></td>
@@ -37,7 +37,7 @@
     <tr style="display:none" class="text-left">
         <td></td>
         <td>
-            <strong>카테고리<br>택배사<br>배송비종류</strong>
+            <strong>카테고리<br>택배사<br>배송비 종류</strong>
         </td>
         <td colspan="1">
                 <% ctgrno = Smcategory.where(smcategory_id: p.dispCtgrNo.split("@")[2])[0].name %>
@@ -93,8 +93,9 @@
                 <% end%>
             <%=dlvCst %>
         </td>
-        <td class="text-center"><strong>상품 등록일<br>최종 수정일</strong></td>
-        <td class="text-center"><%=p.created_at.strftime("%F")%><br><%=p.updated_at.strftime("%F")%></td>
+        
+        <td class="text-center"><strong>묶음 배송 여부<br>상품 등록일<br>최종 수정일</strong></td>
+        <td class="text-center"><%=p.bndlDlvCnYn%><br><%=p.created_at.strftime("%F")%><br><%=p.updated_at.strftime("%F")%></td>
          <td></td>
     </tr>
     <tr style="display:none">
