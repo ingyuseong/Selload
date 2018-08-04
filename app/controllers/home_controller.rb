@@ -288,9 +288,9 @@ class HomeController < ApplicationController
       newProduct.prdNo = prdNo
       newProduct.prd = option_etc
       newProduct.save
-      
-    end
 
+      redirect_to '/home/confirm'
+    end
     puts request.body
   end
 

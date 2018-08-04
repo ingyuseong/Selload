@@ -1,5 +1,6 @@
 @import 'bootstrap';
 
+
 .options {
     display: none;
 }
@@ -19,6 +20,134 @@
     display: none;
 }
 
+.cat1 {
+    background-color: papayawhip;
+    margin-bottom: 3rem !important;
+}
+
+.labelfont {
+    font-size: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.titlefont {
+    font-size: 5rem;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+}
+
+.detailinfo {
+    margin-bottom: 1rem;
+}
+
+.labelfont2 {
+    font-size: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+}
+
+.optioncenter {
+    display: flex;
+    justify-content: center;
+}
+
+.box1 {
+    width: 150px;
+}
+
+.box2 {
+    width: 150px;
+}
+
+.box3 {
+    width: 150px;
+    padding-bottom: 1rem;
+}
+
+.box4 {
+    width: 150px;
+    padding-top: -0.8rem;
+    padding-bottom: 1rem;
+}
+
+.optionsize {
+    width: 120px;
+}
+
+.optionsize3 {
+    width: 400px;
+}
+.opt_btn {
+    margin-left: 3rem;
+}
+
+.optionsize2 {
+    width: 100px;
+}
+.confirm {
+    margin-top: 17em;
+}
+
+.confirmitem {
+    margin-top: 3em;
+}
+.cf_item {
+    display: inline;
+    margin: -3px;
+    background-color: #fff;
+    color: #445b84;
+    border-radius: 0%;
+    border: solid 1px lightgrey;
+    transition: 0s
+}
+.cf_item:hover {
+    background-color: #445b84;
+    color: #ffffff;
+}
+
+.list {
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+}
+
+a.prdlink {
+    text-decoration: none;
+    color: black;
+}
+
+table tr {
+    max-height: 200px;
+    overflow: hidden;
+}
+
 .navbar {
-    display:block;
+    display:block !important; 
+}
+
+.swiper-container {
+    width: 1024px;
+    height: 628px;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+}
+
+#hehe {
+    width: 100%;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
 }
