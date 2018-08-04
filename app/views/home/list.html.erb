@@ -5,14 +5,82 @@
 <br>
 <%= @selling%>
 
+'한진택배' => '00011', 
+      '롯데(현대)택배' => '00012',
+      '드림택배(KG 로지스)' => '00001',
+      '우체국택배' => '00007',
+      '로젠택배' => '00002',
+      '우편등기' => '00008',
+      '대신택배' => '00021',
+      '일양로지스' => '00022',
+      'ACI' => '00023',
+      'WIZWA' => '00025',
+      '경동택배' => '00026',
+      '천일택배' => '00027',
+      'KGL(해외배송)' => '00028',
+      'OCS Korea' => '00031',
+      'GTX 택배' => '00033',
+      '합동택배' => '00035',
+      '건영택배' => '00037',
+      '기타' => '00099'
+
 <% @product_array.each do |p|%>
     <p>상품번호: <%=p.prdNo%></p>
     <p>상품명: <%=p.prdNm%></p>
     <p>브랜드: <%=p.brand%></p>
     <p>가격: <%=p.selPrc%></p>
     <p>재고수량 : <%=p.prdSelQty %></p>
-    <p>택배사 : <%=p.dlvEtprsCd %></p>
-    <p>배송비 종류 : <%=p.dlvCstInstBasiCd %></p>
+    <% case p.dlvEtprsCd %>
+    <% when '00034' %>
+        <% dlvEtp = 'CJ대한통운' %>
+    <% when '00011' %>
+        <% dlvEtp = '한진택배' %>
+    <% when '00012' %>
+        <% dlvEtp = '롯데(현대)택배' %>
+    <% when '00001' %>
+        <% dlvEtp = '드림택배(KG 로지스)' %>
+    <% when '00007' %>
+        <% dlvEtp = '우체국택배' %>
+    <% when '00002' %>
+        <% dlvEtp = '로젠택배' %>
+    <% when '00008' %>
+        <% dlvEtp = '우편등기' %>
+    <% when '00021' %>
+        <% dlvEtp = '대신택배' %>
+    <% when '00022' %>
+        <% dlvEtp = '일양로지스' %>
+    <% when '00023' %>
+        <% dlvEtp = 'ACI' %>
+    <% when '00025' %>
+        <% dlvEtp = 'WIZWA' %>
+    <% when '00026' %>
+        <% dlvEtp = '경동택배' %>
+    <% when '00027' %>
+        <% dlvEtp = '천일택배' %>
+    <% when '00028' %>
+        <% dlvEtp = 'KGL(해외배송)' %>
+    <% when '00031' %>
+        <% dlvEtp = 'OCS Korea' %>
+    <% when '00033' %>
+        <% dlvEtp = 'GTX 택배' %>
+    <% when '00035' %>
+        <% dlvEtp = '합동택배' %>
+    <% when '00037' %>
+        <% dlvEtp = '건영택배' %>
+    <% when '00099' %>
+        <% dlvEtp = '기타' %>
+    <% end %>
+
+      
+    <p>택배사 : <%=dlvEtp %></p>
+    <% if p.dlvCstInstBasiCd == '01' %>
+        <% dlvCst = '무료'%>
+    <% elsif p.dlvCstInstBasiCd == '02'%>
+        <% dlvCst = '고정 배송비'%>
+    <% elsif p.dlvCstInstBasiCd =='03'%>
+        <% dlvCst = '조건부 무료'%>
+    <% end%>
+    <p>배송비 종류 : <%= dlvCst %></p>
     <p>상세설명 : <%=p.htmlDetail %></p>
     <p>크리에이티드엣: <%=p.created_at%></p>
     
