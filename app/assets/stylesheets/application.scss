@@ -394,8 +394,8 @@ html {
 
 .centered6 {
     position: absolute;
-    top: 75%;
-    left: 31%;
+    top: 59%;
+    left: 33%;
     transform: translate(-50%, -50%);
     text-align: center;
     margin-top: 30px;
@@ -423,6 +423,7 @@ html {
     z-index: 1;
     width: 280px;
     height: 80px;
+    opacity: 0.6 !important;
   }
   
   .startbtn:before, 
