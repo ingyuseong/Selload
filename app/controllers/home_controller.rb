@@ -6,10 +6,9 @@ class HomeController < ApplicationController
 
   end
 
-  def  main
+  def main
 
   end
-  
   def new
     @dlv_option = {
       'CJ대한통운' => '00034', 

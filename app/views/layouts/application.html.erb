@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.esm.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.esm.bundle.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:400,500,700" rel="stylesheet">
   </head>
 
   <body>
@@ -48,29 +49,34 @@
     </script>
 
     <%# 네브바 %>
-    <nav class="navbar navbar-light fixed-top" style="background-color: #e3f2fd;">
-      <div class="navbar-nav">
+    <nav class="navbar navbar-light fixed-top">
+      <div class="navbar-nav divcenter">
         <div class="container d-flex justify-content-between">
             <div class="row">
-              <div class="col">
-                <%= link_to image_tag("logo.png", class: "logo"), root_path %>  
+              <div class="">
+                <%= link_to image_tag("logo.png", class: "logo divcenter"), root_path %>  
               </div>
-              <div class="col">
-                <%= link_to 'NEW', home_new_path, :class => "divcenter nav-item nav-link" %>
+              <div class="">
+                <%= link_to '메인페이지', home_main_path, :class => "divcenter nav-item nav-link ml-2" %> 
               </div>
-              <div class="col">
-                <%= link_to 'LIST/EDIT', home_list_path, :class => "divcenter nav-item nav-link" %>
+            </div>
+            <div class="row">  
+              <div class="">
+                <%= link_to '상품등록', home_new_path, :class => "divcenter nav-item nav-link mr-3" %>
+              </div>
+              <div class="">
+                <%= link_to '조회/수정하기', home_list_path, :class => "divcenter nav-item nav-link mr-3" %>
               </div>          
-              <div class="col">    
-                <%= link_to 'TIP', home_tip_path, :class => "divcenter nav-item nav-link" %>
-              </div>
+              <div class="">    
+                <%= link_to '가이드라인', home_tip_path, :class => "divcenter nav-item nav-link" %>
+              </div>  
             </div>
             <div class="row">
               <% if user_signed_in? %>
-              <div class="col">                 
-                <%= link_to 'MY PAGE', home_mypage_path, :class => "divcenter nav-item nav-link active" %>                  
+              <div class="">                 
+                <%= link_to '마이페이지', edit_user_registration_path, :class => "divcenter nav-item nav-link mr-3" %>                  
               </div>
-              <div class="col">
+              <div class="">
                 <%= link_to '로그아웃', destroy_user_session_path, method: :delete, :class => "divcenter btn btn-secondary btn-sm" %>
               </div>  
               <% elsif %>
