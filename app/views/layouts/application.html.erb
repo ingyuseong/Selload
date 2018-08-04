@@ -13,35 +13,48 @@
     <%# 네브바 %>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
       <div class="navbar-nav">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <a class="navbar-brand" href="home/index">브랜드로고(root)</a>
+        <div class="container d-flex justify-content-between">
+            <div class="row">
+              <div class="col">
+                <%= link_to '브랜드로고', root_path, :class => "navbar-brand" %>
+              </div>
+              <div class="col">
+                <%= link_to 'NEW', home_new_path, :class => "nav-item nav-link" %>
+              </div>
+              <div class="col">
+                <%= link_to 'LIST/EDIT', home_list_path, :class => "nav-item nav-link" %>
+              </div>          
+              <div class="col">    
+                <%= link_to 'TIP', home_tip_path, :class => "nav-item nav-link" %>
+              </div>
             </div>
-            <div class="col">  
-              <a class="nav-item nav-link active" href="home/index">Index</a>
+            <div>
+              <% if user_signed_in? %>                 
+                <%= link_to 'NEW', home_new_path, :class => "nav-item nav-link active" %>                  
+                <%= link_to '로그아웃', destroy_user_session_path, method: :delete, :class => "btn btn-secondary btn-sm" %>                 
+              <% elsif %>                  
+                <%= link_to '로그인', new_user_session_path,:class => "btn btn-secondary btn-sm" %>
+                <%= link_to '회원가입', new_user_registration_path,:class => "btn btn-secondary btn-sm"%>      
+              <% end %> 
             </div>
-            <div class="col">  
-              <a class="nav-item nav-link" href="home/new">NEW</a>
-            </div>
-            <div class="col">  
-              <a class="nav-item nav-link" href="home/list">LIST/EDIT</a>
-            </div>
-            <div class="col">
-              <a class="nav-item nav-link" href="home/tip">TIP</a>
-            </div>
-            <div class="col">
-              <form class="form-inline">
-                  <button class="btn btn-outline-secondary" type="button" href="home/login">LOGIN</button>
-              </form> 
-            </div>
-            <div class="col">
-              <a class="nav-item nav-link" href="home/mypage">MYPAGE</a>
-            </div>
-          </div>
+          
         </div>    
       </div>
     </nav>
+
+    <%# 풋터 %>
+    <div class="navbar fixed-bottom">
+      <div class="container d-flex bd-highlight">
+        <div class="mr-auto p-2 bd-highlight">
+            NE<span class=text-warning>X</span>T X
+            <strong>멋쟁이사자처럼</strong>
+        </div>
+        <div class="p-2 bd-highlight">
+            © 2018 Copyright:
+            <strong>SELLOAD.com</strong>
+        </div> 
+      </div>
+    </div>  
     <%= yield %>
   </body>
 </html>

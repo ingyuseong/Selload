@@ -55,6 +55,10 @@ class HomeController < ApplicationController
       prdImages += "<prdImage0#{i+1}>#{images[i]}</prdImage0#{i+1}>"
     end
 
+    for i in 0...images.length
+      Photo.create(source: images[i])
+    end
+
     puts prdImages
 
     if params[:colValue] == true
@@ -280,9 +284,6 @@ class HomeController < ApplicationController
       newProduct.option = productOption
       newProduct.prdNo = prdNo
       if newProduct.save
-        for i in 0...images.length
-          Photo.create(product_id: newProduct.id, source: images[i])
-        end
       end
     end
 
@@ -352,6 +353,10 @@ class HomeController < ApplicationController
 
     # list로 기본적인 상품정보를 얻어온 후 params로 넘겨줘야 기존 edit form 채워줄수 있음
     @product = Product.where(prdNo: params[:prdNo].to_i)[0]
+    @prdImages = @product.photos
+    for i in @prdImages.length...5
+      @prdImages.push[nil]
+    end
     # @product_prd = eval(@product.prd)
     @product_option = eval(@product.option)
 
