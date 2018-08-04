@@ -284,7 +284,6 @@ class HomeController < ApplicationController
       newProduct.option = productOption
       newProduct.prdNo = prdNo
       if newProduct.save
-        
       end
     end
 
