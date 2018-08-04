@@ -3,12 +3,14 @@
     display: none;
 }
 </style>
-<div class="container">
-<div class="list text-center">
-<h1>상품 목록</h1></div>
+<div class="container page">
+<div class="list text-left">
+    <h1>관리하기</h1>
+    <h5>셀러드와 함께 쉽고 편하게 모든 상품을 관리하세요</h5>
+</div>
 
 <table id="contents" class="table text-center">
-  <thead class="thead-dark">
+  <thead class="thead">
     <tr>
       <th style="width: 10%"> </th>
       <th style="width: 15%">상품번호</th>
@@ -81,7 +83,7 @@
                 <% when '00099' %>
                     <% dlvEtp = '기타' %>
                 <% end %>
-            <%=p.dlvEtprsCd %><br>
+            <%=dlvEtp %><br>
                 <% if p.dlvCstInstBasiCd == '01' %>
                     <% dlvCst = '무료'%>
                 <% elsif p.dlvCstInstBasiCd == '02'%>
@@ -89,7 +91,7 @@
                 <% elsif p.dlvCstInstBasiCd =='03'%>
                     <% dlvCst = '조건부 무료'%>
                 <% end%>
-            <%=p.dlvCstInstBasiCd %><br><br>
+            <%=dlvCst %><br><br>
             <%=p.created_at.strftime("%F")%>
         </td>
     </tr>

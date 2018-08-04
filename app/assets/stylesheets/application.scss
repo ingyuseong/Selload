@@ -108,7 +108,7 @@
 
 .list {
     margin-top: 3em;
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
 }
 
 a.prdlink {
@@ -122,17 +122,18 @@ table tr {
 }
 
 .navbar {
-    display:block !important; 
+    display:block !important;
+    height:5.2rem;
+    background-color: rgba(255, 255,255, 90%);
+    box-shadow: 1px 1px #888888;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
 }
 
 .swiper-container {
-    width: 1024px;
-    height: 628px;
-}
-
-.logo {
-    width: 3rem;
-    height: 3rem;
+    position: relative;
+    height: 52rem;
+    width: 100%;
 }
 
 .divcenter {
@@ -145,6 +146,52 @@ table tr {
     width: 100%;
 }
 
+.thead {
+    background-color: #b0b0b0;
+    color:white;
+    border: none;
+}
+
+tbody {
+    color: #767676
+}
+
+.form {
+    width: 50em;
+    height: 20em;
+    background-color: #fff;
+    color: grey
+}
+
+.login-field {
+    width: 400px; height: 50px; margin-bottom:20px
+}
+
+.login-button {
+    width: 400px; 
+    height: 50px; 
+    color:#fff; 
+    background-color:#445b84;
+    margin-bottom:1em;
+}
+
+.login-title {
+    font-size: 80px;
+    margin-top: 1em;
+    margin-bottom: 0.6em;
+    color: #445b84;
+}
+
+.info {
+    color: grey; text-decoration: none; margin-right: 12px;
+    margin-left: 12px;
+}
+
+.signup-label {
+    width: 400px;
+    margin: auto;
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -153,7 +200,7 @@ html {
 .footer {
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 3rem;
     width: 100%;
     overflow: hidden;
     position: absolute;
@@ -212,4 +259,18 @@ html {
     transform: translate(-50%, -50%);
     text-align: center;
     margin-top: 30px;
+}
+.container {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.index1 {
+    background-image: url("index1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container.page {
+    margin-top: 10vh;
 }
