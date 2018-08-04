@@ -1,20 +1,68 @@
-<h1>테스트 코드니까 그냥 출력만 했어용</h1>
-<%= @list_result %>
-<br>
-<%= @prdNo_result %>
-<br>
-<%= @selling%>
+<style>
+.hide {
+    display: none;
+}
+</style>
 
-<% @product_array.each do |p|%>
-    <p>상품번호: <%=p.prdNo%></p>
-    <p>상품명: <%=p.prdNm%></p>
-    <p>브랜드: <%=p.brand%></p>
-    <p>가격: <%=p.selPrc%></p>
-    <p>재고수량 : <%=p.prdSelQty %></p>
-    <p>택배사 : <%=p.dlvEtprsCd %></p>
-    <p>배송비 종류 : <%=p.dlvCstInstBasiCd %></p>
-    <p>상세설명 : <%=p.htmlDetail %></p>
-    <p>크리에이티드엣: <%=p.created_at%></p>
-    
-    <%= link_to 'Edit', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300; font-size: 15px' %>
-<% end %>
+<div class="list text-center">
+<h1>상품 목록</h1></div>
+
+<table id="contents" class="table text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th style="width: 10%"> </th>
+      <th style="width: 15%">상품번호</th>
+      <th style="width: 25%">상품명</th>
+      <th style="width: 15%">브랜드</th>
+      <th style="width: 15%">가격</th>
+      <th style="width: 10%">재고수량</th>
+      <th style="width: 10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @product_array.each do |p|%>
+    <tr class="main">
+        <td><%= image_tag("11st_logo.png", height: "20em") %></td>
+        <td><%= link_to p.prdNo, "http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getSellerProductDetail&prdNo=#{p.prdNo}", class: "prdlink" %></td>
+        <th scope="row"><%=p.prdNm%></th>
+        <td><%=p.brand%></td>
+        <td><%=p.selPrc%></td>
+        <td><%=p.prdSelQty %></td>
+        <td>
+            <span class="off more">더보기</span>
+            <span class="on more" style="display:none">접기</span>
+        </td>
+    </tr>
+    <tr style="display:none" class="text-left">
+        <td><strong>상세설명<strong></td>
+        <td colspan="2" style="word-wrap: break-word;" class="text-left"><%= p.htmlDetail.html_safe %></td>
+         <td></td>
+        <td>
+            <strong>택배사<br>배송비종류<br><br>상품 등록일</strong>
+        </td>
+        <td colspan="2"><%=p.dlvEtprsCd %><br><%=p.dlvCstInstBasiCd %><br><br><%=p.created_at.strftime("%F")%></td>
+    </tr>
+    <tr style="display:none">
+        <td colspan="6"></td>
+        <td><%= link_to 'Edit', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300; font-size: 15px' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+$(".more").on("click", function(){
+    var obj = $(this);
+    if(obj.hasClass("off")){
+        obj.hide();
+        obj.next().show();
+        obj.parent().parent().next().show();
+        obj.parent().parent().next().next().show();
+    } else {
+        obj.hide();
+        obj.prev().show();
+        obj.parent().parent().next().hide();
+        obj.parent().parent().next().next().hide();
+    }
+})
+</script>

@@ -10,8 +10,39 @@
   </head>
 
   <body>
+    <%# 네브바 %>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <div class="navbar-nav">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <a class="navbar-brand" href="home/index">브랜드로고(root)</a>
+            </div>
+            <div class="col">  
+              <a class="nav-item nav-link active" href="home/index">Index</a>
+            </div>
+            <div class="col">  
+              <a class="nav-item nav-link" href="home/new">NEW</a>
+            </div>
+            <div class="col">  
+              <a class="nav-item nav-link" href="home/list">LIST/EDIT</a>
+            </div>
+            <div class="col">
+              <a class="nav-item nav-link" href="home/tip">TIP</a>
+            </div>
+            <div class="col">
+              <form class="form-inline">
+                  <button class="btn btn-outline-secondary" type="button" href="home/login">LOGIN</button>
+              </form> 
+            </div>
+            <div class="col">
+              <a class="nav-item nav-link" href="home/mypage">MYPAGE</a>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </nav>
     <div class="container">
     <%= yield %>
-    </div>
   </body>
 </html>

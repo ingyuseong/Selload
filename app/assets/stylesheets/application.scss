@@ -20,7 +20,7 @@
 }
 
 .confirm {
-    margin-top: 20em;
+    margin-top: 17em;
 }
 
 .confirmitem {
@@ -32,9 +32,25 @@
     background-color: #fff;
     color: #445b84;
     border-radius: 0%;
-    border: solid 1px lightgrey
+    border: solid 1px lightgrey;
+    transition: 0s
 }
 .cf_item:hover {
     background-color: #445b84;
     color: #ffffff;
+}
+
+.list {
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+}
+
+a.prdlink {
+    text-decoration: none;
+    color: black;
+}
+
+table tr {
+    max-height: 200px;
+    overflow: hidden;
 }
