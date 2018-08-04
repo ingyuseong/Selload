@@ -77,8 +77,9 @@
 .optionsize3 {
     width: 400px;
 }
-.opt_btn {
-    margin-left: 3rem;
+
+.optionn {
+    margin-left: 5rem;
 }
 
 .optionsize2 {
@@ -121,7 +122,27 @@ table tr {
 }
 
 .navbar {
-    display:block;
+    display:block !important; 
+}
+
+.swiper-container {
+    width: 1024px;
+    height: 628px;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+}
+
+.divcenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#hehe {
+    width: 100%;
 }
 
 .thead {
@@ -168,4 +189,16 @@ tbody {
 .signup-label {
     width: 400px;
     margin: auto;
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
 }

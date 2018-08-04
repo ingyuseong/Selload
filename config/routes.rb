@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'home/tip'
 
+  get 'home/main'
+
   post 'home/result' => 'home#result'
   
   post '/tinymce_assets' => 'tinymce_assets#create'
