@@ -121,6 +121,10 @@ table tr {
     overflow: hidden;
 }
 
+.table td {
+    border-top: none;
+}
+
 .navbar {
     display:block !important; 
 }
@@ -208,3 +212,4 @@ html {
 .container.page {
     margin-top: 10vh;
 }
+
