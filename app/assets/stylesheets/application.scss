@@ -189,6 +189,8 @@ tbody {
 .signup-label {
     width: 400px;
     margin: auto;
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -201,4 +203,8 @@ html {
     width: 100%;
     overflow: hidden;
     position: absolute;
+}
+
+.container.page {
+    margin-top: 10vh;
 }
