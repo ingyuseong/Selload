@@ -1,3 +1,14 @@
 <%= link_to 'new', home_new_path %>
 <%= link_to 'list', home_list_path %>
+<<<<<<< HEAD
 <%= link_to 'tip', home_tip_path %>
+=======
+<br>
+
+<% if user_signed_in? %>
+    <%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
+<% elsif %>
+    <%= link_to '로그인', new_user_session_path%>
+    <%= link_to '회원가입', new_user_registration_path%>
+<% end %>
+>>>>>>> 90cede836a5c1301c3080cee401cd392805aead1

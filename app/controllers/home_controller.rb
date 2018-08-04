@@ -35,8 +35,28 @@ class HomeController < ApplicationController
   end
 
   def result
+    puts params
+    puts params[:image]
+    puts params["image"]
     productOption = {}
     options = ""
+
+    images = []
+
+    params[:image].each do |i,v|
+      if v != ""
+        images.push(v)
+      end
+    end
+
+    prdImages = ""
+
+    for i in 0...images.length
+      prdImages += "<prdImage0#{i+1}>#{images[i]}</prdImage0#{i+1}>"
+    end
+
+    puts prdImages
+
     if params[:colValue] == true
 
 
@@ -48,6 +68,10 @@ class HomeController < ApplicationController
       colValue = params[:colValue0].collect { |key, value| value }
       colOptPrice = params[:colOptPrice].collect { |key, value| value }
       colCount = params[:colCount].collect { |key, value| value }
+
+
+      
+
 
       options += "##옵션
 
@@ -116,9 +140,7 @@ class HomeController < ApplicationController
       <brand>#{params[:brand]}</brand>
 
       # 대표 이미지 - 300x300 이상, jpg, jpeg, png만
-      <prdImage01>https://picsum.photos/300/300</prdImage01>
-      <prdImage02>https://picsum.photos/400/400</prdImage02>
-      <prdImage03>https://picsum.photos/400/399</prdImage03>
+      #{prdImages}
       <htmlDetail>
         <![CDATA[
           #{params[:htmlDetail]}
@@ -240,7 +262,7 @@ class HomeController < ApplicationController
       </ProductNotification>
 
       #판매자 상품코드
-      <sellerPrdCd>selload1212</sellerPrdCd>          
+      <sellerPrdCd>#{current_user.email.split("@")[0] + '_selload'}</sellerPrdCd>          
           
 
       
@@ -256,9 +278,12 @@ class HomeController < ApplicationController
       prdNo = @response.split('message')[1].split(':')[1].split('<')[0].to_i
       newProduct = Product.new(product_params)
       newProduct.option = productOption
-      # newProduct.prd = params[:prd]
       newProduct.prdNo = prdNo
-      newProduct.save
+      if newProduct.save
+        for i in 0...images.length
+          Photo.create(product_id: newProduct.id, source: images[i])
+        end
+      end
     end
 
     puts request.body
@@ -269,7 +294,9 @@ class HomeController < ApplicationController
   def list
     # 상품조회코드 (sellerPrdCd) 로 등록된 상품 일괄조회 
 
-    search_query = "selload1212"
+    search_query = current_user.email.split("@")[0] + '_selload'
+
+    puts search_query
 
     url = URI("http://api.11st.co.kr/rest/prodmarketservice/sellerprodcode/#{search_query}")
 
@@ -581,7 +608,7 @@ class HomeController < ApplicationController
   def tip
 
   end
-  
+
   def product_params
     params.permit(:dispCtgrNo, :selPrc, :prdSelQty, :rtngdDlvCst, :exchDlvCst, :dlvcst1, :jejuDlvCst, :islandDlvCst, :PrdFrDlvBasiAmt, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
   end
