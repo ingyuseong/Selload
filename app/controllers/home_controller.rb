@@ -41,8 +41,8 @@ class HomeController < ApplicationController
 
     images = []
 
-
-    option_etc = [params[:colValue0_1], params[:opt_1], params[:colValue0_2], params[:opt_2]]
+    category = "#{params[:lgctgr][:name]}@#{params[:midcategory][:name]}@#{params[:smcategory][:name]}"
+    option_etc = "#{params[:colValue0_1]}@#{params[:opt_1]}@#{params[:colValue0_2]}@#{params[:opt_2]}"
     params[:image].each do |i,v|
       if v != ""
         images.push(v)
@@ -287,6 +287,7 @@ class HomeController < ApplicationController
       newProduct.option = productOption
       newProduct.prdNo = prdNo
       newProduct.prd = option_etc
+      newProduct.dispCtgrNo = category
       newProduct.save
 
       redirect_to '/home/confirm'
@@ -368,16 +369,7 @@ class HomeController < ApplicationController
     # option 쓰는법
     bb = []
 
-    @product_option.each do |k,v|
-      k = k.split("/")[0]
-      bb.push(k)
-    end
-
-    cc = bb.select {|a| a == bb[0]}
-    
-    @dd = bb.length / cc.length
-    puts @dd
-    
+   
 
   end
 
@@ -389,6 +381,7 @@ class HomeController < ApplicationController
     productOption = {}
     options = ""
 
+    
   
     if params[:colValue] == true
 

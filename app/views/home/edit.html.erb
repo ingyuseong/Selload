@@ -129,27 +129,27 @@
                 <%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num" %>
             </div> 
             
-            <div id="option_1" class="options">
+            <div id="option_1">
                 <div class="row">
                     <div class="m-3">
                         <%= label_tag( "옵션 :") %>
-                        <%= text_field_tag(:colValue0_1, @product.prd[0], id:"opt_name_1") %>
+                        <%= text_field_tag(:colValue0_1, @product.prd.split("@")[0], id:"opt_name_1") %>
                     </div>
                     <div class="m-3">
                         <%= label_tag( "종류 :") %>
-                        <%= text_field_tag(:opt_1, @product.prd[1] ,id: "opt_1")  %>
+                        <%= text_field_tag(:opt_1, @product.prd.split("@")[1] ,id: "opt_1")  %>
                     </div>
                 </div>
             </div>
-            <div id="option_2" class="options">
+            <div id="option_2" >
                 <div class="row">
                     <div class="m-3">
                         <%= label_tag( "옵션2:") %>
-                        <%= text_field_tag(:colValue0_1, @product.prd[2], id:"opt_name_2") %>
+                        <%= text_field_tag(:colValue0_1,@product.prd.split("@")[2], id:"opt_name_2") %>
                     </div>
                     <div class="m-3">
                         <%= label_tag( "종류 :") %>
-                        <%= text_field_tag(:opt_2, @product.prd[3], id: "opt_2")  %>
+                        <%= text_field_tag(:opt_2, @product.prd.split("@")[3], id: "opt_2")  %>
                     </div>
                 </div>
             </div>
