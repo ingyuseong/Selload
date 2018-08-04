@@ -48,7 +48,7 @@
     </script>
 
     <%# 네브바 %>
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light fixed-top" style="background-color: #e3f2fd;">
       <div class="navbar-nav">
         <div class="container d-flex justify-content-between">
             <div class="row">
@@ -56,25 +56,33 @@
                 <%= link_to image_tag("logo.png", class: "logo"), root_path %>  
               </div>
               <div class="col">
-                <%= link_to 'NEW', home_new_path, :class => "nav-item nav-link" %>
+                <%= link_to 'NEW', home_new_path, :class => "divcenter nav-item nav-link" %>
               </div>
               <div class="col">
-                <%= link_to 'LIST/EDIT', home_list_path, :class => "nav-item nav-link" %>
+                <%= link_to 'LIST/EDIT', home_list_path, :class => "divcenter nav-item nav-link" %>
               </div>          
               <div class="col">    
-                <%= link_to 'TIP', home_tip_path, :class => "nav-item nav-link" %>
+                <%= link_to 'TIP', home_tip_path, :class => "divcenter nav-item nav-link" %>
               </div>
             </div>
-            <div>
-              <% if user_signed_in? %>                 
-                <%= link_to 'NEW', home_new_path, :class => "nav-item nav-link active" %>                  
-                <%= link_to '로그아웃', destroy_user_session_path, method: :delete, :class => "btn btn-secondary btn-sm" %>                 
-              <% elsif %>                  
-                <%= link_to '로그인', new_user_session_path,:class => "btn btn-secondary btn-sm" %>
-                <%= link_to '회원가입', new_user_registration_path,:class => "btn btn-secondary btn-sm"%>      
+            <div class="row">
+              <% if user_signed_in? %>
+              <div class="col">                 
+                <%= link_to 'MY PAGE', home_mypage_path, :class => "divcenter nav-item nav-link active" %>                  
+              </div>
+              <div class="col">
+                <%= link_to '로그아웃', destroy_user_session_path, method: :delete, :class => "divcenter btn btn-secondary btn-sm" %>
+              </div>  
+              <% elsif %>
+              <div class="col">                  
+                <%= link_to '로그인', new_user_session_path,:class => "divcenter btn btn-secondary btn-sm" %>
+              </div>
+              <div class="col">  
+                <%= link_to '회원가입', new_user_registration_path,:class => "divcenter btn btn-secondary btn-sm"%>
+              </div>      
               <% end %> 
             </div>
-          
+          </div>
         </div>    
       </div>
     </nav>

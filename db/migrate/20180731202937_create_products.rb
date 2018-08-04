@@ -22,6 +22,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :jejuDlvCst
       t.integer :islandDlvCst
       t.integer :PrdFrDlvBasiAmt
+      t.string :prd
 
       t.timestamps
     end

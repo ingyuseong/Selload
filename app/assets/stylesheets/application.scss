@@ -77,8 +77,9 @@
 .optionsize3 {
     width: 400px;
 }
-.opt_btn {
-    margin-left: 3rem;
+
+.optionn {
+    margin-left: 5rem;
 }
 
 .optionsize2 {
@@ -132,6 +133,12 @@ table tr {
 .logo {
     width: 3rem;
     height: 3rem;
+}
+
+.divcenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #hehe {

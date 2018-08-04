@@ -117,13 +117,14 @@
         <%= text_area_tag(:htmlDetail, nil, class: "form-control tinymce", rows: "20") %>
         </div>
 
-
     <table class="table table-hover">
-        <tbody>
-            <tr>
-                <th scope="row" class="labelfont optionsize">옵션 설정</th>
-                <td class="optionsize opttd"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
-                <th scope="row" id="opt_btn" class="btn border opt_btn btn-outline-info">적용</th>
+    <tbody>
+    <tr>
+      <th scope="row" class="labelfont optionsize">옵션 설정</th>
+      <td class="optionsize opttd" colspan="2"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
+      <th scope="row" class="labelfont optionn">재고 수량</th>
+      <td><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
+      <th scope="row" id="opt_btn" class="btn border opt_btn btn-outline-info">적용</th>
 
 
             </tr>  
@@ -131,35 +132,32 @@
     </table>
 
     <div id="option_1" class="options">
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                <th scope="row" class="labelfont">옵션</th>
-                <td><%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %></td>
-                <th scope="row" class="labelfont">종류</th>
-                <td><%= text_field_tag(:opt_1, nil,id: "opt_1")%></td>
-                <th scope="row" class="labelfont">재고 수량</th>
-                <td><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
-                
-                </tr>  
-            </tbody>
-        </table>
+    <table class="table table-hover">
+    <tbody>
+    <tr>
+      <th scope="row" class="labelfont">옵션</th>
+      <td><%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %></td>
+      <th scope="row" class="labelfont">종류</th>
+      <td><%= text_field_tag(:opt_1, nil,id: "opt_1")%></td>
+
+      
+    </tr>  
+    </tbody>
+    </table>
     </div>
 
     <div id="option_2" class="options">
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                    <th scope="row" class="labelfont">옵션</th>
-                    <td><%= text_field_tag(:colValue0_2, nil, id:"opt_name_2") %></td>
-                    <th scope="row" class="labelfont">종류</th>
-                    <td><%= text_field_tag(:opt_2, nil,id: "opt_2")%></td>
-                    
-                </tr>  
-            </tbody>
-        </table>
+    <table class="table table-hover">
+    <tbody>
+    <tr>
+      <th scope="row" class="labelfont">옵션</th>
+      <td><%= text_field_tag(:colValue0_2, nil, id:"opt_name_2") %></td>
+      <th scope="row" class="labelfont">종류</th>
+      <td><%= text_field_tag(:opt_2, nil,id: "opt_2")%></td>
+    </tr>  
+    </tbody>
+    </table>
     </div>
-
 
     <div class="m-3">
         <%= hidden_field_tag(:colTitle, nil, id: "opt_name_add") %>
@@ -168,7 +166,6 @@
     </div>
     
     </div>
-
 
  
 
@@ -319,6 +316,6 @@
         // alert(opt_all)
     })
 
-
     
 </script>
+
