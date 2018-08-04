@@ -130,11 +130,7 @@ table tr {
     font-weight: bold;
 }
 
-.swiper-container {
-    position: relative;
-    height: 52rem;
-    width: 100%;
-}
+
 
 .divcenter {
     position: relative;
@@ -204,6 +200,8 @@ html {
     width: 100%;
     overflow: hidden;
     position: absolute;
+    background: rgba(0,0,0, 60%);
+    color: white;
 }
 
 .mainmain {
@@ -260,10 +258,52 @@ html {
     text-align: center;
     margin-top: 30px;
 }
-.container {
-  margin-right: 0px;
-  margin-left: 0px;
+
+.centered4 {
+    position: absolute;
+    top: 73%;
+    left: 63%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
 }
+
+.centered5 {
+    position: absolute;
+    top: 73%;
+    left: 36.5%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.viewer {
+    background-color: #666;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-wrapper {
+    max-height: 100vh;
+  }
+  .swiper-slide {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+// .swiper-container {
+//     position: relative;
+//     height: 52rem;
+//     width: 100%;
+// }
 
 .index1 {
     background-image: url("index1.png");
@@ -274,3 +314,4 @@ html {
 .container.page {
     margin-top: 10vh;
 }
+
