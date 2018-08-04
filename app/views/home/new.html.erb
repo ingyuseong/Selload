@@ -1,57 +1,90 @@
 <div class="mt-5 container">
 
-    <h1 class="text-center">입력 받을 폼</h1>
+    <h1 class="text-center titlefont">상품 등록</h1>
 
     <%= form_tag(home_result_path, method: "post") do %>
-        <div class="m-3">
-            <%= label_tag("상품명:") %>
-            <%= text_field_tag(:prdNm) %>
-        </div>
-        <div class="m-3">
-            <%= label_tag("브랜드명:") %>
-            <%= text_field_tag(:brand) %>
-        </div>
-        <div class="m-3">
-            <%= label_tag( "상품 가격:") %>
-            <%= number_field_tag 'selPrc', nil, step: 100 %>
-        </div>
-        <div class="m-3">
-            <%= label_tag("재고 수량 : ") %>
-            <%= number_field_tag 'prdSelQty', nil, step: 1 %>
-        </div>
-        
-        <div class="d-flex">
-            <div id="ctgrl" class="m-3">
-                <%= label_tag("카테고리 대분류 : ") %>
-                <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl") %>
-            </div>
-            <div id="ctgrm" class="m-3 ctgr">
-                <%= label_tag("카테고리 중분류 : ") %>
-                <%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true) %>
-            </div>
-            <div id="ctgrs" class="m-3 ctgr">
-                <%= label_tag("카테고리 소분류 : ") %>
-                <%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true) %>
-            </div>
-        </div>
 
+    <div class="container cat1">
+
+    <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">상품 기본 정보</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row" class="labelfont">상품명</th>
+      <td colspan="2"><%= text_field_tag(:prdNm) %></td>
+      <th scope="row" class="labelfont">브랜드명</th>
+      <td colspan="2"><%= text_field_tag(:brand) %></td>
+    </tr>
+    <tr>
+      <th scope="row" class="labelfont">상품 가격</th>
+      <td colspan="2"><%= number_field_tag 'selPrc', nil, step: 100 %></td>
+      <th scope="row" class="labelfont">재고 수량</th>
+      <td colspan="2"><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
+    </tr>
+    </tbody>
+    </table>
+
+    </div>
+
+    <div class="container cat1">
         <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag("배송비 : ") %>
-                <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %>
-            </div> 
-            <div class="m-3">
-                <%= label_tag( "반품 배송비:") %>
-                <%= number_field_tag 'rtngdDlvCst', "0", step: 100 %>
-            </div>
-            <div class="m-3">
-                <%= label_tag( "교환 배송비:") %>
-                <%= number_field_tag 'exchDlvCst', '0', step: 100 %>
-            </div>
-            
+        <div id="ctgrl" class="m-3">
+            <%= label_tag("카테고리 대분류 : ") %>
+            <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl") %>
         </div>
-        
-        <div id="dlv" class="d-flex ">
+        <div id="ctgrm" class="m-3 ctgr">
+            <%= label_tag("카테고리 중분류 : ") %>
+            <%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true) %>
+        </div>
+        <div id="ctgrs" class="m-3 ctgr">
+            <%= label_tag("카테고리 소분류 : ") %>
+            <%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true) %>
+        </div>
+        </div>  
+    </div>
+
+    <div class="container cat1">
+
+    <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">배송 정보</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row" class="labelfont">배송비</th>
+      <td colspan="2"><%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %></td>
+      <th scope="row" class="labelfont">택배사</th>
+      <td colspan="2"><%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %></td>
+      <th scope="row" class="labelfont">배송비 결제</th>
+      <td colspan="2"><%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %></td>
+
+
+    </tr>
+    
+    <tr>
+      <th scope="row" class="labelfont">반품 배송비</th>
+      <td colspan="2"><%= number_field_tag 'rtngdDlvCst', "0", step: 100 %></td>
+      <th scope="row" class="labelfont">교환 배송비</th>
+      <td colspan="2"><%= number_field_tag 'exchDlvCst', '0', step: 100 %><td>
+      <th scope="row" class="labelfont">묶음 배송</th>
+      <td>           
+        <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
+        <%= label_tag( "가능") %>
+        <%= radio_button_tag(:bndlDlvCnYn, "N") %>
+        <%= label_tag( "불가능") %>
+      </td>
+      
+    </tr>
+    </tbody>
+    </table>
+
+            <div id="dlv" class="d-flex ">
             <div id="dlv_pri" class="m-3 dlv_box">
                 <%= label_tag( "배송비 :") %>
                 <%= number_field_tag 'dlvCst1', '0', step: 100 %>
@@ -70,28 +103,18 @@
             </div>
             
         </div>
-        <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag("택배사 : ") %>
-                <%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %>
-            </div>
-            <div class="m-3">
-                <%= label_tag("배송비 결제 : ") %>
-                <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
-            </div>
-            <div id="bundle" class="bundle m-3">
-                <%= label_tag("묶음 배송 : ") %>
-                <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
-                <%= label_tag( "가능") %>
-                <%= radio_button_tag(:bndlDlvCnYn, "N") %>
-                <%= label_tag( "불가능") %>
-            </div>
-        </div>
+
+        
+
+
+    </div>
+    <div class="container cat1">
         <div class="m-3">
             <%= label_tag("상세설명") %>
             <%= tinymce :language => "en" %>
             <%= text_area_tag(:htmlDetail, nil, class: "form-control tinymce", rows: "10") %>
         </div>
+    
         <div class="d-flex">
             <div class="m-3">
                 <%= label_tag("A/S 안내 : ") %>
@@ -142,6 +165,7 @@
             </div>
         
         </div>
+    </div>
         <div class="m-3">
             <%= submit_tag("등록") %>
         </div>
@@ -149,6 +173,13 @@
 
 </div>
 
+<style>
+
+    body {
+        background-color: white;
+    }
+
+</style>
 
 <script>
     $("#dlv_sel").change(function(){

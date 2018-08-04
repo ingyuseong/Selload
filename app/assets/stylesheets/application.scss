@@ -1,5 +1,6 @@
 @import 'bootstrap';
 
+
 .options {
     display: none;
 }
@@ -19,3 +20,17 @@
     display: none;
 }
 
+.cat1 {
+    background-color: papayawhip;
+    margin-bottom: 3rem !important;
+}
+
+.labelfont {
+    font-size: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.titlefont {
+    font-size: 5rem;
+    font-family: 'Nanum Gothic', sans-serif;
+}
