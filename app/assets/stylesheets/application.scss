@@ -121,17 +121,18 @@ table tr {
 }
 
 .navbar {
-    display:block !important; 
+    display:block !important;
+    height:5.2rem;
+    background-color: rgba(255, 255,255, 90%);
+    box-shadow: 1px 1px #888888;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
 }
 
 .swiper-container {
-    width: 1024px;
-    height: 628px;
-}
-
-.logo {
-    width: 3rem;
-    height: 3rem;
+    position: relative;
+    height: 52rem;
+    width: 100%;
 }
 
 .divcenter {
@@ -152,8 +153,21 @@ html {
 .footer {
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 3rem;
     width: 100%;
     overflow: hidden;
     position: absolute;
+    background-color: rgba(0,0,0,60%);
+    color: white;
+}
+
+.container {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.index1 {
+    background-image: url("index1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }

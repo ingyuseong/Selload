@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'home/tip'
 
+  get 'home/main'
+
   post 'home/result' => 'home#result'
   
   post '/tinymce_assets' => 'tinymce_assets#create'
@@ -17,8 +19,6 @@ Rails.application.routes.draw do
   post 'home/update/:prdNo' => 'home#update', as: 'update'
 
   get 'home/list'
-
-  get 'home/mypage'
   
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
