@@ -601,7 +601,6 @@ class HomeController < ApplicationController
 
     response = http.request(request)
     puts request.body
-    puts response.read_body
   end
 
   def qna_list

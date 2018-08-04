@@ -1,8 +1,15 @@
-<div class="confirm text-center">
+<style>
+  body {
+    background-image:url("/assets/confirm_back.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+<div class="confirm text-center" style="margin-top:40vh">
     <h1>등록이 성공적으로 완료되었습니다</h1>
 </div>
 <div class="confirmitem text-center">
-    <%= link_to '추가등록', home_new_path, class: "cf_item btn btn-lg" %>
-    <%= link_to '목록보기', home_list_path, class: "cf_item btn btn-lg" %>
-    <%= link_to '상품보기', "http://11st.co.kr", class: "cf_item btn btn-lg" %>
+    <%= link_to '추가등록', home_new_path, class: "cf_item btn btn-lg", style:"border-radius: 0%; border: 1px solid lightgrey; transition:0s" %>
+    <%= link_to '목록보기', home_list_path, class: "cf_item btn btn-lg", style:"border-radius: 0%; border: 1px solid lightgrey; transition:0s" %>
+    <%= link_to '상품보기', "http://11st.co.kr", class: "cf_item btn btn-lg", style:"border-radius: 0%; border: 1px solid lightgrey; transition:0s" %>
 </div>
