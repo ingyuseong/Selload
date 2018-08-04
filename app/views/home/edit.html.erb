@@ -1,193 +1,239 @@
-<p><%=@product.prdNo%></p>
-<%# 인덱스복붙 %>
+<div class="container page">
 
-<div class="mt-5 container">
 
-    <h1 class="text-center">입력 받을 폼</h1>
 
     <%= form_tag(update_path(@product.prdNo), method: "post") do %>
-        <div class="m-3">
-            <%= label_tag("상품명:") %>
-            <%= text_field_tag(:prdNm, @product.prdNm) %>
+
+    <div class="container cat1">
+
+    <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">기본 정보</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="tr1">
+      <th scope="row" class="labelfont">상품명</th>
+      <td colspan="2"><%= text_field_tag(:prdNm, @product.prdNm) %></td>
+      <th scope="row" class="labelfont">브랜드명</th>
+      <td colspan="2"><%= text_field_tag(:brand, @product.brand) %></td>
+      <th scope="row" class="labelfont">상품 가격</th>
+      <td colspan="2"><%= number_field_tag 'selPrc', @product.selPrc , step: 100 %></td>
+    </tr>
+
+    <tr class="tr1">
+      <th scope="row" class="labelfont">카테고리 대분류</th>
+      <td colspan="2" id="ctgrl"> <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl", selected: @ctgrl) %></td>
+      <th scope="row" class="labelfont">카테고리 중분류</th>
+      <td colspan="2" id="ctgrm"><%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true, selected: @ctgrm) %></td>
+      <th scope="row" class="labelfont">카테고리 소분류</th>
+      <td colspan="2" id="ctgrs"><%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true, selected: @ctgrs) %></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+    <div class="container cat1">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">배송 정보</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr1">
+                <th scope="row" class="labelfont">배송 조건</th>
+                <td colspan="1"><%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %></td>
+                <th scope="row" class="labelfont">택배사</th>
+                <td colspan="1"><%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %></td>
+                <th scope="row" class="labelfont">배송비 결제</th>
+                <td colspan="1"><%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %></td>
+
+
+            </tr>
+            
+            <tr  class="tr1">
+                <th scope="row" class="labelfont">반품 배송비</th>
+                <td colspan="1"><%= number_field_tag 'rtngdDlvCst', @product.rtngdDlvCst, step: 100 %></td>
+                <th scope="row" class="labelfont">교환 배송비</th>
+                <td colspan="1"><%= number_field_tag 'exchDlvCst', @product.exchDlvCst, step: 100 %></td>
+                <th scope="row" class="labelfont">묶음 배송</th>
+                <td colspan="1">   
+                    <% if @product.bndlDlvCnYn == "Y" %>        
+                        <%= radio_button_tag(:bndlDlvCnYn, "Y", true) %>
+                        <%= label_tag( "가능") %>
+                        <%= radio_button_tag(:bndlDlvCnYn, "N") %>
+                        <%= label_tag( "불가능") %>
+                    <% else%>
+                        <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
+                        <%= label_tag( "가능") %>
+                        <%= radio_button_tag(:bndlDlvCnYn, "N",true) %>
+                        <%= label_tag( "불가능") %>
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="dlv" class="d-flex flex-row justify-content-around">
+        <div id="dlv_pri" class="dlv_box box1">
+            <%= label_tag( "배송비", nil, class: "labelfont2", id: "dlv_pri") %>
+            <%= number_field_tag 'dlvCst1', '0', id: "dlv_pri",step: 100 %>
         </div>
-        <div class="m-3">
-            <%= label_tag("브랜드명:") %>
-            <%= text_field_tag(:brand, @product.brand) %>
+        <div id="dlv_jeju" class="dlv_box box2">
+            <%= label_tag( "제주 추가 배송비", nil, class: "labelfont2") %>
+            <%= number_field_tag 'jejuDlvCst', @product.jejuDlvCst, step: 100 %>
         </div>
-        <div class="m-3">
-            <%= label_tag( "상품 가격:") %>
-            <%= number_field_tag 'selPrc', @product.selPrc ,step: 100 %>
+        <div id="dlv_isl" class="dlv_box box3">
+            <%= label_tag( "도서산간 추가 배송비", nil, class: "labelfont2") %>
+            <%= number_field_tag 'islandDlvCst', @product.islandDlvCst, step: 100 %>
         </div>
-        <div class="m-3">
-            <%= label_tag("재고 수량 : ") %>
-            <%= number_field_tag 'prdSelQty', @product.prdSelQty, step: 1 %>
+        <div id="dlv_free" class="dlv_box box4">
+            <%= label_tag( "무료 배송 최소 구매액", nil, class: "labelfont2") %>
+            <%= number_field_tag 'PrdFrDlvBasiAmt', @product.PrdFrDlvBasiAmt, step: 100 %>
         </div>
-        
-        <div class="d-flex">
-            <div id="ctgrl" class="m-3">
-                <%= label_tag("카테고리 대분류 : ") %>
-                <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl", selected: @ctgrl) %>
-            </div>
-            <div id="ctgrm" class="m-3">
-                <%= label_tag("카테고리 중분류 : ") %>
-                <%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true, selected: @ctgrm) %>
-            </div>
-            <div id="ctgrs" class="m-3">
-                <%= label_tag("카테고리 소분류 : ") %>
-                <%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true, selected: @ctgrs) %>
-            </div>
+    </div>
+
+    </div>
+
+    <div class="container cat1">
+
+    
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">상세 정보</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr1">
+                    <th scope="row" class="labelfont optionsize">대표이미지</th>
+                    <td colspan="2"><%= file_field_tag "image[1]", accept: 'image/png,image/gif,image/jpeg' %></td>
+
+              </tr>
+            
+                <tr class="tr1">
+                   <th scope="row" class="labelfont">상세설명</th>
+                </tr>
+            
+            </tbody>
+        </table>
+        <div class="d-flex detailinfo">
+        <%= tinymce :language => "en" %>
+        <%= text_area_tag(:htmlDetail,  @product.htmlDetail, class: "form-control tinymce", rows: "20") %>
         </div>
 
-        <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag("배송비 : ") %>
-                <%= select_tag 'dlvCstInstBasiCd', options_for_select([['무료', '01'], ['고정 배송비', '02'], ['상품 조건부 무료', '03']]), id: "dlv_sel" %>
-            </div> 
-            <div class="m-3">
-                <%= label_tag( "반품 배송비:") %>
-                <%= number_field_tag 'rtngdDlvCst', @product.rtngdDlvCst, step: 100 %>
-            </div>
-            <div class="m-3">
-                <%= label_tag( "교환 배송비:") %>
-                <%= number_field_tag 'exchDlvCst', @product.exchDlvCst, step: 100 %>
-            </div>
-            
-        </div>
+    <table class="table">
+    <tbody>
+    <tr class="tr1">
+      <th scope="row" class="labelfont optionsize">옵션 설정</th>
+      <td class="optionsize opttd" colspan="2"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
+      <th scope="row" class="labelfont optionsize optionn">재고 수량</th>
+      <td><%= number_field_tag 'prdSelQty', @product.prdSelQty, step: 1 %></td>
+      <th scope="row" id="opt_btn" class="btn border opt_btn btn-secondary">적용</th>
 
-        <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag("대표이미지 : ") %>
-                <%= file_field_tag "image", accept: 'image/png,image/gif,image/jpeg' %>
-            </div> 
-            
-            
-        </div>
-        
-        <div id="dlv" class="d-flex ">
-            <div id="dlv_pri" class="m-3 dlv_box">
-                <%= label_tag( "배송비 :") %>
-                <%= number_field_tag 'dlvCst1', '', step: 100 %>
-            </div>
-            <div id="dlv_jeju" class="m-3 dlv_box">
-                <%= label_tag( "제주 추가 배송비 : ") %>
-                <%= number_field_tag 'jejuDlvCst', @product.jejuDlvCst, step: 100 %>
-            </div>
-            <div id="dlv_isl" class="m-3 dlv_box">
-                    <%= label_tag( "도서산간 추가 배송비:") %>
-                    <%= number_field_tag 'islandDlvCst', @product.islandDlvCst, step: 100 %>
-            </div>
-            <div id="dlv_free" class="m-3 dlv_box">
-                <%= label_tag( "무료 배송비 기준 : ") %>
-                <%= number_field_tag 'PrdFrDlvBasiAmt', @product.PrdFrDlvBasiAmt, step: 100 %>
-            </div>
-            
-        </div>
-        <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag("택배사 : ") %>
-                <%= select_tag 'dlvEtprsCd', options_for_select(@dlv_option) %>
-            </div>
-            <div class="m-3">
-                <%= label_tag("배송비 결제 : ") %>
-                <%= select_tag 'dlvCstPayTypCd', options_for_select({'선결제 가능' => '01', '선결제 불가' => '02', '선결제 필수' => '03'}) %>
-            </div>
-            <div id="bundle" class="bundle m-3">
-                <% if @product.bndlDlvCnYn == "Y"%>
-                    <%= label_tag("묶음 배송 : ") %>
-                    <%= radio_button_tag(:bndlDlvCnYn, "Y", true) %>
-                    <%= label_tag( "가능") %>
-                    <%= radio_button_tag(:bndlDlvCnYn, "N") %>
-                    <%= label_tag( "불가능") %>
-                <% else %>
-                    <%= label_tag("묶음 배송 : ") %>
-                    <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
-                    <%= label_tag( "가능") %>
-                    <%= radio_button_tag(:bndlDlvCnYn, "N", true) %>
-                    <%= label_tag( "불가능") %>
-                <%end%>
-            </div>
-        </div>
-        <div class="m-3">
-            <%= label_tag("상세설명") %>
-            <%= tinymce :language => "en" %>
-            <%= text_area_tag(:htmlDetail, @product.htmlDetail, class: "form-control tinymce" ,rows: "10") %>
-        </div>
-        <div class="d-flex">
-            <div class="m-3">
-                <%= label_tag("A/S 안내 : ") %>
-                <%= text_area_tag(:asDetail, @product.asDetail) %>
-            </div>
-            <div class="m-3">
-                <%= label_tag("반품/교환 안내 : ") %>
-                <%= text_area_tag(:rtngExchDetail, @product.rtngExchDetail) %>
-            </div>
-        </div>
 
-        <div class="m-3">
-             <div class="m-3">
-                <%= label_tag("옵션 갯수 : ") %>
-                <%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num" %>
-            </div> 
-            
-            <div id="option_1">
-                <div class="row">
-                    <div class="m-3">
-                        <%= label_tag( "옵션 :") %>
-                        <%= text_field_tag(:colValue0_1, @product.prd.split("@")[0], id:"opt_name_1") %>
-                    </div>
-                    <div class="m-3">
-                        <%= label_tag( "종류 :") %>
-                        <%= text_field_tag(:opt_1, @product.prd.split("@")[1] ,id: "opt_1")  %>
-                    </div>
+            </tr>  
+        </tbody>
+    </table>
+
+    <div id="option_1" class="options">
+    <table class="table">
+    <tbody>
+    <tr class="tr1">
+      <th scope="row" class="labelfont optionsize">옵션</th>
+      <td class="optionsize1"><%= text_field_tag(:colValue0_1, @product.prd.split("@")[0], id:"opt_name_1") %></td>
+      <th scope="row" class="labelfont optionsize">종류</th>
+      <td class="opttd"><%= text_field_tag(:opt_1, @product.prd.split("@")[1],id: "opt_1")%></td>
+
+      
+    </tr>  
+    </tbody>
+    </table>
+    </div>
+
+    <div id="option_2" class="options">
+    <table class="table">
+    <tbody>
+    <tr class="tr1">
+      <th scope="row" class="labelfont optionsize">옵션</th>
+      <td class="optionsize1"><%= text_field_tag(:colValue0_2, @product.prd.split("@")[2], id:"opt_name_2") %></td>
+      <th scope="row" class="labelfont optionsize">종류</th>
+      <td><%= text_field_tag(:opt_2, @product.prd.split("@")[3],id: "opt_2")%></td>
+    </tr>  
+    </tbody>
+    </table>
+    </div>
+
+    <div class="m-3">
+        <%= hidden_field_tag(:colTitle, nil, id: "opt_name_add") %>
+    </div>
+    <div id="opt_result">
+        <% @product_option.each do |k,v|%>
+            <div class="m-3 border row optioncenter">
+                <div class="m-3">
+                    <span class="labelfont2">옵션 명</span>
+                    <input name="colValue0[${i}]" type="text" value="<%=k%>"/>
+                </div>
+                <div class="m-3">
+                    <span class="labelfont2">옵션 추가 비용</span>
+                    <input name="colOptPrice[${i}]" type="number" value="<%=v[:price]%>" step="100" />
+
+                </div>
+                <div class="m-3">
+                    <span class="labelfont2">재고 수량</span>
+                    <input id="opt_num_${i}" name="colCount[${i}]" type="number" step="1" onchange="count()" value="<%=v[:count]%>" />
+
                 </div>
             </div>
-            <div id="option_2" >
-                <div class="row">
-                    <div class="m-3">
-                        <%= label_tag( "옵션2:") %>
-                        <%= text_field_tag(:colValue0_1,@product.prd.split("@")[2], id:"opt_name_2") %>
-                    </div>
-                    <div class="m-3">
-                        <%= label_tag( "종류 :") %>
-                        <%= text_field_tag(:opt_2, @product.prd.split("@")[3], id: "opt_2")  %>
-                    </div>
-                </div>
-            </div>
-            <p id="opt_btn" class="btn border opt_btn">빠밤</p>
-            <div class="m-3">
-                <%= hidden_field_tag(:colTitle, nil, id: "opt_name_add") %>
-            </div>
-            <div id="opt_result">
-                <% @product_option.each do |k,v|%>
-                    <div class="m-3 border row">
-                        <div class="m-3">
-                            옵션 명 : 
-                            <input name="colValue0[${i}]" type="text" value="<%=k%>"/>
-                        </div>
-                        <div class="m-3">
-                            옵션 추가 비용 :
-                            <input name="colOptPrice[${i}]" type="number" value="<%=v[:price]%>" step="100" />
+        <% end %>
+    </div>
+    
+    </div>
 
-                        </div>
-                        <div class="m-3">
-                            재고 수량 :
-                            <input id="opt_num_${i}" name="colCount[${i}]" type="number" step="1" onchange="count()" value="<%=v[:count]%>" />
+ 
 
-                        </div>
-                    </div>
-                <% end %>
-            </div>
-        
-        </div>
-        <div class="m-3">
-            <%= submit_tag("등록") %>
-        </div>
+    <div class="container cat1">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row" class="labelfont">A/S 안내</th>
+            </tr>
+            
+            <tr class="tr1">
+                <td colspan="2"><%= text_area_tag(:asDetail, @product.asDetail, rows: 4, id: "hehe") %></td>
+            </tr>
+
+            <tr>
+                <th scope="row" class="labelfont">반품/교환 안내</th>
+            </tr>
+
+            <tr class="tr1">
+                <td colspan="2" rowspan="2"><%= text_area_tag(:rtngExchDetail,  @product.rtngExchDetail, rows: 4, id: "hehe") %></td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="m-3 optioncenter">
+        <%= submit_tag("등록", class: "btn btn-secondary btn-lg") %>
+    </div>
     <% end %>
 
 </div>
 <br>
 <br>
 
+<style>
+    body {
+        background-image: url("/assets/newimage.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
 
 <script>
     $("#dlv_sel").change(function(){
@@ -213,7 +259,15 @@
             $("#bundle").fadeIn(200)
         }
     })
-
+    function count() {
+        let x = 0
+        let i = 0
+        while (Number($(`#opt_num_${i}`).val())) {
+            x += Number($(`#opt_num_${i}`).val())
+            i ++
+        }
+        $("#prdSelQty").val(`${x}`)
+    }
 
     $("#ctgrl").change(function(){
         $("#ctgrm").fadeIn(200)
@@ -261,24 +315,24 @@
         }
 
         $("#opt_name_add").val(`${opt_name_add}`)
-        $("#opt_result").append(
-            `옵션 명 : ${opt_name_add} `
-        )
+        // $("#opt_result").append(
+        //     ` <span class="labelfont2">옵션 명: ${opt_name_add}</span> `
+        // )
         for(let i = 0;i <opt_all.length; i++){
             $("#opt_result").append(
-            `<div class="m-3 border row">
+            `<div class="m-3 border row optioncenter">
                     <div class="m-3">
-                        옵션 명 : 
-                        <input name="colValue0[${i}]" type="text" value="${opt_all[i]}" />
+                        <span class="labelfont2">옵션 명</span>
+                        <input name="colValue0[${i}]" type="text" value="${opt_all[i]}"/>
                     </div>
                     <div class="m-3">
-                        옵션 추가 비용 :
+                        <span class="labelfont2">옵션 추가 비용</span>
                         <input name="colOptPrice[${i}]" type="number" value="0" step="100" />
 
                     </div>
                     <div class="m-3">
-                        재고 수량 :
-                        <input name="colCount[${i}]" type="number" step="1" />
+                        <span class="labelfont2">재고 수량</span>
+                        <input id="opt_num_${i}" name="colCount[${i}]" type="number" step="1" onchange="count()" />
 
                     </div>
                 </div>`
@@ -287,4 +341,6 @@
         
         // alert(opt_all)
     })
+
+    
 </script>
