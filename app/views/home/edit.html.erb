@@ -57,24 +57,9 @@
         <div class="d-flex">
             <div class="m-3">
                 <%= label_tag("대표이미지 : ") %>
-                <%= file_field_tag "image[1]", accept: 'image/png,image/gif,image/jpeg', value: @prdImages[0] %>
+                <%= file_field_tag "image", accept: 'image/png,image/gif,image/jpeg' %>
             </div> 
-            <div class="m-3">
-                <%= label_tag( "추가이미지1:") %>
-                <%= file_field_tag "image[2]", accept: 'image/png,image/gif,image/jpeg', value: @prdImages[1] %>
-            </div>
-            <div class="m-3">
-                <%= label_tag( "추가이미지2:") %>
-                <%= file_field_tag "image[3]", accept: 'image/png,image/gif,image/jpeg', value: @prdImages[2] %>
-            </div>
-            <div class="m-3">
-                <%= label_tag( "추가이미지3:") %>
-                <%= file_field_tag "image[4]", accept: 'image/png,image/gif,image/jpeg', value: @prdImages[3] %>
-            </div>
-            <div class="m-3">
-                <%= label_tag( "추가이미지4:") %>
-                <%= file_field_tag "image[5]", accept: 'image/png,image/gif,image/jpeg', value: @prdImages[4] %>
-            </div>
+            
             
         </div>
         
@@ -183,6 +168,8 @@
     <% end %>
 
 </div>
+<br>
+<br>
 
 
 <script>
