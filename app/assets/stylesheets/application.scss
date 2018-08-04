@@ -121,7 +121,17 @@ table tr {
 }
 
 .navbar {
-    display:block;
+    display:block !important; 
+}
+
+.swiper-container {
+    width: 1024px;
+    height: 628px;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
 }
 
 #hehe {
