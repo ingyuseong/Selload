@@ -7,9 +7,9 @@
 </style>
 <div class="container mt-4 text-center ">
   <%= image_tag("selload_logo.png", class: "login-title") %>
-  <p>
-  안녕하세요, <%= current_user.username %> 님!
-  </p>
+  <div class="edit-label text-left h4" style="margin-bottom: 50px"> 안녕하세요, <strong><%= current_user.username %></strong> 님!</div>
+
+  
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
@@ -19,8 +19,7 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
-      <div class="edit-label text-left"><strong>E-mail : </strong><%= current_user.email%></div><br>
-      <div class="edit-label text-left"><strong>이름 : </strong><%= current_user.username %></div><br>
+      <div class="edit-label text-left d-flex justify-content-between" style="margin-bottom: 20px"><strong>E-mail</strong><%= current_user.email%></div>
       <div class="edit-label text-left"><strong>비밀번호 변경</strong></div>
       <%= f.input :password, autocomplete: "off", required: false,label_html:{style: 'display: none'}, input_html: { class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' } %>
       <div class="edit-label text-left"><strong>비밀번호 확인</strong></div>

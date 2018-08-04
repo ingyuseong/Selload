@@ -9,7 +9,7 @@
 <div class="container page" style="margin-top: 40vh">
 
 <table class="table text-center" style="background-color: rgba(255,255,255,0.9); border:none; font-size:1.1em">
-  <thead class="thead">
+  <thead class="thead" style="background-color: rgba(65,65,65,0.3">
     <tr>
       <th style="width: 10%"> </th>
       <th style="width: 15%">상품번호</th>
@@ -37,7 +37,7 @@
     <tr style="display:none" class="text-left">
         <td></td>
         <td>
-            <strong>카테고리<br>택배사<br>배송비 종류</strong>
+            <strong>카테고리<br>택배사<br>배송조건</strong>
         </td>
         <td colspan="1">
                 <% ctgrno = Smcategory.where(smcategory_id: p.dispCtgrNo.split("@")[2])[0].name %>
@@ -99,9 +99,9 @@
          <td></td>
     </tr>
     <tr style="display:none">
-        <td colspan="5"></td>
-        <td><%= link_to '상품수정', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
-        <td><%= link_to '판매중지', stop_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
+        <td colspan="5" style="border-top: 1px solid transparent"></td>
+        <td style="border-top: 1px solid transparent"><%= link_to '상품수정', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
+        <td style="border-top: 1px solid transparent"><%= link_to '판매중지', stop_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
     </tr>
     <% end %>
   </tbody>
