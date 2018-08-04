@@ -638,6 +638,11 @@ class HomeController < ApplicationController
 
     response = http.request(request)
     response.read_body
+    if @response.split('resultCode')[1] == '>200</'
+      respond_to do |format|
+        format.js
+      end
+    end
     redirect_to :back
   end
 
