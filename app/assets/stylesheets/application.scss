@@ -19,3 +19,22 @@
     display: none;
 }
 
+.confirm {
+    margin-top: 20em;
+}
+
+.confirmitem {
+    margin-top: 3em;
+}
+.cf_item {
+    display: inline;
+    margin: -3px;
+    background-color: #fff;
+    color: #445b84;
+    border-radius: 0%;
+    border: solid 1px lightgrey
+}
+.cf_item:hover {
+    background-color: #445b84;
+    color: #ffffff;
+}
