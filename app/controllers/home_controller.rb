@@ -294,7 +294,7 @@ class HomeController < ApplicationController
       newProduct.dispCtgrNo = category
       newProduct.save
 
-      redirect_to '/home/confirm'
+      redirect_to confirm_path(prdNo)
     end
     puts request.body
   end
@@ -642,7 +642,7 @@ class HomeController < ApplicationController
 
 
   def confirm
-
+    @product_num = params[:prdNo]
   end
 
   def tip

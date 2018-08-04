@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'home/new'
 
-  get 'home/confirm'
+  get 'home/confirm/:prdNo' => 'home#confirm', as: 'confirm'
 
   get 'home/tip'
 
