@@ -44,7 +44,8 @@ class HomeController < ApplicationController
     options = ""
 
     images = []
-
+    puts params[:lgctgr][:name]
+    puts "*********************"
     category = "#{params[:lgctgr][:name]}@#{params[:midcategory][:name]}@#{params[:smcategory][:name]}"
     option_etc = "#{params[:colValue0_1]}@#{params[:opt_1]}@#{params[:colValue0_2]}@#{params[:opt_2]}"
     params[:image].each do |i,v|
@@ -373,7 +374,11 @@ class HomeController < ApplicationController
     # option 쓰는법
     bb = []
 
-   
+    @ctgrl = @product.dispCtgrNo.split("@")[0]
+    @ctgrm = @product.dispCtgrNo.split("@")[1]
+    @ctgrs = @product.dispCtgrNo.split("@")[2]
+   puts @ctgrl
+   puts "*********************"
 
   end
 

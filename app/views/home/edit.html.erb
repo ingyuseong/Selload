@@ -26,15 +26,15 @@
         <div class="d-flex">
             <div id="ctgrl" class="m-3">
                 <%= label_tag("카테고리 대분류 : ") %>
-                <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl") %>
+                <%= collection_select(:lgctgr, :name, @lgctgr, :lgcategory_id, :name, include_blank: true, id: "ctgrl", selected: @ctgrl) %>
             </div>
-            <div id="ctgrm" class="m-3 ctgr">
+            <div id="ctgrm" class="m-3">
                 <%= label_tag("카테고리 중분류 : ") %>
-                <%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true) %>
+                <%= grouped_collection_select(:midcategory, :name, @lgctgr, :midcategory, :name, :midcategory_id, :name, include_blank: true, selected: @ctgrm) %>
             </div>
-            <div id="ctgrs" class="m-3 ctgr">
+            <div id="ctgrs" class="m-3">
                 <%= label_tag("카테고리 소분류 : ") %>
-                <%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true) %>
+                <%= grouped_collection_select(:smcategory, :name, @midctgr, :smcategory, :name, :smcategory_id, :name, include_blank: true, selected: @ctgrs) %>
             </div>
         </div>
 

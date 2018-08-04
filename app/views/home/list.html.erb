@@ -81,7 +81,7 @@
                 <% when '00099' %>
                     <% dlvEtp = '기타' %>
                 <% end %>
-            <%=p.dlvEtprsCd %><br>
+            <%=dlvEtp %><br>
                 <% if p.dlvCstInstBasiCd == '01' %>
                     <% dlvCst = '무료'%>
                 <% elsif p.dlvCstInstBasiCd == '02'%>
@@ -89,7 +89,7 @@
                 <% elsif p.dlvCstInstBasiCd =='03'%>
                     <% dlvCst = '조건부 무료'%>
                 <% end%>
-            <%=p.dlvCstInstBasiCd %><br><br>
+            <%=dlvCst %><br><br>
             <%=p.created_at.strftime("%F")%>
         </td>
     </tr>
