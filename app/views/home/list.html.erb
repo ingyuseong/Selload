@@ -1,15 +1,14 @@
 <style>
-.hide {
-    display: none;
-}
+  body {
+    background-image:url("/assets/list_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 </style>
-<div class="container page">
-<div class="list text-left">
-    <h1>관리하기</h1>
-    <h5>셀러드와 함께 쉽고 편하게 모든 상품을 관리하세요</h5>
-</div>
 
-<table id="contents" class="table text-center">
+<div class="container page" style="margin-top: 40vh">
+
+<table class="table text-center" style="background-color: rgba(255,255,255,0.9); border:none; font-size:1.1em">
   <thead class="thead">
     <tr>
       <th style="width: 10%"> </th>
@@ -21,7 +20,7 @@
       <th style="width: 10%"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="overflow-y-scroll w-full" style="height: 50vh;">
   <% @product_array.each do |p|%>
     <tr class="main">
         <td><%= image_tag("11st_logo.png", height: "20em") %></td>
@@ -36,13 +35,11 @@
         </td>
     </tr>
     <tr style="display:none" class="text-left">
-        <td><strong>상세설명<strong></td>
-        <td colspan="2" style="word-wrap: break-word;" class="text-left"><%= p.htmlDetail.html_safe %></td>
-         <td></td>
+        <td></td>
         <td>
-            <strong>택배사<br>배송비종류<br><br>상품 등록일</strong>
+            <strong>택배사<br>배송비종류</strong>
         </td>
-        <td colspan="2">
+        <td colspan="1">
                 <% case p.dlvEtprsCd %>
                 <% when '00034' %>
                     <% dlvEtp = 'CJ대한통운' %>
@@ -91,14 +88,16 @@
                 <% elsif p.dlvCstInstBasiCd =='03'%>
                     <% dlvCst = '조건부 무료'%>
                 <% end%>
-            <%=dlvCst %><br><br>
-            <%=p.created_at.strftime("%F")%>
+            <%=dlvCst %>
         </td>
+        <td class="text-center"><strong>상품 등록일<br>최종 수정일</strong></td>
+        <td class="text-center"><%=p.created_at.strftime("%F")%><br><%=p.updated_at.strftime("%F")%></td>
+         <td></td>
     </tr>
     <tr style="display:none">
-        <td colspan="6"></td>
-        <td><%= link_to 'Edit', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300; font-size: 15px' %></td>
-        <td><%= link_to 'Stop', stop_path(p.prdNo), style: 'color: #777777; font-weight: 300; font-size: 15px' %></td>
+        <td colspan="5"></td>
+        <td><%= link_to '상품수정', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
+        <td><%= link_to '판매중지', stop_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
     </tr>
     <% end %>
   </tbody>
