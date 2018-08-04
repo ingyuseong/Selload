@@ -133,3 +133,9 @@ table tr {
     width: 3rem;
     height: 3rem;
 }
+
+.divcenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
