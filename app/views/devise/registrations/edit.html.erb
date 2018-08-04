@@ -1,34 +1,30 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%# <%= f.input :email, required: true, autofocus: true %> 
+<div class="container mt-4 text-center ">
+  <%= image_tag("selload_logo.png", class: "login-title") %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-    <strong>E-mail : </strong><%= current_user.email%><br>
-    <strong>이름 : </strong><%= current_user.username %>
-    <%= f.input :password, autocomplete: "off", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, required: true %>
-    <strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요 <%= f.password_field :apikey, type: "password" %>
-  </div>
+    <div class="form-inputs">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
 
-<h3>Cancel my account</h3>
+      <div class="edit-label text-left"><strong>E-mail : </strong><%= current_user.email%></div>
+      <div class="edit-label text-left"><strong>이름 : </strong><%= current_user.username %></div>
+      <div class="edit-label text-left"><strong>비밀번호 변경</strong> (6글자 이상)</div>
+      <%= f.input :password, autocomplete: "off", required: false,label_html:{style: 'display: none'}, input_html: { class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' } %>
+      <div class="edit-label text-left"><strong>비밀번호 확인</strong> (6글자 이상)</div>
+      <%= f.input :password_confirmation, required: false ,label_html:{style: 'display: none'}, input_html: { class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' }%>
+      <div class="edit-label text-left"><strong>현재 비밀번호</strong> (6글자 이상)</div>
+      <%= f.input :current_password, required: true,label_html:{style: 'display: none'}, input_html: { class: 'editt-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' } %>
+      <div class="edit-label text-left"><strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요</div>
+      <%= f.password_field :apikey, type: "password", class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;"%>
+    </div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <div class="form-actions">
+      <%= f.button :submit, "Update", class:"edit-button", style: "border-radius: 0%"  %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to "Back", :back %>
