@@ -116,14 +116,6 @@ a.prdlink {
     color: black;
 }
 
-table tr {
-    max-height: 200px;
-    overflow: hidden;
-}
-
-.table td {
-    border-top: none;
-}
 
 .navbar {
     display:block !important;
@@ -134,11 +126,7 @@ table tr {
     font-weight: bold;
 }
 
-.swiper-container {
-    position: relative;
-    height: 52rem;
-    width: 100%;
-}
+
 
 .divcenter {
     position: relative;
@@ -267,6 +255,12 @@ html {
 .container {
   margin-right: 0px;
   margin-left: 0px;
+}
+
+.swiper-container {
+    position: relative;
+    height: 58em;
+    width: 100%;
 }
 
 .index1 {
