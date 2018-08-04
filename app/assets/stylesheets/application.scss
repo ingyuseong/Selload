@@ -10,6 +10,7 @@
     border: 2px solid;
     width:70px;
     height: 40px;
+    margin-top: 10px;
 }
 
 .dlv_box {
@@ -21,8 +22,14 @@
 }
 
 .cat1 {
-    background-color: papayawhip;
-    margin-bottom: 3rem !important;
+    background-color: white;
+    width: 1195px !important;
+    margin-bottom: 1rem;
+}
+
+
+.page {
+    margin-top: 22%;
 }
 
 .labelfont {
@@ -79,7 +86,11 @@
 }
 
 .optionn {
-    margin-left: 5rem;
+    margin-left: 3rem;
+}
+
+.optionsize1 {
+    width: 272px;
 }
 
 .optionsize2 {
@@ -280,6 +291,12 @@ html {
     background-repeat: no-repeat;
 }
 
-.container.page {
-    margin-top: 10vh;
+.tr1:hover {
+    background-color: transparent;
+    background-color: #F1F7FF;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    border-radius: 0px !important;
 }
