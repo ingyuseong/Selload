@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20180804045852) do
     t.string   "prdNm"
     t.string   "brand"
     t.text     "htmlDetail"
-    t.text     "prd"
     t.string   "dlvCstInstBasiCd"
     t.string   "dlvEtprsCd"
     t.string   "bndlDlvCnYn"
