@@ -35,14 +35,14 @@ class HomeController < ApplicationController
   end
 
   def result
-    puts params
-    puts params[:image]
-    puts params["image"]
+    
     productOption = {}
     options = ""
 
     images = []
 
+
+    option_etc = [params[:colValue0_1], params[:opt_1], params[:colValue0_2], params[:opt_2]]
     params[:image].each do |i,v|
       if v != ""
         images.push(v)
@@ -61,19 +61,21 @@ class HomeController < ApplicationController
 
     puts prdImages
 
-    if params[:colValue] == true
+    if params[:colValue0]
 
-
-      for i in 0...colValue.length
-        productOption["#{colValue[i]}"] = {:price => colOptPrice[i], :count => colCount[i]}
-      end
+      puts params[:colValue0] 
+      
 
       
       colValue = params[:colValue0].collect { |key, value| value }
       colOptPrice = params[:colOptPrice].collect { |key, value| value }
       colCount = params[:colCount].collect { |key, value| value }
 
+      puts colValue.length
 
+      for i in 0...colValue.length
+        productOption["#{colValue[i]}"] = {:price => colOptPrice[i], :count => colCount[i]}
+      end
       
 
 
@@ -284,8 +286,9 @@ class HomeController < ApplicationController
       newProduct = Product.new(product_params)
       newProduct.option = productOption
       newProduct.prdNo = prdNo
-      if newProduct.save
-      end
+      newProduct.prd = option_etc
+      newProduct.save
+      
     end
 
     puts request.body
@@ -352,6 +355,8 @@ class HomeController < ApplicationController
     @lgctgr = Lgcategory.all
     @midctgr = Midcategory.all
 
+    
+
     # list로 기본적인 상품정보를 얻어온 후 params로 넘겨줘야 기존 edit form 채워줄수 있음
     @product = Product.where(prdNo: params[:prdNo].to_i)[0]
     # @prdImages = @product.photos
@@ -360,14 +365,18 @@ class HomeController < ApplicationController
     # end
     # @product_prd = eval(@product.prd)
     @product_option = eval(@product.option)
-
     # option 쓰는법
+    bb = []
 
     @product_option.each do |k,v|
-      puts k # colValue ex)"빨강/M"
-      puts v[:price] # colOptPrice ex) "300"
-      puts v[:count] # colCount ex) "30"
+      k = k.split("/")[0]
+      bb.push(k)
     end
+
+    cc = bb.select {|a| a == bb[0]}
+    
+    @dd = bb.length / cc.length
+    puts @dd
     
 
   end
