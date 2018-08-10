@@ -649,6 +649,34 @@ class HomeController < ApplicationController
 
   end
 
+  def tutorial
+    @dlv_option = {
+      'CJ대한통운' => '00034', 
+      '한진택배' => '00011', 
+      '롯데(현대)택배' => '00012',
+      '드림택배(KG 로지스)' => '00001',
+      '우체국택배' => '00007',
+      '로젠택배' => '00002',
+      '우편등기' => '00008',
+      '대신택배' => '00021',
+      '일양로지스' => '00022',
+      'ACI' => '00023',
+      'WIZWA' => '00025',
+      '경동택배' => '00026',
+      '천일택배' => '00027',
+      'KGL(해외배송)' => '00028',
+      'OCS Korea' => '00031',
+      'GTX 택배' => '00033',
+      '합동택배' => '00035',
+      '건영택배' => '00037',
+      '기타' => '00099'
+    }
+
+    @lgctgr = Lgcategory.all
+    @midctgr = Midcategory.all
+  
+  end
+
   def product_params
     params.permit(:dispCtgrNo, :selPrc, :prdSelQty, :rtngdDlvCst, :exchDlvCst, :dlvcst1, :jejuDlvCst, :islandDlvCst, :PrdFrDlvBasiAmt, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
   end
