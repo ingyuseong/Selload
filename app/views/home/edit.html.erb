@@ -1,4 +1,4 @@
-<div class="container page">
+<div id="all-contents" class="container page">
 
 
 
@@ -219,7 +219,7 @@
     </div>
     
     <div class="m-3 optioncenter">
-        <%= submit_tag("등록", class: "btn btn-secondary btn-lg") %>
+        <%= submit_tag("등록", class: "btn btn-secondary btn-lg", id: "submit_button", disabled: "disabled") %>
     </div>
     <% end %>
 
@@ -239,6 +239,13 @@
 
 
 <script>
+
+    $("#all-contents").change(function(){
+        if($("#prdNm").val() && $("#brand").val() && $("#selPrc").val() && $("#smcategory_name").val() && $("#rtngdDlvCst").val() && $("#exchDlvCst").val() && $("#dlvCstPayTypCd").val() && $("#prdSelQty").val() && $("#asDetail").val() && $("#rtngExchDetail").val()){
+        $("#submit_button").removeAttr("disabled");
+        }
+    });
+
     $("#dlv_sel").change(function(){
         var dlv_sel =$("#dlv_sel").val()
         if(dlv_sel === "02"){
