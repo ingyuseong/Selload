@@ -420,6 +420,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  popper_js (~> 1.14.3)
   puma (~> 3.0)
   rails (~> 5.0.7)
   rails_db (= 1.6)

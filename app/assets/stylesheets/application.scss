@@ -472,3 +472,24 @@ html {
     width: 100rem;
     height: 50rem;
 }
+
+// tooltip
+
+.tooltip .tooltip-inner{
+    font-size: 1.1em;
+    font-family: 'Nanum Gothic', sans-serif;
+    max-width:310px;
+    padding:3px 8px;
+    color:#222;
+    background-color:#fff;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+.helptip {
+    padding-top: 1em;
+    font-size:0.8em;
+}

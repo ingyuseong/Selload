@@ -14,6 +14,9 @@ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'carrierwave'
 gem 'fog', '~> 1.41.0'
 
+# popper.js
+gem 'popper_js', '~> 1.14.3'
+
 # Basic Gems
 gem 'bootstrap', '~> 4.1.1'
 gem 'figaro'

@@ -16,7 +16,7 @@
       <td colspan="2"><%= text_field_tag(:prdNm) %></td>
       <th scope="row" class="labelfont">브랜드명</th>
       <td colspan="2"><%= text_field_tag(:brand) %></td>
-      <th scope="row" class="labelfont">상품 가격</th>
+      <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="100원 단위로 입력해주세요"></span> </th>
       <td colspan="2"><%= number_field_tag 'selPrc', nil, step: 100 %></td>
     </tr>
 
@@ -57,7 +57,9 @@
                 <td colspan="1"><%= number_field_tag 'rtngdDlvCst', "0", step: 100 %></td>
                 <th scope="row" class="labelfont">교환 배송비</th>
                 <td colspan="1"><%= number_field_tag 'exchDlvCst', '0', step: 100 %></td>
-                <th scope="row" class="labelfont">묶음 배송</th>
+                <th scope="row" class="labelfont">묶음 배송
+                    <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="필수로 선택해주세요"></span>
+                </th>
                 <td colspan="1">           
                     <%= radio_button_tag(:bndlDlvCnYn, "Y") %>
                     <%= label_tag( "가능") %>
@@ -118,14 +120,11 @@
 
     <table class="table">
     <tbody>
-    <tr class="tr1">
-      <th scope="row" class="labelfont optionsize">옵션 설정</th>
-      <td class="optionsize opttd" colspan="2"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
-      <th scope="row" class="labelfont optionsize optionn">재고 수량</th>
-      <td><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
-      <th scope="row" id="opt_btn" class="btn border opt_btn btn-secondary">적용</th>
-
-
+            <tr class="tr1">
+                <th scope="row" class="labelfont optionsize">옵션 설정 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="<text-alignment='left'>사이즈, 컬러 등<br>옵션의 개수를 선택해주세요"></span></th>
+                <td class="optionsize opttd" colspan="2"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
+                <th scope="row" class="labelfont optionsize optionn">재고 수량</th>
+                <td><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
             </tr>  
         </tbody>
     </table>
@@ -136,8 +135,12 @@
     <tr class="tr1">
       <th scope="row" class="labelfont optionsize">옵션</th>
       <td class="optionsize1"><%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %></td>
-      <th scope="row" class="labelfont optionsize">종류</th>
-      <td class="opttd"><%= text_field_tag(:opt_1, nil,id: "opt_1")%></td>
+      <th scope="row" class="labelfont optionsize">종류 
+        <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="여백없이 <strong>콤마','</strong>로 구분해서 입력해주세요<br><strong>ex.</strong> 빨강,초록 / S,M,L"></span>
+      </th>
+      <td class="opttd"><%= text_field_tag(:opt_1, nil,id: "opt_1", placeholder: "종류1,종류2,종류3")%></td>
+      <th class="helptip">옵션값을 모두 입력하고 적용버튼을 누르세요</th>
+      <th scope="row" id="opt_btn" class="btn border opt_btn btn-secondary">적용</th>
 
       
     </tr>  
@@ -151,8 +154,10 @@
     <tr class="tr1">
       <th scope="row" class="labelfont optionsize">옵션</th>
       <td class="optionsize1"><%= text_field_tag(:colValue0_2, nil, id:"opt_name_2") %></td>
-      <th scope="row" class="labelfont optionsize">종류</th>
-      <td><%= text_field_tag(:opt_2, nil,id: "opt_2")%></td>
+      <th scope="row" class="labelfont optionsize">종류
+        <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="여백없이 <strong>콤마','</strong>로 구분해서 입력해주세요<br><strong>ex.</strong> 빨강,초록 / S,M,L"></span>
+      </th>
+      <td><%= text_field_tag(:opt_2, nil,id: "opt_2", placeholder: "종류1,종류2,종류3")%></td>
     </tr>  
     </tbody>
     </table>
@@ -176,7 +181,7 @@
             </tr>
             
             <tr class="tr1">
-                <td colspan="2"><%= text_area_tag(:asDetail, nil, rows: 4, class: "hehe") %></td>
+                <td colspan="2"><%= text_area_tag(:asDetail, nil, rows: 4, class: "hehe", placeholder: "필수 입력") %></td>
             </tr>
 
             <tr>
@@ -184,7 +189,7 @@
             </tr>
 
             <tr class="tr1">
-                <td colspan="2" rowspan="2"><%= text_area_tag(:rtngExchDetail, nil, rows: 4, class: "hehe") %></td>
+                <td colspan="2" rowspan="2"><%= text_area_tag(:rtngExchDetail, nil, rows: 4, class: "hehe", placeholder: "필수 입력") %></td>
             </tr>
             
             </tbody>
@@ -212,6 +217,12 @@
 </style>
 
 <script>
+    $(document).ready(function(){
+        $('[tool-tip-toggle="tooltip-demo"]').tooltip({
+            placement : 'top'
+        });
+    });
+
     $("#dlv_sel").change(function(){
         var dlv_sel =$("#dlv_sel").val()
         if(dlv_sel === "02"){
