@@ -13,9 +13,10 @@
     <tr>
       <th style="width: 10%"> </th>
       <th style="width: 15%">상품번호</th>
-      <th style="width: 25%">상품명</th>
+      <th style="width: 20%">상품명</th>
       <th style="width: 15%">브랜드</th>
-      <th style="width: 15%">가격</th>
+      <th style="width: 10%">가격</th>
+      <th style="width: 10%">할인가</th>
       <th style="width: 10%">재고수량</th>
       <th style="width: 10%"></th>
     </tr>
@@ -28,6 +29,17 @@
         <th scope="row"><%=p.prdNm%></th>
         <td><%=p.brand%></td>
         <td><%=p.selPrc%></td>
+        <td>
+        <% if p.cupnDscMthdCd== "01" %>
+            <% if p.dscAmtPercnt %>
+                <%=p.selPrc - p.dscAmtPercnt %>
+            <% else%>
+                <%= p.selPrc %>
+            <% end %>
+        <% else %>
+            <%= p.selPrc*(100-p.dscAmtPercnt)/100 %>
+        <% end %>
+        </td>
         <td><%=p.prdSelQty %></td>
         <td>
             <span class="off more">더보기</span>
@@ -37,13 +49,23 @@
     <tr style="display:none" class="text-left">
         <td></td>
         <td>
-            <strong>카테고리<br>택배사<br>배송조건</strong>
+            <strong>카테고리<br>할인<br>택배사<br>배송조건</strong>
         </td>
         <td colspan="1">
-                <% ctgrno = Smcategory.where(smcategory_id: p.dispCtgrNo.split("@")[2])[0].name %>
-                <%= ctgrno %>
+            <% ctgrno = Smcategory.where(smcategory_id: p.dispCtgrNo.split("@")[2])[0].name %>
+            <%= ctgrno %>
         <br>
-                <% case p.dlvEtprsCd %>
+            <% if p.cupnDscMthdCd== "01" %>
+                <% if p.dscAmtPercnt %>
+                    -<%= p.dscAmtPercnt %>원
+                <% else%>
+                    -
+                <% end %>
+            <% else %>
+                -<%= p.dscAmtPercnt %>%
+            <% end %>
+        <br>
+            <% case p.dlvEtprsCd %>
                 <% when '00034' %>
                     <% dlvEtp = 'CJ대한통운' %>
                 <% when '00011' %>
@@ -95,11 +117,11 @@
         </td>
         
         <td class="text-center"><strong>묶음 배송 여부<br>상품 등록일<br>최종 수정일</strong></td>
-        <td class="text-center"><%=p.bndlDlvCnYn%><br><%=p.created_at.strftime("%F")%><br><%=p.updated_at.strftime("%F")%></td>
+        <td colspan=2 class="text-left"><%=p.bndlDlvCnYn%><br><%=p.created_at.strftime("%F")%><br><%=p.updated_at.strftime("%F")%></td>
          <td></td>
     </tr>
     <tr style="display:none">
-        <td colspan="5" style="border-top: 1px solid transparent"></td>
+        <td colspan="6" style="border-top: 1px solid transparent"></td>
         <td style="border-top: 1px solid transparent"><%= link_to '상품수정', edit_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
         <td style="border-top: 1px solid transparent"><%= link_to '판매중지', stop_path(p.prdNo), style: 'color: #777777; font-weight: 300' %></td>
     </tr>

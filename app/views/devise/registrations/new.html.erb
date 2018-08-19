@@ -17,10 +17,10 @@
       <div class="signup-label text-left"><strong>이름</strong></div>
       <%= f.input :username, label_html:{style: 'display: none'}, input_html: { class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;" }%>
       <div class="signup-label text-left">
-        <strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요
+        <strong>API KEY:</strong> 해당 쇼핑몰에서 발급받은 값을 적어주세요
         <span 
           class="fas fa-question-circle" tool-tip-toggle="tooltip-demo" data-html=true
-          data-original-title="<img src='/assets/tooltip_test.png'>100원 단위로 입력해주세요"></span>
+          data-original-title="· API KEY란?<br>해당 쇼핑몰을 벗어나 다른 웹사이트에서 쇼핑몰 기능을 사용하기 위해 발급하는 비밀번호입니다.<br><br>· API KEY가 없으면 상품이 업로드 되지 않습니다.<br>· API KEY는 해당 쇼핑몰 내에서 발급받을 수 있습니다.<br><br>· API KEY가 없다면 공백으로 작성해주세요. <br>· 회원가입 이후 마이페이지에서 수정 가능합니다. "></span>
       </div>
       <%= f.password_field :apikey, type: "password", class: 'login-field', style: "margin-top:5px; margin-bottom: 20px;"%>
       <div class="signup-label text-left"><strong>비밀번호</strong> (6글자 이상)</div>
