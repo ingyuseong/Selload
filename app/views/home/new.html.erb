@@ -18,13 +18,13 @@
       <th scope="row" class="labelfont">상품명 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 고객에게 노출되는 문구를 말합니다.<br> <br>· '브랜드명 + 상품명 + 모델명'으로 입력하는 것을 권장합니다.<br>ex) 발렌시아 스탠벨트자켓 V85MJ62<br><br>· 스팸성 키워드 및 특수문자 사용시 제제를 받을 수 있습니다."></span></th>
       <td colspan="2"><%= text_field_tag(:prdNm) %></td>
       <th scope="row" class="labelfont">브랜드명 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 브랜드 검색에 노출됩니다.<br><br>· 브랜드 내에서 통용되는 브랜드명을 입력해주세요.<br>ex) 스'텝'키즈(x) 스'탭'키즈(o)"></span></th>
-      <td colspan="2"><%= text_field_tag(:brand) %></td>
+      <td colspan="6"><%= text_field_tag(:brand) %></td>
     </tr>
     <tr class="tr1">
       <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="· 100원 단위로 입력해주세요"></span> </th>
       <td colspan="2"><%= number_field_tag 'selPrc', nil, step: 100 %></td>
       <th scope="row" class="labelfont">할인</th>
-      <td colspan="1">           
+      <td colspan="2">           
         <%= radio_button_tag(:cuponcheck, "Y") %>
         <%= label_tag( "적용") %>
         <%= radio_button_tag(:cuponcheck, "N") %>
@@ -125,6 +125,7 @@
             
                 <tr class="tr1">
                    <th scope="row" class="labelfont">상세설명 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 상세설명 작성 팁은 셀러드가 제공하는 가이드라인을 참고하세요. <br><br>· 모든 내용은 가운데 정렬하는 것을 권장합니다."></span></th>
+                   <td colspan="8"></td>
                 </tr>
             
             </tbody>
