@@ -393,12 +393,12 @@ html {
 
 
 .centered6 {
-    position: absolute;
-    top: 59%;
-    left: 33%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    margin-top: 30px;
+    position: absolute !important;
+    top: 59% !important;
+    left: 33% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    margin-top: 30px !important;
 }
 
 .labelfont1 {
@@ -473,6 +473,25 @@ html {
     height: 50rem;
 }
 
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:papayawhip;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1;
+}
+
+.my-float{
+    margin-top:22px;
+}
 // tooltip
 
 .tooltip .tooltip-inner{
@@ -491,5 +510,5 @@ html {
 
 .helptip {
     padding-top: 1em;
-    font-size:0.8em;
+    font-size: 0.8em;
 }
