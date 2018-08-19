@@ -17,7 +17,7 @@
       <th scope="row" class="labelfont">상품명</th>
       <td colspan="2"><%= text_field_tag(:prdNm, @product.prdNm) %></td>
       <th scope="row" class="labelfont">브랜드명</th>
-      <td colspan="2"><%= text_field_tag(:brand, @product.brand) %></td>
+      <td colspan="6"><%= text_field_tag(:brand, @product.brand) %></td>
     </tr>
     <tr class="tr1">
       <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="· 100원 단위로 입력해주세요"></span> </th>
@@ -134,6 +134,7 @@
             
                 <tr class="tr1">
                    <th scope="row" class="labelfont">상세설명</th>
+                   <td colspan="8"></td>
                 </tr>
             
             </tbody>
