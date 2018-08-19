@@ -376,13 +376,17 @@ class HomeController < ApplicationController
     
 
     # list로 기본적인 상품정보를 얻어온 후 params로 넘겨줘야 기존 edit form 채워줄수 있음
-    @product = Product.where(prdNo: params[:prdNo].to_i)[0]
+    @product = Product.where(prdNo: params[:prdNo])[0]
     # @prdImages = @product.photos
     # for i in @prdImages.length...5
     #   @prdImages.push[nil]
     # end
     # @product_prd = eval(@product.prd)
-    @product_option = eval(@product.option)
+  #  if @product.option
+      @product_option = eval(@product.option)
+  #  else 
+  #   @product_option = ""
+  #  end
     # option 쓰는법
     bb = []
 
@@ -397,12 +401,18 @@ class HomeController < ApplicationController
   def update
     # 상품코드 PrdCd 입력 후 상품등록과 똑같은 형식의 Body를 넣어 요청 시 기존의 상품에 덮어씌우는 방식으로 수정됨
     # 상품등록이랑 params 같이 쓰면 될듯
-    product_num = params[:prdNo]
+    product_num = params[:prdNo].strip
 
     productOption = {}
     options = ""
 
-    
+    discount = ""
+
+    if params[:cuponcheck] == 'Y'
+      discount += "<cuponcheck>Y</cuponcheck><dscAmtPercnt>#{params[:dscAmtPercnt]}</dscAmtPercnt><cupnDscMthdCd>#{params[:cupnDscMthdCd]}</cupnDscMthdCd>"
+    else
+      discount += "<cuponcheck>N</cuponcheck>"
+    end
   
     if params[:colValue] == true
 
@@ -534,7 +544,7 @@ class HomeController < ApplicationController
     
 
     
-
+    #{discount}
     #{options}
     # 디폴트 값
     ########
@@ -606,7 +616,7 @@ class HomeController < ApplicationController
     
   </Product>"
 
-    updateProduct = Product.where(prdNo: params[:prdNo].to_i)[0]
+    updateProduct = Product.where(prdNo: params[:prdNo])[0]
     updateProduct.update(product_params)
     updateProduct.save
 
