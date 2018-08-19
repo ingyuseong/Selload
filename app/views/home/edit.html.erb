@@ -17,9 +17,27 @@
       <th scope="row" class="labelfont">상품명</th>
       <td colspan="2"><%= text_field_tag(:prdNm, @product.prdNm) %></td>
       <th scope="row" class="labelfont">브랜드명</th>
-      <td colspan="2"><%= text_field_tag(:brand, @product.brand) %></td>
-      <th scope="row" class="labelfont">상품 가격</th>
-      <td colspan="2"><%= number_field_tag 'selPrc', @product.selPrc , step: 100 %></td>
+      <td colspan="6"><%= text_field_tag(:brand, @product.brand) %></td>
+    </tr>
+    <tr class="tr1">
+      <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="· 100원 단위로 입력해주세요"></span> </th>
+      <td colspan="2"><%= number_field_tag 'selPrc', @product.selPrc, step: 100 %></td>
+      <th scope="row" class="labelfont">할인</th>
+      <td colspan="1">
+        <% if @product.cuponcheck == "Y" %>           
+            <%= radio_button_tag(:cuponcheck, "Y", true) %>
+            <%= label_tag( "적용") %>
+            <%= radio_button_tag(:cuponcheck, "N") %>
+            <%= label_tag( "미적용") %>
+        <% else %>
+            <%= radio_button_tag(:cuponcheck, "Y") %>
+            <%= label_tag( "적용") %>
+            <%= radio_button_tag(:cuponcheck, "N", true) %>
+            <%= label_tag( "미적용") %>
+        <% end%>
+      </td>
+      <th scope="row" class="labelfont">할인수치</th>
+       <td colspan="2"><%= number_field_tag 'dscAmtPercnt', @product.dscAmtPercnt %><%= select_tag 'cupnDscMthdCd', options_for_select({'원' => '01', '%' => '02'}, @product.cupnDscMthdCd) %></td>
     </tr>
 
     <tr class="tr1">
@@ -116,6 +134,7 @@
             
                 <tr class="tr1">
                    <th scope="row" class="labelfont">상세설명</th>
+                   <td colspan="8"></td>
                 </tr>
             
             </tbody>
