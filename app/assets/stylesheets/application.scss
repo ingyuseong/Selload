@@ -393,12 +393,12 @@ html {
 
 
 .centered6 {
-    position: absolute;
-    top: 59%;
-    left: 33%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    margin-top: 30px;
+    position: absolute !important;
+    top: 59% !important;
+    left: 33% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    margin-top: 30px !important;
 }
 
 .labelfont1 {
