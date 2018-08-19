@@ -334,11 +334,12 @@ class HomeController < ApplicationController
 
     for i in 1..@list_result.length
       if @list_result[i] == "103"
-        @selling.push(' ' + @prdNo_result[i])
+        @selling.push(@prdNo_result[i])
        
       end
     end
     puts @selling
+    puts Product.first.prdNo.strip == @selling[1]
     puts Product.first.prdNo.strip
     puts @selling[1]
     @product_array = Product.where(prdNo: @selling);
