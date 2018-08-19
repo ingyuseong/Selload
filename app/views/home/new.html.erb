@@ -15,11 +15,11 @@
     </thead>
     <tbody>
     <tr class="tr1">
-      <th scope="row" class="labelfont">상품명</th>
+      <th scope="row" class="labelfont">상품명 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 고객에게 노출되는 문구를 말합니다.<br> <br>· '브랜드명 + 상품명 + 모델명'으로 입력하는 것을 권장합니다.<br>ex) 발렌시아 스탠벨트자켓 V85MJ62<br><br>· 스팸성 키워드 및 특수문자 사용시 제제를 받을 수 있습니다."></span></th>
       <td colspan="2"><%= text_field_tag(:prdNm) %></td>
-      <th scope="row" class="labelfont">브랜드명</th>
+      <th scope="row" class="labelfont">브랜드명 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 브랜드 검색에 노출됩니다.<br><br>· 브랜드 내에서 통용되는 브랜드명을 입력해주세요.<br>ex) 스'텝'키즈(x) 스'탭'키즈(o)"></span></th>
       <td colspan="2"><%= text_field_tag(:brand) %></td>
-      <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="100원 단위로 입력해주세요"></span> </th>
+      <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="· 100원 단위로 입력해주세요"></span> </th>
       <td colspan="2"><%= number_field_tag 'selPrc', nil, step: 100 %></td>
     </tr>
 
@@ -105,13 +105,14 @@
             </thead>
             <tbody>
                 <tr class="tr1">
-                    <th scope="row" class="labelfont optionsize">대표이미지</th>
+                    <th scope="row" class="labelfont optionsize">대표이미지 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 최소사이즈는 600X600px 입니다.<br><br>· 최대 이미지 용량은 한 장당 3mb입니다.<br><br>· 이미지 포맷은 JPG/PNG 입니다."></span></th>
+      <td colspan="2"><%= text_field_tag(:brand) %></th>
                     <td colspan="2"><%= file_field_tag "image[1]", accept: 'image/png,image/gif,image/jpeg' %></td>
 
               </tr>
             
                 <tr class="tr1">
-                   <th scope="row" class="labelfont">상세설명</th>
+                   <th scope="row" class="labelfont">상세설명 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 상세설명 작성 팁은 셀러드가 제공하는 가이드라인을 참고하세요. <br><br>· 모든 내용은 가운데 정렬하는 것을 권장합니다."></span></th>
                 </tr>
             
             </tbody>
@@ -124,9 +125,9 @@
     <table class="table">
     <tbody>
             <tr class="tr1">
-                <th scope="row" class="labelfont optionsize">옵션 설정 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="<text-alignment='left'>사이즈, 컬러 등<br>옵션의 개수를 선택해주세요"></span></th>
+                <th scope="row" class="labelfont optionsize">옵션 설정 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="<text-alignment='left'>· 사이즈, 컬러 등 옵션의 개수를 선택해주세요"></span></th>
                 <td class="optionsize opttd" colspan="2"><%= select_tag 'aa', options_for_select([['없음', '0'], ['1개', '1'], ['2개', '2']]), id: "opt_num", class: "optionsize2" %></td>
-                <th scope="row" class="labelfont optionsize optionn">재고 수량</th>
+                <th scope="row" class="labelfont optionsize optionn">재고 수량 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 옵션 재고수량이 합산되어 자동으로 계산됩니다."></span></th>
                 <td><%= number_field_tag 'prdSelQty', nil, step: 1 %></td>
             </tr>  
         </tbody>
@@ -139,7 +140,7 @@
       <th scope="row" class="labelfont optionsize">옵션</th>
       <td class="optionsize1"><%= text_field_tag(:colValue0_1, nil, id:"opt_name_1") %></td>
       <th scope="row" class="labelfont optionsize">종류 
-        <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="여백없이 <strong>콤마','</strong>로 구분해서 입력해주세요<br><strong>ex.</strong> 빨강,초록 / S,M,L"></span>
+        <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 여백없이 <strong>콤마','</strong>로 구분해서 입력해주세요.<br><strong>ex)</strong> 네이비,블랙 / S,M,L"></span>
       </th>
       <td class="opttd"><%= text_field_tag(:opt_1, nil,id: "opt_1", placeholder: "종류1,종류2,종류3")%></td>
       <th class="helptip">옵션값을 모두 입력하고 적용버튼을 누르세요</th>
@@ -158,7 +159,7 @@
       <th scope="row" class="labelfont optionsize">옵션</th>
       <td class="optionsize1"><%= text_field_tag(:colValue0_2, nil, id:"opt_name_2") %></td>
       <th scope="row" class="labelfont optionsize">종류
-        <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="여백없이 <strong>콤마','</strong>로 구분해서 입력해주세요<br><strong>ex.</strong> 빨강,초록 / S,M,L"></span>
+        <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 여백없이 <strong>콤마','</strong>로 구분해서 입력해주세요.<br><strong>ex)</strong> 네이비,블랙 / S,M,L"></span>
       </th>
       <td><%= text_field_tag(:opt_2, nil,id: "opt_2", placeholder: "종류1,종류2,종류3")%></td>
     </tr>  
@@ -184,7 +185,7 @@
             </tr>
             
             <tr class="tr1">
-                <td colspan="2"><%= text_area_tag(:asDetail, nil, rows: 4, class: "hehe", placeholder: "필수 입력") %></td>
+                <td colspan="2"><%= text_area_tag(:asDetail, nil, rows: 4, class: "hehe", placeholder: "(필수 입력)\n상세 설명에 자세한 내용이 입력되어 있다면, '상세 설명 참조' 라고 작성 ") %></td>
             </tr>
 
             <tr>
@@ -192,7 +193,7 @@
             </tr>
 
             <tr class="tr1">
-                <td colspan="2" rowspan="2"><%= text_area_tag(:rtngExchDetail, nil, rows: 4, class: "hehe", placeholder: "필수 입력") %></td>
+                <td colspan="2" rowspan="2"><%= text_area_tag(:rtngExchDetail, nil, rows: 4, class: "hehe", placeholder: "(필수 입력)\n상세 설명에 자세한 내용이 입력되어 있다면, '상세 설명 참조' 라고 작성") %></td>
             </tr>
             
             </tbody>
