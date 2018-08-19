@@ -6,7 +6,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
     <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -24,8 +23,7 @@
   </head>
 
   <body>
-    <a href="https://open.kakao.com/o/sBQY6AV" class="float"></a>
-    <%# <i class="fa fa-plus my-float"></i> %>
+    <a target="_blank" href="https://open.kakao.com/o/sBQY6AV"><img src="/assets/kakao4.png" class="kakaofloat"></a>
     <%# 스와이퍼 %>
     <script type='module'>
     var mySwiper = new Swiper ('.swiper-container', {
@@ -51,10 +49,12 @@
 
     // And if we need scrollbar
     scrollbar: {
-      el: '.swiper-scrollbar',  
+       el: '.swiper-scrollbar',  
     },
     })
     </script>
+
+
 
 
     <%# 네브바 %>
@@ -102,17 +102,23 @@
     <%= yield %>
   </div>   
   <%# 풋터 %>
-  <div class="footer">
-    <div class="container d-flex bd-highlight">
-      <div class="mr-auto p-2 bd-highlight">
-        NE<span class="text-warning">X</span>T X
-        <strong>멋쟁이사자처럼</strong>
+  
+  <% unless action_name == "index" %>
+
+    <div class="footer">
+      <div class="container d-flex bd-highlight">
+        <div class="mr-auto p-2 bd-highlight">
+          NE<span class="text-warning">X</span>T X
+          <strong>멋쟁이사자처럼</strong>
+        </div>
+        <div class="p-2 bd-highlight">
+        © 2018 Copyright:
+        <strong>SELLOAD.com</strong>
+        </div> 
       </div>
-      <div class="p-2 bd-highlight">
-      © 2018 Copyright:
-      <strong>SELLOAD.com</strong>
-      </div> 
-    </div>
-  </div>  
+    </div>  
+  <% end %>
+
+  
   </body>
 </html>

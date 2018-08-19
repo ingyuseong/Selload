@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180804045852) do
     t.text     "rtngExchDetail"
     t.string   "colTitle"
     t.text     "option"
-    t.integer  "prdNo"
+    t.string   "prdNo"
     t.integer  "selPrc"
     t.integer  "prdSelQty"
     t.integer  "rtngdDlvCst"
@@ -65,6 +65,9 @@ ActiveRecord::Schema.define(version: 20180804045852) do
     t.integer  "islandDlvCst"
     t.integer  "PrdFrDlvBasiAmt"
     t.string   "prd"
+    t.string   "cupnDscMthdCd"
+    t.integer  "dscAmtPercnt"
+    t.string   "cuponcheck"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

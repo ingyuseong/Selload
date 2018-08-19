@@ -13,7 +13,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.text :rtngExchDetail
       t.string :colTitle
       t.text :option
-      t.integer :prdNo
+      t.string :prdNo
       t.integer :selPrc
       t.integer :prdSelQty
       t.integer :rtngdDlvCst
@@ -23,6 +23,9 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :islandDlvCst
       t.integer :PrdFrDlvBasiAmt
       t.string :prd
+      t.string :cupnDscMthdCd
+      t.integer :dscAmtPercnt
+      t.string :cuponcheck
 
       t.timestamps
     end
