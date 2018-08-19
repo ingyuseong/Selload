@@ -30,8 +30,8 @@
         <%= radio_button_tag(:cuponcheck, "N") %>
         <%= label_tag( "미적용") %>
       </td>
-      <th scope="row" class="labelfont">할인수치</th>
-      <td colspan="2"><%= number_field_tag 'dscAmtPercnt', nil %><%= select_tag 'cupnDscMthdCd', options_for_select({'원' => '01', '%' => '02'}) %></td>
+      <th scope="row" class="labelfont">할인수치 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-html=true data-original-title="· 상품 가격에서 마이너스 금액을 입력합니다.<br><br>ex)상품 가격: 50,000원 할인수치: 5,000원<br>  할인가(최종 판매가): 45,000원 "></th>
+      <td colspan="2"><%= number_field_tag 'dscAmtPercnt', nil %> <%= select_tag 'cupnDscMthdCd', options_for_select({'원' => '01', '%' => '02'}) %></td>
   
     </tr>
 
