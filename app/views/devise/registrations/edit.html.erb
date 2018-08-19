@@ -26,7 +26,12 @@
       <%= f.input :password_confirmation, required: false ,label_html:{style: 'display: none'}, input_html: { class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' }%>
       <div class="edit-label text-left"><strong>현재 비밀번호</strong></div>
       <%= f.input :current_password, required: true,label_html:{style: 'display: none'}, input_html: { class: 'editt-field', style: "margin-top:5px; margin-bottom: 20px;" }, input_html: { class: 'edit-field' } %>
-      <div class="edit-label text-left"><strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요</div>
+      <div class="edit-label text-left">
+        <strong>API KEY:</strong> 쇼핑몰에서 발급받은 API KEY를 적어주세요
+        <span 
+          class="fas fa-question-circle" tool-tip-toggle="tooltip-demo" data-html=true
+          data-original-title="<img src='/assets/tooltip_test.png'>100원 단위로 입력해주세요"></span>
+      </div>
       <%= f.password_field :apikey, type: "password", class: 'edit-field', style: "margin-top:5px; margin-bottom: 20px;"%>
     </div>
 
@@ -36,3 +41,10 @@
   <% end %>
 </div>
 
+<script>
+  $(document).ready(function(){
+      $('[tool-tip-toggle="tooltip-demo"]').tooltip({
+          placement : 'right'
+      });
+  });
+</script>
