@@ -19,8 +19,20 @@
       <td colspan="2"><%= text_field_tag(:prdNm) %></td>
       <th scope="row" class="labelfont">브랜드명</th>
       <td colspan="2"><%= text_field_tag(:brand) %></td>
+    </tr>
+    <tr class="tr1">
       <th scope="row" class="labelfont">상품 가격 <span class="fas fa-exclamation-circle" tool-tip-toggle="tooltip-demo" data-original-title="100원 단위로 입력해주세요"></span> </th>
       <td colspan="2"><%= number_field_tag 'selPrc', nil, step: 100 %></td>
+      <th scope="row" class="labelfont">할인</th>
+      <td colspan="1">           
+        <%= radio_button_tag(:cuponcheck, "Y") %>
+        <%= label_tag( "적용") %>
+        <%= radio_button_tag(:cuponcheck, "N") %>
+        <%= label_tag( "미적용") %>
+      </td>
+      <th scope="row" class="labelfont">할인수치</th>
+      <td colspan="2"><%= number_field_tag 'dscAmtPercnt', nil %><%= select_tag 'cupnDscMthdCd', options_for_select({'원' => '01', '%' => '02'}) %></td>
+  
     </tr>
 
     <tr class="tr1">

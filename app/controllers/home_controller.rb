@@ -65,6 +65,15 @@ class HomeController < ApplicationController
 
     puts prdImages
 
+    discount = ""
+
+    if params[:cuponcheck] == 'Y'
+      discount += "<cuponcheck>Y</cuponcheck><dscAmtPercnt>#{params[:dscAmtPercnt]}</dscAmtPercnt><cupnDscMthdCd>#{params[:cupnDscMthdCd]}</cupnDscMthdCd>"
+    else
+      discount += "<cuponcheck>N</cuponcheck>"
+    end
+
+
     if params[:colValue0]
 
       puts params[:colValue0] 
@@ -210,7 +219,7 @@ class HomeController < ApplicationController
       
 
       
-
+      #{discount}
       #{options}
       # 디폴트 값
       ########
@@ -286,7 +295,7 @@ class HomeController < ApplicationController
   
     # 쇼핑몰 등록 성공 시 (resultCode가 200일시) db 저장
     if @response.split('resultCode')[1] == '>200</'
-      prdNo = @response.split('message')[1].split(':')[1].split('<')[0].to_i
+      prdNo = @response.split('message')[1].split(':')[1].split('<')[0].strip
       newProduct = Product.new(product_params)
       newProduct.option = productOption
       newProduct.prdNo = prdNo
@@ -325,12 +334,15 @@ class HomeController < ApplicationController
 
     for i in 1..@list_result.length
       if @list_result[i] == "103"
-        @selling.push(@prdNo_result[i].to_i)
+        @selling.push(' ' + @prdNo_result[i])
+       
       end
     end
-
+    puts @selling
+    puts Product.first.prdNo.strip
+    puts @selling[1]
     @product_array = Product.where(prdNo: @selling);
-
+    
   end
 
   def edit
@@ -678,6 +690,6 @@ class HomeController < ApplicationController
   end
 
   def product_params
-    params.permit(:dispCtgrNo, :selPrc, :prdSelQty, :rtngdDlvCst, :exchDlvCst, :dlvcst1, :jejuDlvCst, :islandDlvCst, :PrdFrDlvBasiAmt, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
+    params.permit(:dispCtgrNo, :cupnDscMthdCd, :dscAmtPercnt, :cuponcheck, :selPrc, :prdSelQty, :rtngdDlvCst, :exchDlvCst, :dlvcst1, :jejuDlvCst, :islandDlvCst, :PrdFrDlvBasiAmt, :prdNm, :brand, :htmlDetail, :prd, :dlvCstInstBasiCd, :dlvEtprsCd, :bndlDlvCnYn, :dlvCstPayTypCd, :asDetail, :rtngExchDetail, :colTitle)
   end
 end
