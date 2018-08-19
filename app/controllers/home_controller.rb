@@ -339,6 +339,7 @@ class HomeController < ApplicationController
       end
     end
     puts @selling
+    puts Product.first.prdNo.strip == @selling[1]
     puts Product.first.prdNo.strip
     puts @selling[1]
     @product_array = Product.where(prdNo: @selling);
