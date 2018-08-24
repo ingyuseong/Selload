@@ -504,6 +504,17 @@ html {
     border: 1px solid black;
 }
 
+.tip_btn {
+    position: absolute;
+    top: 6.5%;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+}
+
+.tip_btn:hover {
+    cursor: pointer;
+}
 .helptip {
     padding-top: 1em;
     font-size: 0.8em;
