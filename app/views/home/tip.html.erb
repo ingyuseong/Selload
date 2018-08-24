@@ -1,4 +1,21 @@
 <img src="/assets/guide.jpg">
+<div id="photoguide" class="tip_btn" style="left: 710px"></div>
+<div id="detailguide" class="tip_btn" style="left: 1080px"></div>
+<div id="photo" style="position: absolute; top: 9%; z-index: -1">this is photoguide</div>
+<div id="detail" style="position: absolute; top: 21%; z-index: -1">this is detail guide</div>
 <div>
     <button type="button" class="btn centered6 startbtn"><%= link_to "시작하기", new_user_registration_path, class: "labelfont1" %></button>
 </div>
+
+<script>
+    $("#photoguide").click(function() {
+        $('html,body').animate({
+            scrollTop: $("#photo").offset().top},
+            'slow');
+    });
+    $("#detailguide").click(function() {
+        $('html,body').animate({
+            scrollTop: $("#detail").offset().top},
+            'slow');
+    });
+</script>
