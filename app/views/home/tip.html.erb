@@ -1,8 +1,12 @@
-<div class="text-center mt-5">
-    <div>
-    <%= image_tag "tip1.png" %>
-    </div>
-    <div>
-    <%= image_tag "tip2.png" %>
-    </div>
+<style>
+    body {
+        background-image: url("/assets/guide.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+
+
+<div>
+    <button type="button" class="btn centered6 startbtn"><%= link_to "시작하기", new_user_registration_path, class: "labelfont1" %></button>
 </div>
