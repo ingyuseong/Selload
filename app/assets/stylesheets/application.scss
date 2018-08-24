@@ -133,7 +133,7 @@ a.prdlink {
     font-family: 'Gothic A1', sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
-}
+} 
 
 
 
@@ -422,7 +422,7 @@ html {
     border-radius: 0px;
     color: white !important;
     z-index: 1;
-    width: 280px;
+    width: 220px;
     height: 80px;
     opacity: 0.6 !important;
   }
@@ -507,4 +507,26 @@ html {
 .helptip {
     padding-top: 1em;
     font-size: 0.8em;
+}
+
+.centered9 {
+    position: absolute !important;
+    top: 97% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    margin-top: 30px !important;
+}
+
+.labelfont10 {
+    color: darkblue;
+    font-size: 28px !important;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+}
+
+
+.labelfont10:hover {
+    color: white;
+    text-decoration: none;
 }
