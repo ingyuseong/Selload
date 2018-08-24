@@ -159,7 +159,7 @@ class HomeController < ApplicationController
       <brand>#{params[:brand]}</brand>
 
       # 대표 이미지 - 300x300 이상, jpg, jpeg, png만
-      <prdImage01>https://picsum.photos/300/300</prdImage01>
+      <prdImage01>https://shop-phinf.pstatic.net/20180602_5/100791224_1527909536700bhiOj_JPEG/10.jpg?type=w640</prdImage01>
       
       <htmlDetail>
         <![CDATA[
@@ -480,9 +480,7 @@ class HomeController < ApplicationController
     <brand>#{params[:brand]}</brand>
 
     # 대표 이미지 - 300x300 이상, jpg, jpeg, png만
-    <prdImage01>https://picsum.photos/300/300</prdImage01>
-    <prdImage02>https://picsum.photos/400/400</prdImage02>
-    <prdImage03>https://picsum.photos/400/399</prdImage03>
+    <prdImage01>https://shop-phinf.pstatic.net/20180602_5/100791224_1527909536700bhiOj_JPEG/10.jpg?type=w640</prdImage01>
     <htmlDetail>
       <![CDATA[
         #{params[:htmlDetail]}
