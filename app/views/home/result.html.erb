@@ -1,2 +1,12 @@
-<h1>결과메시지</h1>
-<p><%= @response %> </p>
+<div class="container page" style="margin-top: 40vh">
+
+<h1>앗! 무언가 빠졌네요!</h1>
+<h1>다시 한 번 시도하세요</h1>
+<button style="margin-top:20px" class='btn' onClick="goBack()">뒤로가기</button>
+</div>
+
+<script>
+function goBack() {
+    window.history.back()
+}
+</script>
