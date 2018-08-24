@@ -541,3 +541,22 @@ html {
     color: white;
     text-decoration: none;
 }
+
+.editback {
+    background-image: asset-data-url("devise_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+.mainback {
+    background-image: url("/assets/mainimage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.newback{
+    background-image: url("/assets/newimage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+  
