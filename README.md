@@ -70,7 +70,7 @@
 
 ### 앱 실행 전, 확인!
 ```
-* bundle install
-* rails db:migrate
-* rails db:seed
+bundle install
+rails db:migrate
+rails db:seed
 ```
